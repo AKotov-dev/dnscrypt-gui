@@ -7,7 +7,6 @@ dnscrypt-proxy encrypts the communication channel between you and the DNS server
 The DNSCrypt-GUI settings are optimal by default. It remains to start the local proxy server with the "Start" button and set its address in the DNS settings of the network card (by default, 127.0.0.2). If the server is up, it is automatically put into auto-upload. Green indicator - the server is running, yellow - waiting/problem. The "Stop" button stops the server and disables its autoloading.
 
 Used servers with DNSCrypt support without logging (except google): https://dnscrypt.info/public-servers/
-Useful reading: [url=https://cryptoworld.su/dns-crypt/]DNSCrypt-DNS traffic encryption for paranoids (D. Matveev)[/url]
 
 Cloudflare "Resolver" (default) is recommended as the fastest. "Fallback" is a DNS server for emergency name resolution. "Server IP" = 127.0.0.2 is selected because the port on 127.0.0.1 may be occupied by another service.
 
