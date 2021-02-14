@@ -1,0 +1,229 @@
+object MainForm: TMainForm
+  Left = 300
+  Height = 225
+  Top = 143
+  Width = 456
+  ActiveControl = BitBtn2
+  Caption = 'DnsCrypt-GUI'
+  ClientHeight = 225
+  ClientWidth = 456
+  OnCreate = FormCreate
+  SessionProperties = 'ComboBox1.ItemIndex;ComboBox2.ItemIndex;Edit1.Text;Left;SpinEdit1.Value;Top;Height;Width'
+  LCLVersion = '2.0.10.0'
+  object ListBox1: TListBox
+    AnchorSideBottom.Control = StaticText1
+    Left = 7
+    Height = 80
+    Top = 120
+    Width = 265
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 5
+    Items.Strings = (
+      '...prepare'
+    )
+    ItemHeight = 23
+    ScrollWidth = 263
+    TabOrder = 0
+  end
+  object BitBtn1: TBitBtn
+    AnchorSideRight.Control = BitBtn2
+    AnchorSideBottom.Control = ListBox1
+    AnchorSideBottom.Side = asrBottom
+    Left = 296
+    Height = 32
+    Top = 168
+    Width = 75
+    Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 4
+    Caption = 'Stop'
+    OnClick = BitBtn1Click
+    TabOrder = 1
+  end
+  object BitBtn2: TBitBtn
+    AnchorSideBottom.Control = BitBtn1
+    AnchorSideBottom.Side = asrBottom
+    Left = 375
+    Height = 32
+    Top = 168
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Start'
+    OnClick = BitBtn2Click
+    TabOrder = 2
+  end
+  object Label1: TLabel
+    AnchorSideLeft.Control = ComboBox1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = SpinEdit1
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = ComboBox1
+    Left = 204
+    Height = 15
+    Top = 64
+    Width = 62
+    Anchors = [akTop, akRight]
+    BorderSpacing.Right = 5
+    Caption = 'Resolver:'
+    ParentColor = False
+  end
+  object ComboBox1: TComboBox
+    AnchorSideLeft.Control = ComboBox2
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrCenter
+    Left = 271
+    Height = 28
+    Top = 57
+    Width = 179
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Top = 48
+    ItemHeight = 0
+    ItemIndex = 2
+    Items.Strings = (
+      'ams-dnscrypt-nl'
+      'bcn-dnscrypt'
+      'cloudflare'
+      'deffer-dns.au'
+      'dnscrypt.one'
+      'dnscrypt.uk-ipv4'
+      'd0wn-tz-ns1'
+      'd0wn-is-ns2'
+      'google'
+      'lelux.fi'
+      'scaleway-fr'
+    )
+    TabOrder = 3
+    Text = 'cloudflare'
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = ListBox1
+    AnchorSideBottom.Control = ListBox1
+    Left = 7
+    Height = 15
+    Top = 101
+    Width = 162
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Bottom = 4
+    Caption = 'NS from /etc/resolv.conf:'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    AnchorSideTop.Side = asrCenter
+    Left = 7
+    Height = 15
+    Top = 16
+    Width = 63
+    BorderSpacing.Right = 4
+    Caption = 'Server IP:'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    AnchorSideLeft.Control = Label3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label3
+    AnchorSideTop.Side = asrCenter
+    Left = 75
+    Height = 26
+    Top = 10
+    Width = 117
+    BorderSpacing.Left = 5
+    TabOrder = 4
+    Text = '127.0.0.2'
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Label3
+    AnchorSideTop.Control = Label3
+    Left = 7
+    Height = 15
+    Top = 64
+    Width = 31
+    Anchors = [akLeft]
+    BorderSpacing.Top = 48
+    BorderSpacing.Right = 4
+    Caption = 'Port:'
+    ParentColor = False
+  end
+  object SpinEdit1: TSpinEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label4
+    AnchorSideTop.Side = asrCenter
+    Left = 43
+    Height = 26
+    Top = 58
+    Width = 72
+    BorderSpacing.Left = 5
+    MinValue = 30
+    TabOrder = 5
+    Value = 53
+  end
+  object Shape1: TShape
+    AnchorSideBottom.Control = BitBtn2
+    Left = 438
+    Height = 16
+    Top = 152
+    Width = 12
+    Anchors = [akRight, akBottom]
+    Brush.Color = clYellow
+    Shape = stCircle
+  end
+  object Label5: TLabel
+    AnchorSideLeft.Control = Edit1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Side = asrCenter
+    Left = 207
+    Height = 15
+    Top = 16
+    Width = 59
+    BorderSpacing.Left = 15
+    Caption = 'FallBack:'
+    ParentColor = False
+  end
+  object ComboBox2: TComboBox
+    AnchorSideLeft.Control = Label5
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label5
+    AnchorSideTop.Side = asrCenter
+    Left = 271
+    Height = 28
+    Top = 9
+    Width = 179
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
+    ItemHeight = 0
+    ItemIndex = 4
+    Items.Strings = (
+      '1.1.1.1'
+      '1.0.0.1'
+      '8.8.8.8'
+      '8.8.4.4'
+      '9.9.9.9'
+    )
+    TabOrder = 6
+    Text = '9.9.9.9'
+  end
+  object StaticText1: TStaticText
+    Left = 0
+    Height = 20
+    Top = 205
+    Width = 456
+    Align = alBottom
+    BorderStyle = sbsSunken
+    Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2021'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Sans'
+    ParentFont = False
+    TabOrder = 7
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 96
+    Top = 144
+  end
+  object XMLPropStorage1: TXMLPropStorage
+    StoredValues = <>
+    Left = 184
+    Top = 144
+  end
+end

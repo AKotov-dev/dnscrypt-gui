@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: DNSCrypt-GUI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: tmainform.bitbtn1.caption
+msgid "Stop"
+msgstr ""
+
+#: tmainform.bitbtn2.caption
+msgid "Restart"
+msgstr ""
+
+#: tmainform.caption
+msgid "DnsCrypt-GUI"
+msgstr ""
+
+#: tmainform.combobox1.text
+msgid "cloudflare"
+msgstr ""
+
+#: tmainform.combobox2.text
+msgid "9.9.9.9"
+msgstr ""
+
+#: tmainform.edit1.text
+msgid "127.0.0.2"
+msgstr ""
+
+#: tmainform.label1.caption
+msgid "Resolver:"
+msgstr ""
+
+#: tmainform.label2.caption
+msgid "NS from /etc/resolv.conf:"
+msgstr ""
+
+#: tmainform.label3.caption
+msgid "Server IP:"
+msgstr ""
+
+#: tmainform.label4.caption
+msgid "Port:"
+msgstr ""
+
+#: tmainform.label5.caption
+msgid "FallBack:"
+msgstr ""
+
+#: tmainform.statictext1.caption
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2021"
+msgstr ""
+
