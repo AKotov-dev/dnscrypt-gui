@@ -13,3 +13,5 @@ Cloudflare `Resolver` (default) is recommended as the fastest. `Fallback` is a D
 Testing was carried out by the WireShark network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
 
 Made and tested in Mageia Linux-8.
+
+![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShots/DNSCrypt-GUI.png)
