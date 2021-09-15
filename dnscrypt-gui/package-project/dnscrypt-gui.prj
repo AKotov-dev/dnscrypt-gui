@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=0.5
+version=0.6
 
 [RELEASE]
 release=0.mrx8
@@ -42,6 +42,9 @@ noarch=0
 [SIGN]
 sign=0
 
+[DEB]
+deb=0
+
 [FILES]
 0=/usr/bin/dnscrypt-gui
 1=/usr/share/dnscrypt-gui/
@@ -49,18 +52,6 @@ sign=0
 3=/usr/share/icons/dnscrypt-gui.png
 4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
 5=/usr/share/doc/dnscrypt-gui/
-
-[AFTERINSTALL]
-0=#ldconfig
-1=#update-desktop-database -q /usr/share/applications
-2=#update-mime-database /usr/share/mime
-3=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
-
-[AFTERREMOVE]
-0=#ldconfig
-1=#update-desktop-database -q /usr/share/applications
-2=#update-mime-database /usr/share/mime
-3=#gtk-update-icon-cache -q -f /usr/share/icons/hicolor
 
 [URL32]
 url32=https://cloud.mail.ru/public/8a4s/XuQQq42Dc
@@ -78,9 +69,12 @@ devtool=Lazarus
 toolversion=2.0.10
 
 [INFO]
-0=v0.5-0
-1=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+0=v0.6-0
+1=+ the list of DNSCrypt servers has been expanded and verified
 2=
-3=v0.4-2
-4=+dns servers with parental control
-5=+Restart Button
+3=v0.5-0
+4=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+5=
+6=v0.4-2
+7=+dns servers with parental control
+8=+Restart Button

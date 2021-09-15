@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 321
+  Left = 305
   Height = 240
-  Top = 130
+  Top = 134
   Width = 487
   ActiveControl = BitBtn2
   Caption = 'DnsCrypt-GUI'
@@ -78,7 +78,6 @@ object MainForm: TMainForm
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 48
     ItemHeight = 0
-    ItemIndex = 4
     Items.Strings = (
       'adguard-dns-family'
       'ams-dnscrypt-nl'
@@ -87,12 +86,10 @@ object MainForm: TMainForm
       'cloudflare'
       'cloudflare-family'
       'deffer-dns.au'
-      'dnscrypt.one'
       'dnscrypt.uk-ipv4'
       'd0wn-tz-ns1'
       'd0wn-is-ns2'
       'google'
-      'lelux.fi'
       'scaleway-fr'
     )
     TabOrder = 3
@@ -218,7 +215,7 @@ object MainForm: TMainForm
     BorderStyle = sbsSunken
     Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2021'
     Font.Color = clGray
-    Font.Height = -12
+    Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
     TabOrder = 7

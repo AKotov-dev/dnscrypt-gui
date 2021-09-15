@@ -20,7 +20,7 @@ begin
   end;
 
   RequireDerivedFormResource := True;
-  Application.Title:='DNSCrypt-GUI v0.5';
+  Application.Title:='DNSCrypt-GUI v0.6';
   Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

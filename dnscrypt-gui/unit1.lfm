@@ -1,7 +1,7 @@
 object MainForm: TMainForm
-  Left = 321
+  Left = 298
   Height = 240
-  Top = 130
+  Top = 125
   Width = 487
   ActiveControl = BitBtn2
   Caption = 'DnsCrypt-GUI'
@@ -78,23 +78,44 @@ object MainForm: TMainForm
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 48
     ItemHeight = 0
-    ItemIndex = 4
     Items.Strings = (
+      'acsacsar-ams-ipv4'
       'adguard-dns-family'
       'ams-dnscrypt-nl'
+      'bcn-dnscrypt'
       'bcn-dnscrypt'
       'cleanbrowsing-family'
       'cloudflare'
       'cloudflare-family'
-      'deffer-dns.au'
-      'dnscrypt.one'
-      'dnscrypt.uk-ipv4'
-      'd0wn-tz-ns1'
+      'cs-barcelona'
       'd0wn-is-ns2'
+      'd0wn-tz-ns1'
+      'deffer-dns.au'
+      'deffer-dns.au'
+      'dnscrypt-de-blahdns-ipv4'
+      'dnscrypt.eu-nl'
+      'dnscrypt.pl'
+      'dnscrypt.uk-ipv4'
+      'dnscrypt.uk-ipv4'
+      'ffmuc.net'
       'google'
-      'lelux.fi'
+      'ibksturm'
+      'moulticast-de-ipv4'
+      'moulticast-fr-ipv4'
+      'moulticast-sg-ipv4'
+      'pf-dnscrypt'
+      'plan9-ns1'
+      'plan9-ns2'
+      'pryv8boi'
+      'pwoss.org-dnscrypt'
+      'saldns01-conoha-ipv4'
+      'scaleway-ams'
       'scaleway-fr'
+      'serbica'
+      'zackptg5-us-il-ipv4'
+      'zackptg5-us-pit-ipv4'
     )
+    Sorted = True
     TabOrder = 3
     Text = 'cloudflare'
   end
