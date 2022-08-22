@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=0.6
+version=0.7
 
 [RELEASE]
 release=0.mrx8
@@ -25,13 +25,13 @@ vendor=alex_q_2000 (C) 2021
 summary=GUI for DNSCrypt proxy
 
 [URLCOPY]
-urlcopy=https://cloud.mail.ru/public/8a4s/XuQQq42Dc
+urlcopy=https://github.com/AKotov-dev/dnscrypt-gui
 
 [LICENSE]
 license=GPLv3
 
 [DEPS]
-deps=dnscrypt-proxy systemd
+deps=dnscrypt-proxy systemd gtk2
 
 [META]
 meta=0
@@ -54,7 +54,7 @@ deb=0
 5=/usr/share/doc/dnscrypt-gui/
 
 [URL32]
-url32=https://cloud.mail.ru/public/8a4s/XuQQq42Dc
+url32=https://github.com/AKotov-dev/dnscrypt-gui
 
 [URL64]
 url64=
@@ -66,15 +66,20 @@ programname=DNSCrypt-GUI
 devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=2.0.10
+toolversion=2.2.0
 
 [INFO]
-0=v0.6-0
-1=+ the list of DNSCrypt servers has been expanded and verified
-2=
-3=v0.5-0
-4=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
-5=
-6=v0.4-2
-7=+dns servers with parental control
-8=+Restart Button
+0=v0.7-0
+1=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+2=+ Сhanging the prefix of rpm packages to *.mrx9
+3=
+4=v0.6-0
+5=+ the list of DNSCrypt servers has been expanded and verified
+6=+
+7=
+8=v0.5-0
+9=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+10=
+11=v0.4-2
+12=+dns servers with parental control
+13=+Restart Button

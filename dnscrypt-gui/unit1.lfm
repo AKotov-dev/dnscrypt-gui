@@ -9,7 +9,7 @@ object MainForm: TMainForm
   ClientWidth = 487
   OnCreate = FormCreate
   SessionProperties = 'Edit1.Text;Height;Left;SpinEdit1.Value;Top;Width;ComboBox1.Text;ComboBox2.Text'
-  LCLVersion = '2.0.10.0'
+  LCLVersion = '2.2.0.4'
   object ListBox1: TListBox
     AnchorSideBottom.Control = StaticText1
     Left = 7
@@ -59,20 +59,19 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ComboBox1
     Left = 199
-    Height = 15
-    Top = 69
+    Height = 17
+    Top = 68
     Width = 54
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Resolver:'
-    ParentColor = False
   end
   object ComboBox1: TComboBox
     AnchorSideLeft.Control = ComboBox2
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrCenter
     Left = 258
-    Height = 36
+    Height = 37
     Top = 58
     Width = 223
     Anchors = [akTop, akLeft, akRight]
@@ -120,23 +119,21 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = ListBox1
     AnchorSideBottom.Control = ListBox1
     Left = 7
-    Height = 15
-    Top = 116
+    Height = 17
+    Top = 114
     Width = 150
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 4
     Caption = 'NS from /etc/resolv.conf:'
-    ParentColor = False
   end
   object Label3: TLabel
     AnchorSideTop.Side = asrCenter
     Left = 7
-    Height = 15
+    Height = 17
     Top = 16
     Width = 55
     BorderSpacing.Right = 4
     Caption = 'Server IP:'
-    ParentColor = False
   end
   object Edit1: TEdit
     AnchorSideLeft.Control = Label3
@@ -144,8 +141,8 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     Left = 67
-    Height = 36
-    Top = 5
+    Height = 37
+    Top = 6
     Width = 117
     BorderSpacing.Left = 5
     TabOrder = 4
@@ -155,14 +152,13 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = Label3
     AnchorSideTop.Control = Label3
     Left = 7
-    Height = 15
-    Top = 69
+    Height = 17
+    Top = 68
     Width = 29
     Anchors = [akLeft]
     BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
-    ParentColor = False
   end
   object SpinEdit1: TSpinEdit
     AnchorSideLeft.Control = Label4
@@ -170,7 +166,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label4
     AnchorSideTop.Side = asrCenter
     Left = 41
-    Height = 36
+    Height = 37
     Top = 58
     Width = 72
     BorderSpacing.Left = 5
@@ -197,12 +193,11 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrCenter
     Left = 199
-    Height = 15
+    Height = 17
     Top = 16
     Width = 54
     BorderSpacing.Left = 15
     Caption = 'FallBack:'
-    ParentColor = False
   end
   object ComboBox2: TComboBox
     AnchorSideLeft.Control = Label5
@@ -210,8 +205,8 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label5
     AnchorSideTop.Side = asrCenter
     Left = 258
-    Height = 36
-    Top = 5
+    Height = 37
+    Top = 6
     Width = 223
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5

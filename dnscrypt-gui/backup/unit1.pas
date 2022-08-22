@@ -94,6 +94,7 @@ var
   output: ansistring;
 begin
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     S := TStringList.Create;
 
@@ -121,7 +122,7 @@ begin
     S.Add('force_tcp = false');
     S.Add('timeout = 2500');
     S.Add('cert_refresh_delay = 240');
-    S.Add('fallback_resolver = ' + '''' + ComboBox2.Text + ':53' + '''');
+    S.Add('bootstrap_resolvers = [' + '''' + ComboBox2.Text + ':53' + '''' + ']');
     S.Add('ignore_system_dns = false');
     S.Add('log_files_max_size = 10');
     S.Add('log_files_max_age = 7');
