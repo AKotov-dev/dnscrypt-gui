@@ -192,6 +192,7 @@ var
   s: ansistring;
 begin
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   RunCommand('bash', ['-c',
     'systemctl stop dnscrypt-proxy; systemctl disable dnscrypt-proxy'], s);
   Screen.Cursor := crDefault;
