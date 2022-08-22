@@ -5,7 +5,7 @@ name=dnscrypt-gui
 version=0.7
 
 [RELEASE]
-release=0.mrx8
+release=0.mrx9
 
 [GROUP]
 group=Networking/Other
@@ -71,7 +71,7 @@ toolversion=2.2.0
 [INFO]
 0=v0.7-0
 1=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
-2=+ Сhanging the prefix of rpm packages to *.mrx9
+2=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
 3=
 4=v0.6-0
 5=+ the list of DNSCrypt servers has been expanded and verified
