@@ -252,6 +252,7 @@ begin
   else
   begin
     CheckBox1.Checked := False;
+    CheckBox2.Enabled := False;
     Edit2.Enabled := False;
     ComboBox3.Enabled := False;
   end;
