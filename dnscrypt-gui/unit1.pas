@@ -13,16 +13,23 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    Bevel1: TBevel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    CheckBox1: TCheckBox;
+    CheckBox2: TCheckBox;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
     Edit1: TEdit;
+    Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     ListBox1: TListBox;
     Shape1: TShape;
     SpinEdit1: TSpinEdit;
@@ -31,7 +38,9 @@ type
     XMLPropStorage1: TXMLPropStorage;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure CheckBox1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
 
@@ -119,7 +128,7 @@ begin
     S.Add('require_dnssec = false');
     S.Add('require_nolog = true');
     S.Add('require_nofilter = true');
-    S.Add('force_tcp = false');
+
     S.Add('timeout = 2500');
     S.Add('cert_refresh_delay = 240');
     S.Add('bootstrap_resolvers = [' + '''' + ComboBox2.Text + ':53' + '''' + ']');
@@ -133,6 +142,17 @@ begin
     S.Add('cache_min_ttl = 600');
     S.Add('cache_max_ttl = 86400');
     S.Add('cache_neg_ttl = 60');
+
+    //force_tcp
+    if CheckBox2.Checked then
+      S.Add('force_tcp = true')
+    else
+      S.Add('force_tcp = false');
+
+    //VIA Socks5
+    if CheckBox1.Checked then
+      S.Add('proxy = ' + '''' + 'socks5://' + Edit2.Text + ':' + ComboBox3.Text + '''');
+
     S.Add('[query_log]');
     S.Add('format = ' + '''' + 'tsv' + '''');
     S.Add('[nx_log]');
@@ -176,6 +196,25 @@ begin
   end;
 end;
 
+//Via Socks5
+procedure TMainForm.CheckBox1Change(Sender: TObject);
+begin
+  if CheckBox1.Checked then
+  begin
+    Edit2.Enabled := True;
+    ComboBox3.Enabled := True;
+    CheckBox2.Enabled := True;
+    CheckBox2.Checked := True;
+  end
+  else
+  begin
+    Edit2.Enabled := False;
+    ComboBox3.Enabled := False;
+    CheckBox2.Enabled := False;
+    CheckBox2.Checked := False;
+  end;
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   MainForm.Caption := Application.Title;
@@ -185,6 +224,45 @@ begin
     MkDir(GetEnvironmentVariable('HOME') + '/.config');
   XMLPropStorage1.FileName := GetEnvironmentVariable('HOME') +
     '/.config/dnscrypt-gui.conf';
+end;
+
+procedure TMainForm.FormShow(Sender: TObject);
+var
+  S: ansistring;
+begin
+  //Via SOCKS5
+  RunCommand('/bin/bash', ['-c', 'grep "^proxy = ' + '''' +
+    'socks5:" /etc/dnscrypt-proxy.toml'], S);
+  if Trim(S) <> '' then
+  begin
+    CheckBox1.Checked := True;
+    Edit2.Enabled := True;
+    ComboBox3.Enabled := True;
+    //Server
+    if RunCommand('/bin/bash',
+      ['-c', 'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' +
+      '''' + '" | cut -f2 -d":"'], S) then
+      Edit2.Text := Trim(S);
+    //Port
+    if RunCommand('/bin/bash',
+      ['-c', 'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' +
+      '''' + '" | cut -f3 -d":"'], S) then
+      ComboBox3.Text := Trim(S);
+  end
+  else
+  begin
+    CheckBox1.Checked := False;
+    Edit2.Enabled := False;
+    ComboBox3.Enabled := False;
+  end;
+
+  //force_tcp
+  RunCommand('/bin/bash', ['-c',
+    'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
+  if Trim(S) <> '' then
+    CheckBox2.Checked := True
+  else
+    CheckBox2.Checked := False;
 end;
 
 procedure TMainForm.BitBtn1Click(Sender: TObject);

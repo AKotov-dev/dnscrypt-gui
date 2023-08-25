@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Project-Id-Version: DNSCrypt-GUI\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"MIME-Version: 1.0\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"X-Generator: Poedit 2.4.2\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: tmainform.bitbtn1.caption
 msgid "Stop"
@@ -24,6 +24,18 @@ msgstr "Рестарт"
 msgid "DnsCrypt-GUI"
 msgstr ""
 
+#: tmainform.checkbox1.caption
+msgid "-> Socks5 ->"
+msgstr ""
+
+#: tmainform.checkbox2.caption
+msgid "force_tcp = true"
+msgstr ""
+
+#: tmainform.checkbox2.hint
+msgid "Tor and the like"
+msgstr "Tor и подобные"
+
 #: tmainform.combobox1.text
 msgid "cloudflare"
 msgstr ""
@@ -32,8 +44,18 @@ msgstr ""
 msgid "9.9.9.9"
 msgstr ""
 
+#: tmainform.combobox3.text
+msgid "9050"
+msgstr ""
+
 #: tmainform.edit1.text
-msgid "127.0.0.2"
+msgctxt "tmainform.edit1.text"
+msgid "127.0.0.1"
+msgstr ""
+
+#: tmainform.edit2.text
+msgctxt "tmainform.edit2.text"
+msgid "127.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
@@ -45,16 +67,28 @@ msgid "NS from /etc/resolv.conf:"
 msgstr "NS из /etc/resolv.conf:"
 
 #: tmainform.label3.caption
-msgid "Server IP:"
-msgstr "IP сервера:"
+msgctxt "tmainform.label3.caption"
+msgid "Server:"
+msgstr "Cервер:"
 
 #: tmainform.label4.caption
+msgctxt "tmainform.label4.caption"
 msgid "Port:"
 msgstr "Порт:"
 
 #: tmainform.label5.caption
 msgid "FallBack:"
 msgstr "Фолбэк:"
+
+#: tmainform.label6.caption
+msgctxt "tmainform.label6.caption"
+msgid "Server:"
+msgstr "Cервер:"
+
+#: tmainform.label7.caption
+msgctxt "tmainform.label7.caption"
+msgid "Port:"
+msgstr "Порт:"
 
 #: tmainform.statictext1.caption
 msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2021"

@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=0.7
+version=0.8
 
 [RELEASE]
 release=0.mrx9
@@ -31,16 +31,13 @@ urlcopy=https://github.com/AKotov-dev/dnscrypt-gui
 license=GPLv3
 
 [DEPS]
-deps=dnscrypt-proxy systemd gtk2
+deps=dnscrypt-proxy >= 2.1.0, systemd, gtk2
 
 [META]
 meta=0
 
 [NOARCH]
 noarch=0
-
-[SIGN]
-sign=0
 
 [DEB]
 deb=0
@@ -56,9 +53,6 @@ deb=0
 [URL32]
 url32=https://github.com/AKotov-dev/dnscrypt-gui
 
-[URL64]
-url64=
-
 [PROGRAMNAME]
 programname=DNSCrypt-GUI
 
@@ -66,20 +60,24 @@ programname=DNSCrypt-GUI
 devtool=Lazarus
 
 [TOOLVERSION]
-toolversion=2.2.0
+toolversion=2.2.4
 
 [INFO]
-0=v0.7-0
-1=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
-2=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
+0=v0.8
+1=+ Redirection via Socks5 (TCP/UDP)
+2=+ Extended list of DNSCrypt/DoH servers
 3=
-4=v0.6-0
-5=+ the list of DNSCrypt servers has been expanded and verified
-6=+
+4=v0.7-0
+5=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+6=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
 7=
-8=v0.5-0
-9=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
-10=
-11=v0.4-2
-12=+dns servers with parental control
-13=+Restart Button
+8=v0.6-0
+9=+ the list of DNSCrypt servers has been expanded and verified
+10=+
+11=
+12=v0.5-0
+13=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+14=
+15=v0.4-2
+16=+dns servers with parental control
+17=+Restart Button

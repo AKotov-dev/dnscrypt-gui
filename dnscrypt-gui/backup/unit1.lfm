@@ -1,56 +1,61 @@
 object MainForm: TMainForm
-  Left = 298
-  Height = 240
-  Top = 125
-  Width = 487
+  Left = 278
+  Height = 330
+  Top = 124
+  Width = 522
   ActiveControl = BitBtn2
   Caption = 'DnsCrypt-GUI'
-  ClientHeight = 240
-  ClientWidth = 487
+  ClientHeight = 330
+  ClientWidth = 522
   OnCreate = FormCreate
-  SessionProperties = 'Edit1.Text;Height;Left;SpinEdit1.Value;Top;Width;ComboBox1.Text;ComboBox2.Text'
-  LCLVersion = '2.2.0.4'
+  OnShow = FormShow
+  SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top'
+  LCLVersion = '2.2.4.0'
   object ListBox1: TListBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = BitBtn1
     AnchorSideBottom.Control = StaticText1
-    Left = 7
-    Height = 80
-    Top = 135
-    Width = 265
-    Anchors = [akLeft, akBottom]
+    Left = 6
+    Height = 101
+    Top = 204
+    Width = 322
+    Anchors = [akLeft, akRight, akBottom]
+    BorderSpacing.Left = 6
+    BorderSpacing.Right = 20
     BorderSpacing.Bottom = 5
     Items.Strings = (
       '...prepare'
     )
     ItemHeight = 25
     ScrollWidth = 263
-    TabOrder = 0
+    TabOrder = 8
   end
   object BitBtn1: TBitBtn
     AnchorSideRight.Control = BitBtn2
     AnchorSideBottom.Control = ListBox1
     AnchorSideBottom.Side = asrBottom
-    Left = 313
-    Height = 32
-    Top = 183
+    Left = 348
+    Height = 34
+    Top = 271
     Width = 75
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 4
     Caption = 'Stop'
     OnClick = BitBtn1Click
-    TabOrder = 1
+    TabOrder = 9
   end
   object BitBtn2: TBitBtn
     AnchorSideBottom.Control = BitBtn1
     AnchorSideBottom.Side = asrBottom
-    Left = 392
-    Height = 32
-    Top = 183
+    Left = 427
+    Height = 34
+    Top = 271
     Width = 89
     Anchors = [akRight, akBottom]
     Caption = 'Restart'
     OnClick = BitBtn2Click
     ParentShowHint = False
-    TabOrder = 2
+    TabOrder = 10
   end
   object Label1: TLabel
     AnchorSideLeft.Control = ComboBox1
@@ -58,129 +63,134 @@ object MainForm: TMainForm
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ComboBox1
-    Left = 199
+    Left = 188
     Height = 17
-    Top = 68
+    Top = 69
     Width = 54
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Resolver:'
+    ParentColor = False
   end
   object ComboBox1: TComboBox
     AnchorSideLeft.Control = ComboBox2
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrCenter
-    Left = 258
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 247
     Height = 37
-    Top = 58
-    Width = 223
+    Top = 59
+    Width = 269
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 48
+    BorderSpacing.Right = 6
     ItemHeight = 0
     Items.Strings = (
-      'acsacsar-ams-ipv4'
+      '---DNSCrypt Servers---'
       'adguard-dns-family'
       'ams-dnscrypt-nl'
-      'bcn-dnscrypt'
+      'cisco'
       'cleanbrowsing-family'
       'cloudflare'
       'cloudflare-family'
       'cs-barcelona'
-      'd0wn-is-ns2'
-      'd0wn-tz-ns1'
       'deffer-dns.au'
       'dnscrypt-de-blahdns-ipv4'
-      'dnscrypt.eu-nl'
       'dnscrypt.pl'
       'dnscrypt.uk-ipv4'
       'ffmuc.net'
       'google'
       'ibksturm'
-      'moulticast-de-ipv4'
-      'moulticast-fr-ipv4'
-      'moulticast-sg-ipv4'
-      'pf-dnscrypt'
-      'plan9-ns1'
-      'plan9-ns2'
-      'pryv8boi'
-      'pwoss.org-dnscrypt'
       'saldns01-conoha-ipv4'
       'scaleway-ams'
       'scaleway-fr'
       'serbica'
-      'zackptg5-us-il-ipv4'
-      'zackptg5-us-pit-ipv4'
+      '---DoH Servers---'
+      'adfilter-adl'
+      'alidns-doh'
+      'ams-ads-doh-nl'
+      'ams-doh-nl'
+      'bortzmeyer'
+      'brahma-world'
+      'cisco-doh'
+      'cloudflare'
+      'njalla-doh'
+      'plan9dns-fl-doh'
+      'switch'
     )
-    Sorted = True
     TabOrder = 3
     Text = 'cloudflare'
   end
   object Label2: TLabel
     AnchorSideLeft.Control = ListBox1
     AnchorSideBottom.Control = ListBox1
-    Left = 7
+    Left = 6
     Height = 17
-    Top = 114
+    Top = 183
     Width = 150
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 4
     Caption = 'NS from /etc/resolv.conf:'
+    ParentColor = False
   end
   object Label3: TLabel
+    AnchorSideLeft.Control = Owner
     AnchorSideTop.Side = asrCenter
-    Left = 7
+    Left = 6
     Height = 17
     Top = 16
-    Width = 55
+    Width = 40
+    BorderSpacing.Left = 6
     BorderSpacing.Right = 4
-    Caption = 'Server IP:'
+    Caption = 'Server:'
+    ParentColor = False
   end
   object Edit1: TEdit
     AnchorSideLeft.Control = Label3
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
-    Left = 67
+    Left = 51
     Height = 37
     Top = 6
     Width = 117
     BorderSpacing.Left = 5
-    TabOrder = 4
-    Text = '127.0.0.2'
+    TabOrder = 0
+    Text = '127.0.0.1'
   end
   object Label4: TLabel
     AnchorSideLeft.Control = Label3
     AnchorSideTop.Control = Label3
-    Left = 7
+    Left = 6
     Height = 17
-    Top = 68
+    Top = 69
     Width = 29
     Anchors = [akLeft]
     BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
+    ParentColor = False
   end
   object SpinEdit1: TSpinEdit
-    AnchorSideLeft.Control = Label4
-    AnchorSideLeft.Side = asrBottom
+    AnchorSideLeft.Control = Edit1
     AnchorSideTop.Control = Label4
     AnchorSideTop.Side = asrCenter
-    Left = 41
+    Left = 51
     Height = 37
-    Top = 58
-    Width = 72
-    BorderSpacing.Left = 5
+    Top = 59
+    Width = 83
     MinValue = 30
-    TabOrder = 5
+    TabOrder = 2
     Value = 53
   end
   object Shape1: TShape
     AnchorSideRight.Control = BitBtn2
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = BitBtn2
-    Left = 430
+    Left = 465
     Height = 13
-    Top = 169
+    Top = 257
     Width = 12
     Anchors = [akRight, akBottom]
     BorderSpacing.Bottom = 1
@@ -192,24 +202,28 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrCenter
-    Left = 199
+    Left = 188
     Height = 17
     Top = 16
     Width = 54
-    BorderSpacing.Left = 15
+    BorderSpacing.Left = 20
     Caption = 'FallBack:'
+    ParentColor = False
   end
   object ComboBox2: TComboBox
     AnchorSideLeft.Control = Label5
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label5
     AnchorSideTop.Side = asrCenter
-    Left = 258
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 247
     Height = 37
     Top = 6
-    Width = 223
+    Width = 269
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
+    BorderSpacing.Right = 6
     ItemHeight = 0
     ItemIndex = 4
     Items.Strings = (
@@ -219,14 +233,14 @@ object MainForm: TMainForm
       '8.8.4.4'
       '9.9.9.9'
     )
-    TabOrder = 6
+    TabOrder = 1
     Text = '9.9.9.9'
   end
   object StaticText1: TStaticText
     Left = 0
     Height = 20
-    Top = 220
-    Width = 487
+    Top = 310
+    Width = 522
     Align = alBottom
     BorderStyle = sbsSunken
     Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2021'
@@ -234,16 +248,125 @@ object MainForm: TMainForm
     Font.Height = -11
     Font.Name = 'Sans'
     ParentFont = False
+    TabOrder = 11
+  end
+  object CheckBox1: TCheckBox
+    AnchorSideLeft.Control = Label4
+    Left = 6
+    Height = 32
+    Top = 131
+    Width = 109
+    Anchors = [akLeft]
+    Caption = '-> Socks5 ->'
+    OnChange = CheckBox1Change
+    TabOrder = 4
+  end
+  object Label6: TLabel
+    AnchorSideLeft.Control = CheckBox1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = CheckBox1
+    AnchorSideTop.Side = asrCenter
+    Left = 125
+    Height = 17
+    Top = 139
+    Width = 40
+    BorderSpacing.Left = 10
+    BorderSpacing.Right = 4
+    Caption = 'Server:'
+    ParentColor = False
+  end
+  object Edit2: TEdit
+    AnchorSideLeft.Control = Label6
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label6
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = ListBox1
+    AnchorSideRight.Side = asrBottom
+    Left = 170
+    Height = 37
+    Top = 129
+    Width = 158
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
+    TabOrder = 5
+    Text = '127.0.0.1'
+  end
+  object Label7: TLabel
+    AnchorSideLeft.Control = Edit2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label6
+    AnchorSideTop.Side = asrCenter
+    Left = 343
+    Height = 17
+    Top = 139
+    Width = 29
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 48
+    BorderSpacing.Right = 4
+    Caption = 'Port:'
+    ParentColor = False
+  end
+  object Bevel1: TBevel
+    AnchorSideLeft.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 6
+    Height = 10
+    Top = 106
+    Width = 510
+    Anchors = [akLeft, akRight]
+    BorderSpacing.Left = 6
+    BorderSpacing.Right = 6
+    Shape = bsBottomLine
+  end
+  object CheckBox2: TCheckBox
+    AnchorSideLeft.Control = ComboBox3
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Label2
+    AnchorSideBottom.Side = asrCenter
+    Left = 377
+    Height = 32
+    Hint = 'Tor and the like'
+    Top = 175
+    Width = 129
+    Anchors = [akLeft, akBottom]
+    Caption = 'force_tcp = true'
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 7
+  end
+  object ComboBox3: TComboBox
+    AnchorSideLeft.Control = Label7
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label7
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 377
+    Height = 37
+    Top = 129
+    Width = 139
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
+    BorderSpacing.Right = 6
+    ItemHeight = 0
+    ItemIndex = 1
+    Items.Strings = (
+      '1080'
+      '9050'
+    )
+    TabOrder = 6
+    Text = '9050'
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 96
-    Top = 144
+    Left = 168
+    Top = 216
   end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
-    Left = 184
-    Top = 144
+    Left = 256
+    Top = 216
   end
 end

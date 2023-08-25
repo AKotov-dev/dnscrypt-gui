@@ -2,8 +2,9 @@ program dnscgui;
 
 {$mode objfpc}{$H+}
 
-uses {$IFDEF UNIX} {$IFDEF UseCThreads}
-  cthreads, {$ENDIF} {$ENDIF}
+uses
+ {$IFDEF UNIX} {$IFDEF UseCThreads}
+  cthreads,  {$ENDIF}  {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms,
   Unit1,
@@ -20,10 +21,9 @@ begin
   end;
 
   RequireDerivedFormResource := True;
-  Application.Title:='DNSCrypt-GUI v0.7';
-  Application.Scaled:=True;
+  Application.Title := 'DNSCrypt-GUI v0.8';
+  Application.Scaled := True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
 end.
-

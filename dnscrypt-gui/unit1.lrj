@@ -5,10 +5,17 @@
 {"hash":174298266,"name":"tmainform.label1.caption","sourcebytes":[82,101,115,111,108,118,101,114,58],"value":"Resolver:"},
 {"hash":195791845,"name":"tmainform.combobox1.text","sourcebytes":[99,108,111,117,100,102,108,97,114,101],"value":"cloudflare"},
 {"hash":55038922,"name":"tmainform.label2.caption","sourcebytes":[78,83,32,102,114,111,109,32,47,101,116,99,47,114,101,115,111,108,118,46,99,111,110,102,58],"value":"NS from /etc/resolv.conf:"},
-{"hash":214028970,"name":"tmainform.label3.caption","sourcebytes":[83,101,114,118,101,114,32,73,80,58],"value":"Server IP:"},
-{"hash":169027394,"name":"tmainform.edit1.text","sourcebytes":[49,50,55,46,48,46,48,46,50],"value":"127.0.0.2"},
+{"hash":164219914,"name":"tmainform.label3.caption","sourcebytes":[83,101,114,118,101,114,58],"value":"Server:"},
+{"hash":169027393,"name":"tmainform.edit1.text","sourcebytes":[49,50,55,46,48,46,48,46,49],"value":"127.0.0.1"},
 {"hash":5728634,"name":"tmainform.label4.caption","sourcebytes":[80,111,114,116,58],"value":"Port:"},
 {"hash":50869610,"name":"tmainform.label5.caption","sourcebytes":[70,97,108,108,66,97,99,107,58],"value":"FallBack:"},
 {"hash":203168809,"name":"tmainform.combobox2.text","sourcebytes":[57,46,57,46,57,46,57],"value":"9.9.9.9"},
-{"hash":954737,"name":"tmainform.statictext1.caption","sourcebytes":[76,105,99,101,110,99,101,58,32,71,80,76,118,51,32,32,32,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,49],"value":"Licence: GPLv3   Author: alex_q_2000 (C) 2021"}
+{"hash":954737,"name":"tmainform.statictext1.caption","sourcebytes":[76,105,99,101,110,99,101,58,32,71,80,76,118,51,32,32,32,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,49],"value":"Licence: GPLv3   Author: alex_q_2000 (C) 2021"},
+{"hash":188098910,"name":"tmainform.checkbox1.caption","sourcebytes":[45,62,32,83,111,99,107,115,53,32,45,62],"value":"-> Socks5 ->"},
+{"hash":164219914,"name":"tmainform.label6.caption","sourcebytes":[83,101,114,118,101,114,58],"value":"Server:"},
+{"hash":169027393,"name":"tmainform.edit2.text","sourcebytes":[49,50,55,46,48,46,48,46,49],"value":"127.0.0.1"},
+{"hash":5728634,"name":"tmainform.label7.caption","sourcebytes":[80,111,114,116,58],"value":"Port:"},
+{"hash":150536181,"name":"tmainform.checkbox2.hint","sourcebytes":[84,111,114,32,97,110,100,32,116,104,101,32,108,105,107,101],"value":"Tor and the like"},
+{"hash":172475669,"name":"tmainform.checkbox2.caption","sourcebytes":[102,111,114,99,101,95,116,99,112,32,61,32,116,114,117,101],"value":"force_tcp = true"},
+{"hash":246656,"name":"tmainform.combobox3.text","sourcebytes":[57,48,53,48],"value":"9050"}
 ]}

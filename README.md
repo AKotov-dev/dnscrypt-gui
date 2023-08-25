@@ -14,4 +14,4 @@ Testing was carried out by the WireShark network analyzer and showed high encryp
 
 Made and tested in Mageia Linux-8/9.
 
-![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShots/DNSCrypt-GUI.png)
+![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot8.png)

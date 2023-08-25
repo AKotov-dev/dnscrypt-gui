@@ -15,13 +15,13 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
 begin
   if GetEnvironmentVariable('USER') <> 'root' then
   begin
-    MessageDlg('Requires root.!', mtWarning, [mbOK], 0);
+    MessageDlg('Requires root!', mtWarning, [mbOK], 0);
     Halt;
   end;
 
   RequireDerivedFormResource := True;
-  Application.Title := 'DNSCrypt-GUI v0.3';
-  Application.Scaled := True;
+  Application.Title:='DNSCrypt-GUI v0.8';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
