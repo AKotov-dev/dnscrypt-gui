@@ -271,15 +271,34 @@ begin
 
     S.SaveToFile('/etc/dnscrypt-proxy.toml');
 
-    //Патч /usr/lib/systemd/system/dnscrypt-proxy.socket; https://forums.linuxmint.com/viewtopic.php?t=261453
-    //error: sockets.target/start deleted при перезагрузке
-    //upd: 19.01.2021 - mask dnscrypt-proxy.socket
-    RunCommand('bash', ['-c',
-      'if [[ -n $(cat /usr/lib/systemd/system/dnscrypt-proxy.service | grep "dnscrypt-proxy.socket") ]]; then '
-      + 'sed -i ' + '''' + '/dnscrypt-proxy.socket/d' + '''' +
-      ' /usr/lib/systemd/system/dnscrypt-proxy.service; systemctl daemon-reload; ' +
-      'systemctl mask dnscrypt-proxy.socket; fi'],
-      output);
+    // Перекрываем глючный сервис запуска из /usr/lib/systemd/system/dnscrypt-proxy.service
+    if not FileExists('/etc/systemd/system/dnscrypt-proxy.service') then
+    begin
+      S.Clear;
+      S.Add('[Unit]');
+      S.Add('Description=DNSCrypt client proxy (no socket activation)');
+      S.Add('Documentation=man:dnscrypt-proxy(8)');
+      S.Add('After=network.target');
+      S.Add('Before=nss-lookup.target');
+      S.Add('Wants=nss-lookup.target');
+      S.Add('');
+      S.Add('[Service]');
+      S.Add('Type=simple');
+      S.Add('ExecStart=/usr/sbin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
+      S.Add('Restart=on-failure');
+      S.Add('NonBlocking=true');
+      S.Add('');
+      S.Add('[Install]');
+      S.Add('WantedBy=multi-user.target');
+
+      S.SaveToFile('/etc/systemd/system/dnscrypt-proxy.service');
+
+      RunCommand('bash', ['-c', 'systemctl daemon-reload; ' +
+        'systemctl stop dnscrypt-proxy.socket; ' +
+        'systemctl disable dnscrypt-proxy.socket; ' +
+        'systemctl mask dnscrypt-proxy.socket'],
+        output);
+    end;
 
     //Если с новой конфигурацией запущен, сделать enable, иначе disable
     RunCommand('bash', ['-c', 'systemctl restart dnscrypt-proxy; ' +
