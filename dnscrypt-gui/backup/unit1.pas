@@ -45,7 +45,7 @@ type
     procedure LoadResolvers;
 
   private
-    procedure CheckIPv6;
+
   public
 
   end;
@@ -54,7 +54,11 @@ var
   MainForm: TMainForm;
   HasIPv6: boolean; //IPv6 в системе
 
+resourcestring
+  SRootEnvRequired = 'Root environment required!';
+
 implementation
+       uses PingAndLoadTRD;
 
 {$R *.lfm}
 
@@ -62,28 +66,6 @@ implementation
 
 //systemctl list-units  --type=service  --state=running
 
-
-//Флаг IPv6
-procedure TMainForm.CheckIPv6;
-var
-  AProcess: TProcess;
-begin
-  HasIPv6 := False; // по умолчанию считаем, что нет
-  AProcess := TProcess.Create(nil);
-  try
-    AProcess.Executable := 'ping';
-    AProcess.Parameters.Add('-6');
-    AProcess.Parameters.Add('-c1');
-    AProcess.Parameters.Add('-W2');
-    AProcess.Parameters.Add('2001:4860:4860::8888');
-    AProcess.Options := [poWaitOnExit, poNoConsole];
-    AProcess.Execute;
-    if AProcess.ExitStatus = 0 then
-      HasIPv6 := True; // если ping успешен — есть IPv6
-  finally
-    AProcess.Free;
-  end;
-end;
 
 //Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md
 procedure TMainForm.LoadResolvers;
@@ -93,9 +75,6 @@ var
   Line, AliasLine, LineLower: string;
   IncludeServer, IsIPv6: boolean;
 begin
-  //HasIPv6 - флаг подключения по IPv6
-  CheckIPv6;
-
   //Тест
   //HasIPv6 := True;
 
@@ -361,8 +340,8 @@ procedure TMainForm.FormShow(Sender: TObject);
 var
   S: ansistring;
 begin
-  //Процесс загрузки/обновления списка dns-серверов (без логирования в зависимости от HasIPV6)
-  LoadResolvers;
+  //Проверка ipv6 и загрузка/обновление списка dns-серверов (без логирования в зависимости от HasIPV6)
+  TPingAndLoad.Create;
 
   //Via SOCKS5
   RunCommand('/bin/bash', ['-c', 'grep "^proxy = ' + '''' +
