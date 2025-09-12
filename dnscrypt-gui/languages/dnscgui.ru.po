@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #: tmainform.bitbtn1.caption
 msgid "Stop"
@@ -35,6 +35,10 @@ msgstr ""
 #: tmainform.checkbox2.hint
 msgid "Tor and the like"
 msgstr "Tor и подобные"
+
+#: tmainform.combobox1.hint
+msgid "Navigation: Up, Down, PageUP, PageDown..."
+msgstr "Навигация: Up, Down, PageUP, PageDown..."
 
 #: tmainform.combobox1.text
 msgid "cloudflare"
@@ -91,6 +95,9 @@ msgid "Port:"
 msgstr "Порт:"
 
 #: tmainform.statictext1.caption
-msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2021"
-msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2021"
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
+msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2025"
 
+#: unit1.srootenvrequired
+msgid "Root environment required!"
+msgstr "Требуется окружение root!"

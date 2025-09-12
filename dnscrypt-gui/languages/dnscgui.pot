@@ -25,6 +25,10 @@ msgstr ""
 msgid "Tor and the like"
 msgstr ""
 
+#: tmainform.combobox1.hint
+msgid "Navigation: Up, Down, PageUP, PageDown..."
+msgstr ""
+
 #: tmainform.combobox1.text
 msgid "cloudflare"
 msgstr ""
@@ -80,6 +84,10 @@ msgid "Port:"
 msgstr ""
 
 #: tmainform.statictext1.caption
-msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2021"
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
+msgstr ""
+
+#: unit1.srootenvrequired
+msgid "Root environment required!"
 msgstr ""
 

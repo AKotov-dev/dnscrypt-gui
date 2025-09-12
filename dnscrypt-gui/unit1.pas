@@ -42,14 +42,20 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-  private
+    procedure LoadResolvers;
 
+  private
+    procedure CheckIPv6;
   public
 
   end;
 
 var
   MainForm: TMainForm;
+  HasIPv6: boolean; //IPv6 в системе
+
+resourcestring
+  SRootEnvRequired = 'Root environment required!';
 
 implementation
 
@@ -58,6 +64,113 @@ implementation
 { TMainForm }
 
 //systemctl list-units  --type=service  --state=running
+
+
+//Флаг IPv6
+procedure TMainForm.CheckIPv6;
+var
+  AProcess: TProcess;
+begin
+  HasIPv6 := False; // по умолчанию считаем, что нет
+  AProcess := TProcess.Create(nil);
+  try
+    AProcess.Executable := 'ping';
+    AProcess.Parameters.Add('-6');
+    AProcess.Parameters.Add('-c1');
+    AProcess.Parameters.Add('-W2');
+    AProcess.Parameters.Add('2001:4860:4860::8888');
+    AProcess.Options := [poWaitOnExit, poNoConsole];
+    AProcess.Execute;
+    if AProcess.ExitStatus = 0 then
+      HasIPv6 := True; // если ping успешен — есть IPv6
+  finally
+    AProcess.Free;
+  end;
+end;
+
+//Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md
+procedure TMainForm.LoadResolvers;
+var
+  Lines: TStringList;
+  i, j: integer;
+  Line, AliasLine, LineLower: string;
+  IncludeServer, IsIPv6: boolean;
+begin
+  //HasIPv6 - флаг подключения по IPv6
+  CheckIPv6;
+
+  //Тест
+  //HasIPv6 := True;
+
+  if not FileExists('/etc/public-resolvers.md') then Exit;
+
+  Lines := TStringList.Create;
+  try
+    Lines.LoadFromFile('/etc/public-resolvers.md');
+    ComboBox1.Items.BeginUpdate;
+    try
+      ComboBox1.Items.Clear;
+
+      i := 0;
+      while i < Lines.Count do
+      begin
+        Line := Trim(Lines[i]);
+
+        // псевдоним начинается с ##
+        if Copy(Line, 1, 2) = '##' then
+        begin
+          AliasLine := Trim(Copy(Line, 3, MaxInt));
+          IncludeServer := True;
+
+          // определяем IPv6 сервер
+        {  IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
+            ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));}
+
+          IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
+            (Pos('-ip6', LowerCase(AliasLine)) > 0) or
+            ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));
+
+          // проверка строк до следующего ##
+          j := i + 1;
+          while (j < Lines.Count) and (Copy(Lines[j], 1, 2) <> '##') do
+          begin
+            LineLower := LowerCase(Lines[j]);
+
+            //фильтры... выбирать НЕ логирующие и НЕ фильтрующие DNS
+            if ((Pos('logging', LineLower) > 0) and
+              (Pos('non-logging', LineLower) = 0) and
+              (Pos('no-logging', LineLower) = 0)) then
+              IncludeServer := False;
+
+            if ((Pos('blocks', LineLower) > 0) and
+              (Pos('non-filtering', LineLower) = 0)) then
+              IncludeServer := False;
+
+            Inc(j);
+          end;
+
+          // если IPv6 не поддерживается — пропускаем
+          if (IsIPv6) and (not HasIPv6) then
+            IncludeServer := False;
+
+          // добавляем в ComboBox
+          if IncludeServer then
+            ComboBox1.Items.Add(AliasLine);
+
+          i := j - 1; // продолжаем с последней строки
+        end;
+
+        Inc(i);
+      end;
+
+    finally
+      ComboBox1.Items.EndUpdate;
+    end;
+
+  finally
+    Lines.Free;
+  end;
+end;
 
 procedure TMainForm.Timer1Timer(Sender: TObject);
 var
@@ -107,13 +220,10 @@ begin
   try
     S := TStringList.Create;
 
-    //IPv6 включен?
-    RunCommand('bash', ['-c', 'ip -br a show lo | grep "::"'], output);
-
     S.Add('server_names = [' + '''' + ComboBox1.Text + '''' + ']');
 
-    //IPv4 vs IPv6
-    if Trim(output) = '' then
+    //IPv4/IPv6
+    if not HasIPv6 then
       S.Add('listen_addresses = [' + '''' + Edit1.Text + ':' +
         SpinEdit1.Text + '''' + ']')
     else
@@ -122,7 +232,12 @@ begin
 
     S.Add('max_clients = 250');
     S.Add('ipv4_servers = true');
-    S.Add('ipv6_servers = false');
+
+    if HasIPv6 then
+      S.Add('ipv6_servers = true')
+    else
+      S.Add('ipv6_servers = false');
+
     S.Add('dnscrypt_servers = true');
     S.Add('doh_servers = true');
     S.Add('require_dnssec = false');
@@ -162,8 +277,13 @@ begin
     S.Add('[schedules]');
     S.Add('[sources]');
     S.Add('[sources.' + '''' + 'public-resolvers' + '''' + ']');
-    S.Add('url = ' + '''' +
-      'https://download.dnscrypt.info/resolvers-list/v2/public-resolvers.md' + '''');
+    S.Add('urls = [' + '''' +
+      'https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md'
+      + '''' + ', ' + '''' +
+      'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
+      '''' + ', ' + '''' +
+      'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
+      '''' + ']');
 
     S.Add('cache_file = ' + '''' + 'public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
@@ -192,6 +312,16 @@ begin
 
   finally
     S.Free;
+
+    // Активируем пропсторедж, если нужно
+    XMLPropStorage1.Active := True;
+
+    // Сохраняем свойства
+    XMLPropStorage1.Save;
+
+    // Можно сразу деактивировать, если не хотим авто-сохранение
+    XMLPropStorage1.Active := False;
+
     Screen.Cursor := crDefault;
   end;
 end;
@@ -224,12 +354,19 @@ begin
     MkDir(GetEnvironmentVariable('HOME') + '/.config');
   XMLPropStorage1.FileName := GetEnvironmentVariable('HOME') +
     '/.config/dnscrypt-gui.conf';
+
+  XMLPropStorage1.Active := True;
+  XMLPropStorage1.Restore;
+  XMLPropStorage1.Active := False; // отключаем авто-сохранение
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
 var
   S: ansistring;
 begin
+  //Процесс загрузки/обновления списка dns-серверов (без логирования в зависимости от HasIPV6)
+  LoadResolvers;
+
   //Via SOCKS5
   RunCommand('/bin/bash', ['-c', 'grep "^proxy = ' + '''' +
     'socks5:" /etc/dnscrypt-proxy.toml'], S);
