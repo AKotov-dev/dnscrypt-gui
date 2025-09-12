@@ -284,7 +284,8 @@ begin
       S.Add('');
       S.Add('[Service]');
       S.Add('Type=simple');
-      S.Add('ExecStart=/usr/sbin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
+      S.Add('Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin');
+      S.Add('ExecStart=dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
       S.Add('Restart=on-failure');
       S.Add('NonBlocking=true');
       S.Add('');

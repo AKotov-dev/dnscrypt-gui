@@ -294,6 +294,7 @@ begin
       S.SaveToFile('/etc/systemd/system/dnscrypt-proxy.service');
 
       RunCommand('bash', ['-c', 'systemctl daemon-reload; ' +
+        'systemctl stop dnscrypt-proxy.socket; ' +
         'systemctl disable dnscrypt-proxy.socket; ' +
         'systemctl mask dnscrypt-proxy.socket'],
         output);
