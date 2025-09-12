@@ -44,10 +44,10 @@ deb=0
 
 [FILES]
 0=/usr/bin/dnscrypt-gui
-1=/usr/share/dnscrypt-gui/
+1=/usr/share/icons/dnscrypt-gui.png
 2=/usr/share/applications/dnscrypt-gui.desktop
-3=/usr/share/icons/dnscrypt-gui.png
-4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
+3=/usr/share/polkit-1/actions/dnscrypt-gui.policy
+4=/usr/share/dnscrypt-gui/
 5=/usr/share/doc/dnscrypt-gui/
 
 [URL32]
