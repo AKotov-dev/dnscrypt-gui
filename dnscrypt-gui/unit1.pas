@@ -58,13 +58,14 @@ resourcestring
   SRootEnvRequired = 'Root environment required!';
 
 implementation
-       uses PingAndLoadTRD;
 
-{$R *.lfm}
+uses PingAndLoadTRD;
 
-{ TMainForm }
+  {$R *.lfm}
 
-//systemctl list-units  --type=service  --state=running
+  { TMainForm }
+
+  //systemctl list-units  --type=service  --state=running
 
 
 //Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md

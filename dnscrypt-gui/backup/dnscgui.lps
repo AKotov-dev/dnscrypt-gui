@@ -51,8 +51,7 @@
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="364"/>
-        <CursorPos X="3" Y="386"/>
+        <CursorPos X="68" Y="274"/>
         <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -62,7 +61,7 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingAndLoadTRD"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="3" Y="47"/>
+        <CursorPos X="22"/>
         <UsageCount Value="22"/>
         <Loaded Value="True"/>
       </Unit2>

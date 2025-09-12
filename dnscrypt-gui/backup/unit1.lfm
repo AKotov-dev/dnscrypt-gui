@@ -88,7 +88,6 @@ object MainForm: TMainForm
     BorderSpacing.Right = 6
     ItemHeight = 0
     Items.Strings = (
-      '11111111111'
       'a-and-a'
       'a-and-a-ipv6'
       'adfilter-adl'

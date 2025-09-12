@@ -40,11 +40,11 @@ begin
   ExProcess := TProcess.Create(nil);
   try
     ExProcess.Executable := 'ping';
-//    ExProcess.Parameters.Add('-6');
+    ExProcess.Parameters.Add('-6');
     ExProcess.Parameters.Add('-c3');
     ExProcess.Parameters.Add('-W2');
-//    ExProcess.Parameters.Add('2001:4860:4860::8888');
-    ExProcess.Parameters.Add('8.8.8.8');
+    ExProcess.Parameters.Add('2001:4860:4860::8888');
+//    ExProcess.Parameters.Add('8.8.8.8');
     ExProcess.Options := [poWaitOnExit, poNoConsole];
 
     ExProcess.Execute;
