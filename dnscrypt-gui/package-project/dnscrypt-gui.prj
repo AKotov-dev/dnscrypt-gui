@@ -64,32 +64,30 @@ toolversion=4.2
 
 [INFO]
 0=v0.9
-1=+ Build in Lazarus-4.2
-2=+ IPv6 support
+1=+ IPv6 support
+2=+ Build in Lazarus-4.2
 3=+ Loading/Updating the list of DNS servers (72 hour interval)
 4=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
 5=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
 6=+ Switching to `/etc/public-resolvers.md` **v3**
 7=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
-8=+ RPM (Mageia-9) and DEB (Ubuntu) packages
+8=+ RPM packages for Mageia-9
 9=
-10=**Description:** requires `dnscript-proxy` >= `2.1.0`
-11=
-12=v0.8
-13=+ Redirection via Socks5 (TCP/UDP)
-14=+ Extended list of DNSCrypt/DoH servers
-15=
-16=v0.7-0
-17=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
-18=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
-19=
-20=v0.6-0
-21=+ the list of DNSCrypt servers has been expanded and verified
-22=+
-23=
-24=v0.5-0
-25=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
-26=
-27=v0.4-2
-28=+dns servers with parental control
-29=+Restart Button
+10=v0.8
+11=+ Redirection via Socks5 (TCP/UDP)
+12=+ Extended list of DNSCrypt/DoH servers
+13=
+14=v0.7-0
+15=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+16=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
+17=
+18=v0.6-0
+19=+ the list of DNSCrypt servers has been expanded and verified
+20=+
+21=
+22=v0.5-0
+23=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+24=
+25=v0.4-2
+26=+dns servers with parental control
+27=+Restart Button
