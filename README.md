@@ -1,7 +1,7 @@
 DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 --
 
-**Dependencies:** dnscrypt-proxy >= 2.1.4, gtk2, systemd
+**Dependencies:** dnscrypt-proxy >= 2.1.0, gtk2, systemd
 
 `dnscrypt-proxy` encrypts the communication channel between you and the DNS server. Encryption of DNS traffic will protect you from man-in-the-middle (MITM) attacks, in which an attacker is wedged into the communication channel. Now the provider will not be able to freely read and log the history of your work on the Internet.
 
@@ -13,6 +13,6 @@ Cloudflare `Resolver` (default) is recommended as the fastest. `Fallback` is a D
 
 Testing was carried out by the WireShark network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
 
-Made and tested in Mageia Linux-8/9.
+Made and tested in Mageia Linux.
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot8.png)
