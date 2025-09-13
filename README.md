@@ -1,6 +1,7 @@
-**DNSCrypt-GUI** - GUI for managing the dnscrypt-proxy server
+DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
+--
 
-Dependencies: dnscrypt-proxy >= 2.1.4, gtk2, systemd
+**Dependencies:** dnscrypt-proxy >= 2.1.4, gtk2, systemd
 
 `dnscrypt-proxy` encrypts the communication channel between you and the DNS server. Encryption of DNS traffic will protect you from man-in-the-middle (MITM) attacks, in which an attacker is wedged into the communication channel. Now the provider will not be able to freely read and log the history of your work on the Internet.
 
