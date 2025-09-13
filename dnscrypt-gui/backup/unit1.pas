@@ -185,8 +185,7 @@ begin
   end;
 end;
 
-
-//Делаем конфиг и перезапускаем
+//Делаем конфиг, сервис запуска из /usr/lib/systemd/system/dnscrypt-proxy.service (если нет) и перезапускаем
 procedure TMainForm.BitBtn2Click(Sender: TObject);
 var
   S: TStringList;
@@ -284,7 +283,8 @@ begin
       S.Add('');
       S.Add('[Service]');
       S.Add('Type=simple');
-      S.Add('ExecStart=/usr/sbin/dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
+      S.Add('Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin');
+      S.Add('ExecStart=dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
       S.Add('Restart=on-failure');
       S.Add('NonBlocking=true');
       S.Add('');
@@ -399,6 +399,7 @@ begin
     CheckBox2.Checked := False;
 end;
 
+//Stop/Disable dnscrypt-proxy
 procedure TMainForm.BitBtn1Click(Sender: TObject);
 var
   s: ansistring;

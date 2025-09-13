@@ -65,9 +65,6 @@ uses PingAndLoadTRD;
 
   { TMainForm }
 
-  //systemctl list-units  --type=service  --state=running
-
-
 //Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md
 procedure TMainForm.LoadResolvers;
 var
@@ -93,21 +90,17 @@ begin
       begin
         Line := Trim(Lines[i]);
 
-        // псевдоним начинается с ##
+        //псевдоним начинается с ##
         if Copy(Line, 1, 2) = '##' then
         begin
           AliasLine := Trim(Copy(Line, 3, MaxInt));
           IncludeServer := True;
 
-          // определяем IPv6 сервер
-        {  IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
-            ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));}
-
           IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
             (Pos('-ip6', LowerCase(AliasLine)) > 0) or
             ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));
 
-          // проверка строк до следующего ##
+          //проверка строк до следующего ##
           j := i + 1;
           while (j < Lines.Count) and (Copy(Lines[j], 1, 2) <> '##') do
           begin
@@ -126,15 +119,15 @@ begin
             Inc(j);
           end;
 
-          // если IPv6 не поддерживается — пропускаем
+          //если IPv6 не поддерживается — пропускаем
           if (IsIPv6) and (not HasIPv6) then
             IncludeServer := False;
 
-          // добавляем в ComboBox
+          //добавляем в ComboBox
           if IncludeServer then
             ComboBox1.Items.Add(AliasLine);
 
-          i := j - 1; // продолжаем с последней строки
+          i := j - 1; //продолжаем с последней строки
         end;
 
         Inc(i);
@@ -149,6 +142,7 @@ begin
   end;
 end;
 
+//Состояние /etc/resolv.conf и dnscrypt-proxy
 procedure TMainForm.Timer1Timer(Sender: TObject);
 var
   S: TStringList;
@@ -185,8 +179,7 @@ begin
   end;
 end;
 
-
-//Делаем конфиг и перезапускаем
+//Делаем конфиг, сервис запуска из /usr/lib/systemd/system/dnscrypt-proxy.service (если нет) и перезапускаем
 procedure TMainForm.BitBtn2Click(Sender: TObject);
 var
   S: TStringList;
@@ -400,6 +393,7 @@ begin
     CheckBox2.Checked := False;
 end;
 
+//Stop/Disable dnscrypt-proxy
 procedure TMainForm.BitBtn1Click(Sender: TObject);
 var
   s: ansistring;

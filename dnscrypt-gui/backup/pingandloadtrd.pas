@@ -10,7 +10,7 @@ uses
 type
   TPingAndLoad = class(TThread)
   private
-    FHasIPv6: Boolean;
+    FHasIPv6: boolean;
     procedure LoadComboBox;
   protected
     procedure Execute; override;
@@ -23,7 +23,7 @@ implementation
 uses
   Unit1;
 
-{ TPingAndLoad }
+  { TPingAndLoad }
 
 constructor TPingAndLoad.Create;
 begin
@@ -44,7 +44,7 @@ begin
     ExProcess.Parameters.Add('-c3');
     ExProcess.Parameters.Add('-W2');
     ExProcess.Parameters.Add('2001:4860:4860::8888');
-//    ExProcess.Parameters.Add('8.8.8.8');
+    //    ExProcess.Parameters.Add('8.8.8.8');
     ExProcess.Options := [poWaitOnExit, poNoConsole];
 
     ExProcess.Execute;
@@ -70,4 +70,3 @@ begin
 end;
 
 end.
-
