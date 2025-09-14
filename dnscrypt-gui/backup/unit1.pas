@@ -344,8 +344,6 @@ procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   //Очистка временных файлов для безопасности
   DeleteFile('/tmp/dnscrypt-gui_REAL_USER');
-  DeleteFile('/tmp/dnscrypt-gui_DISPLAY');
-  DeleteFile('/tmp/dnscrypt-gui_XAUTHORITY');
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

@@ -67,7 +67,7 @@ object MainForm: TMainForm
     Cursor = crHandPoint
     Left = 188
     Height = 17
-    Hint = 'Check system DNS'
+    Hint = 'DNS Leak test'
     Top = 69
     Width = 54
     Anchors = [akTop, akRight]
@@ -91,7 +91,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 247
     Height = 37
-    Hint = 'Navigation: Up, Down, PageUP, PageDown...'
+    Hint = 'Up, Down, PageUP, PageDown...'
     Top = 59
     Width = 296
     Anchors = [akTop, akLeft, akRight]

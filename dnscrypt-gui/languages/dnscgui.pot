@@ -26,7 +26,7 @@ msgid "Tor and the like"
 msgstr ""
 
 #: tmainform.combobox1.hint
-msgid "Navigation: Up, Down, PageUP, PageDown..."
+msgid "Up, Down, PageUP, PageDown..."
 msgstr ""
 
 #: tmainform.combobox1.text
@@ -56,7 +56,7 @@ msgid "Resolver:"
 msgstr ""
 
 #: tmainform.label1.hint
-msgid "Check system DNS"
+msgid "DNS Leak test"
 msgstr ""
 
 #: tmainform.label2.caption

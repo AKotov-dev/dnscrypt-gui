@@ -37,8 +37,8 @@ msgid "Tor and the like"
 msgstr "Tor и подобные"
 
 #: tmainform.combobox1.hint
-msgid "Navigation: Up, Down, PageUP, PageDown..."
-msgstr "Навигация: Up, Down, PageUP, PageDown..."
+msgid "Up, Down, PageUP, PageDown..."
+msgstr ""
 
 #: tmainform.combobox1.text
 msgid "cloudflare"
@@ -67,8 +67,8 @@ msgid "Resolver:"
 msgstr "Резольвер:"
 
 #: tmainform.label1.hint
-msgid "Check system DNS"
-msgstr "Проверить системный DNS"
+msgid "DNS Leak test"
+msgstr "Тест DNS Leak"
 
 #: tmainform.label2.caption
 msgid "NS from /etc/resolv.conf:"

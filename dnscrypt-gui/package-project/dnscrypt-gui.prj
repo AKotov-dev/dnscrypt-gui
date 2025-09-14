@@ -64,7 +64,7 @@ toolversion=4.2
 
 [INFO]
 0=v1.0
-1=+ DNSLeak check (link to website)
+1=+ DNS Leak test
 2=+ RPM packages for Mageia-9
 3=
 4=v0.9

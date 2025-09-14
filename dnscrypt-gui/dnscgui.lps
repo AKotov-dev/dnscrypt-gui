@@ -66,7 +66,7 @@
         <Loaded Value="True"/>
       </Unit2>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="unit1.pas"/>
         <Caret Line="325" Column="3" TopLine="323"/>
@@ -183,10 +183,6 @@
         <Filename Value="unit1.pas"/>
         <Caret Line="425" TopLine="420"/>
       </Position29>
-      <Position30>
-        <Filename Value="unit1.pas"/>
-        <Caret Line="345" Column="3" TopLine="370"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
