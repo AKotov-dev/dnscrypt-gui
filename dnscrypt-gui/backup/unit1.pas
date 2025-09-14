@@ -219,7 +219,7 @@ begin
     S.Add('');
     S.Add('dnscrypt_servers = true');
     S.Add('doh_servers = true');
-    S.Add('require_dnssec = true');
+    S.Add('require_dnssec = false');
     S.Add('require_nolog = true');
     S.Add('require_nofilter = true');
     S.Add('');
@@ -235,16 +235,21 @@ begin
     S.Add('''' + '8.8.4.4:53' + '''' + ',');
     S.Add('''' + '1.1.1.1:53' + '''' + ',');
     S.Add('''' + '1.0.0.1:53' + '''' + ',');
-    S.Add('''' + '[2620:fe::11]:53' + '''' + ',');
-    S.Add('''' + '[2620:fe::fe]:53' + '''' + ',');
-    S.Add('''' + '[2001:4860:4860::8888]:53' + '''' + ',');
-    S.Add('''' + '[2001:4860:4860::8844]:53' + '''' + ',');
-    S.Add('''' + '[2606:4700:4700::1111]:53' + '''' + ',');
-    S.Add('''' + '[2606:4700:4700::1001]:53' + '''' + ',');
+
+    if HasIPv6 then
+    begin
+      S.Add('''' + '[2620:fe::11]:53' + '''' + ',');
+      S.Add('''' + '[2620:fe::fe]:53' + '''' + ',');
+      S.Add('''' + '[2001:4860:4860::8888]:53' + '''' + ',');
+      S.Add('''' + '[2001:4860:4860::8844]:53' + '''' + ',');
+      S.Add('''' + '[2606:4700:4700::1111]:53' + '''' + ',');
+      S.Add('''' + '[2606:4700:4700::1001]:53' + '''' + ',');
+      S.Add('''' + '[2a02:6b8::feed:0ff]:53' + '''' + ',');
+      S.Add('''' + '[2a02:6b8:0:1::feed:0ff]:53' + '''' + ',');
+    end;
     S.Add('''' + '77.88.8.8:53' + '''' + ',');
-    S.Add('''' + '77.88.8.1:53' + '''' + ',');
-    S.Add('''' + '[2a02:6b8::feed:0ff]:53' + '''' + ',');
-    S.Add('''' + '[2a02:6b8:0:1::feed:0ff]:53' + '''' + ',');
+    S.Add('''' + '77.88.8.1:53' + '''');
+
     S.Add(']');
 
     S.Add('');
@@ -252,7 +257,14 @@ begin
     S.Add('log_files_max_size = 10');
     S.Add('log_files_max_age = 7');
     S.Add('log_files_max_backups = 1');
-    S.Add('block_ipv6 = false');
+
+    S.Add('');
+    if HasIPv6 then
+      S.Add('block_ipv6 = false')
+    else
+      S.Add('block_ipv6 = true');
+
+    S.Add('');
     S.Add('cache = true');
     S.Add('cache_size = 256');
     S.Add('cache_min_ttl = 600');
@@ -286,10 +298,15 @@ begin
     S.Add('''' +
       'https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md'
       + '''' + ',');
+
+    if HasIPv6 then
+      S.Add('''' + 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md'
+        + '''' + ',');
+
     S.Add('''' + 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
-      '''' + ',');
-    S.Add('''' + 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md'
-      + '''');
+      '''');
+
+
     S.Add(']');
 
     S.Add('');
