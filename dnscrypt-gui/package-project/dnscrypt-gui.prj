@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=0.9
+version=1.0
 
 [RELEASE]
 release=0.mrx9
@@ -63,31 +63,35 @@ devtool=Lazarus
 toolversion=4.2
 
 [INFO]
-0=v0.9
-1=+ IPv6 support
-2=+ Build in Lazarus-4.2
-3=+ Loading/Updating the list of DNS servers (72 hour interval)
-4=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
-5=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
-6=+ Switching to `/etc/public-resolvers.md` **v3**
-7=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
-8=+ RPM packages for Mageia-9
-9=
-10=v0.8
-11=+ Redirection via Socks5 (TCP/UDP)
-12=+ Extended list of DNSCrypt/DoH servers
+0=v1.0
+1=+ DNSLeak check (link to website)
+2=+ RPM packages for Mageia-9
+3=
+4=v0.9
+5=+ IPv6 support
+6=+ Build in Lazarus-4.2
+7=+ Loading/Updating the list of DNS servers (72 hour interval)
+8=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
+9=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
+10=+ Switching to `/etc/public-resolvers.md` **v3**
+11=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
+12=+ RPM packages for Mageia-9
 13=
-14=v0.7-0
-15=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
-16=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
+14=v0.8
+15=+ Redirection via Socks5 (TCP/UDP)
+16=+ Extended list of DNSCrypt/DoH servers
 17=
-18=v0.6-0
-19=+ the list of DNSCrypt servers has been expanded and verified
-20=+
+18=v0.7-0
+19=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+20=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
 21=
-22=v0.5-0
-23=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
-24=
-25=v0.4-2
-26=+dns servers with parental control
-27=+Restart Button
+22=v0.6-0
+23=+ the list of DNSCrypt servers has been expanded and verified
+24=+
+25=
+26=v0.5-0
+27=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+28=
+29=v0.4-2
+30=+dns servers with parental control
+31=+Restart Button

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator;
+  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator, LCLIntf;
 
 type
 
@@ -39,8 +39,12 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Label1Click(Sender: TObject);
+    procedure Label1MouseEnter(Sender: TObject);
+    procedure Label1MouseLeave(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure LoadResolvers;
 
@@ -57,6 +61,7 @@ var
 resourcestring
   SRootEnvRequired = 'Root environment required!';
 
+
 implementation
 
 uses PingAndLoadTRD;
@@ -64,9 +69,6 @@ uses PingAndLoadTRD;
   {$R *.lfm}
 
   { TMainForm }
-
-  //systemctl list-units  --type=service  --state=running
-
 
 //Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md
 procedure TMainForm.LoadResolvers;
@@ -93,21 +95,17 @@ begin
       begin
         Line := Trim(Lines[i]);
 
-        // псевдоним начинается с ##
+        //псевдоним начинается с ##
         if Copy(Line, 1, 2) = '##' then
         begin
           AliasLine := Trim(Copy(Line, 3, MaxInt));
           IncludeServer := True;
 
-          // определяем IPv6 сервер
-        {  IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
-            ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));}
-
           IsIPv6 := (Pos('-ipv6', LowerCase(AliasLine)) > 0) or
             (Pos('-ip6', LowerCase(AliasLine)) > 0) or
             ((Length(AliasLine) > 0) and (AliasLine[Length(AliasLine)] = '6'));
 
-          // проверка строк до следующего ##
+          //проверка строк до следующего ##
           j := i + 1;
           while (j < Lines.Count) and (Copy(Lines[j], 1, 2) <> '##') do
           begin
@@ -126,15 +124,15 @@ begin
             Inc(j);
           end;
 
-          // если IPv6 не поддерживается — пропускаем
+          //если IPv6 не поддерживается — пропускаем
           if (IsIPv6) and (not HasIPv6) then
             IncludeServer := False;
 
-          // добавляем в ComboBox
+          //добавляем в ComboBox
           if IncludeServer then
             ComboBox1.Items.Add(AliasLine);
 
-          i := j - 1; // продолжаем с последней строки
+          i := j - 1; //продолжаем с последней строки
         end;
 
         Inc(i);
@@ -149,6 +147,7 @@ begin
   end;
 end;
 
+//Состояние /etc/resolv.conf и dnscrypt-proxy
 procedure TMainForm.Timer1Timer(Sender: TObject);
 var
   S: TStringList;
@@ -223,7 +222,7 @@ begin
     S.Add('timeout = 2500');
     S.Add('cert_refresh_delay = 240');
     S.Add('bootstrap_resolvers = [' + '''' + ComboBox2.Text + ':53' + '''' + ']');
-    S.Add('ignore_system_dns = false');
+    S.Add('ignore_system_dns = true');
     S.Add('log_files_max_size = 10');
     S.Add('log_files_max_age = 7');
     S.Add('log_files_max_backups = 1');
@@ -341,6 +340,14 @@ begin
   end;
 end;
 
+procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  //Очистка временных файлов для безопасности
+  DeleteFile('/tmp/dnscrypt-gui_REAL_USER');
+  DeleteFile('/tmp/dnscrypt-gui_DISPLAY');
+  DeleteFile('/tmp/dnscrypt-gui_XAUTHORITY');
+end;
+
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   MainForm.Caption := Application.Title;
@@ -397,6 +404,80 @@ begin
     CheckBox2.Checked := True
   else
     CheckBox2.Checked := False;
+end;
+
+
+//Читаем файлы для REAL_USER, DISPLAY_VAL, XAUTH_VAL
+function ReadFileFirstLine(const FileName: string): string;
+var
+  SL: TStringList;
+begin
+  Result := '';
+  if FileExists(FileName) then
+  begin
+    SL := TStringList.Create;
+    try
+      SL.LoadFromFile(FileName);
+      if SL.Count > 0 then Result := Trim(SL[0]);
+    finally
+      SL.Free;
+    end;
+  end;
+end;
+
+//Открываем URL под юзером из root-сессии
+procedure OpenURLFromUserSession(const AURL: string);
+var
+  P: TProcess;
+  REAL_USER, DISPLAY_VAL, XAUTH_VAL, cmd: string;
+begin
+  REAL_USER := ReadFileFirstLine('/tmp/dnscrypt-gui_REAL_USER');
+  DISPLAY_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_DISPLAY');
+  XAUTH_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_XAUTHORITY');
+
+  if (REAL_USER = '') or (AURL = '') then Exit;
+
+  cmd := Format('xdg-open %s', [QuotedStr(AURL)]);
+
+  P := TProcess.Create(nil);
+  try
+    P.Executable := 'runuser';
+    P.Parameters.Add('-l');
+    P.Parameters.Add(REAL_USER);
+    P.Parameters.Add('-c');
+    P.Parameters.Add(cmd);
+
+    //Асинхронный запуск, не блокируем GUI
+    P.Options := P.Options + [poNoConsole, poNewProcessGroup];
+
+    //Прокидываем переменные сессии пользователя
+    P.Environment.Add('DISPLAY=' + DISPLAY_VAL);
+    P.Environment.Add('XAUTHORITY=' + XAUTH_VAL);
+
+    P.Execute;
+  finally
+    P.Free;
+  end;
+end;
+
+//Проверка DNSLeak
+procedure TMainForm.Label1Click(Sender: TObject);
+begin
+  //Перезапускаем
+  BitBtn2.Click;
+
+  //Проверка DNSLeak
+  OpenURLFromUserSession('https://browserleaks.com/dns');
+end;
+
+procedure TMainForm.Label1MouseEnter(Sender: TObject);
+begin
+  Label1.Font.Color := clRed;  // подсветка при наведении
+end;
+
+procedure TMainForm.Label1MouseLeave(Sender: TObject);
+begin
+  Label1.Font.Color := clBlue; // возвращаем исходный цвет
 end;
 
 //Stop/Disable dnscrypt-proxy

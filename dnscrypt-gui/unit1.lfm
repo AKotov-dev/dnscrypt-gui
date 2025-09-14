@@ -2,13 +2,14 @@ object MainForm: TMainForm
   Left = 320
   Height = 330
   Top = 125
-  Width = 554
+  Width = 549
   ActiveControl = BitBtn2
   Caption = 'DnsCrypt-GUI'
   ClientHeight = 330
-  ClientWidth = 554
+  ClientWidth = 549
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
   LCLVersion = '4.2.0.0'
+  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   object ListBox1: TListBox
@@ -18,7 +19,7 @@ object MainForm: TMainForm
     Left = 6
     Height = 101
     Top = 204
-    Width = 354
+    Width = 349
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 20
@@ -34,7 +35,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = BitBtn2
     AnchorSideBottom.Control = ListBox1
     AnchorSideBottom.Side = asrBottom
-    Left = 380
+    Left = 375
     Height = 42
     Top = 263
     Width = 75
@@ -47,7 +48,7 @@ object MainForm: TMainForm
   object BitBtn2: TBitBtn
     AnchorSideBottom.Control = BitBtn1
     AnchorSideBottom.Side = asrBottom
-    Left = 459
+    Left = 454
     Height = 42
     Top = 263
     Width = 89
@@ -63,14 +64,24 @@ object MainForm: TMainForm
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ComboBox1
+    Cursor = crHandPoint
     Left = 188
     Height = 17
+    Hint = 'Check system DNS'
     Top = 69
     Width = 54
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 5
     Caption = 'Resolver:'
+    Font.Color = clBlue
+    Font.Style = [fsUnderline]
     ParentColor = False
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = Label1Click
+    OnMouseEnter = Label1MouseEnter
+    OnMouseLeave = Label1MouseLeave
   end
   object ComboBox1: TComboBox
     AnchorSideLeft.Control = ComboBox2
@@ -82,7 +93,7 @@ object MainForm: TMainForm
     Height = 37
     Hint = 'Navigation: Up, Down, PageUP, PageDown...'
     Top = 59
-    Width = 301
+    Width = 296
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 48
     BorderSpacing.Right = 6
@@ -704,7 +715,7 @@ object MainForm: TMainForm
     AnchorSideRight.Control = BitBtn2
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = BitBtn2
-    Left = 497
+    Left = 492
     Height = 13
     Top = 249
     Width = 12
@@ -736,7 +747,7 @@ object MainForm: TMainForm
     Left = 247
     Height = 37
     Top = 6
-    Width = 301
+    Width = 296
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Right = 6
@@ -762,7 +773,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 20
     Top = 310
-    Width = 554
+    Width = 549
     Align = alBottom
     BorderStyle = sbsSunken
     Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2025'
@@ -807,7 +818,7 @@ object MainForm: TMainForm
     Left = 170
     Height = 37
     Top = 129
-    Width = 190
+    Width = 185
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     TabOrder = 5
@@ -818,7 +829,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label6
     AnchorSideTop.Side = asrCenter
-    Left = 375
+    Left = 370
     Height = 17
     Top = 139
     Width = 29
@@ -835,7 +846,7 @@ object MainForm: TMainForm
     Left = 6
     Height = 10
     Top = 106
-    Width = 542
+    Width = 537
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 6
@@ -847,7 +858,7 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label2
     AnchorSideBottom.Side = asrCenter
-    Left = 409
+    Left = 404
     Height = 32
     Hint = 'Tor and the like'
     Top = 175
@@ -865,7 +876,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 409
+    Left = 404
     Height = 37
     Top = 129
     Width = 139

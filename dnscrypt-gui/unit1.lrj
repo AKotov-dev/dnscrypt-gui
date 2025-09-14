@@ -2,6 +2,7 @@
 {"hash":79980089,"name":"tmainform.caption","sourcebytes":[68,110,115,67,114,121,112,116,45,71,85,73],"value":"DnsCrypt-GUI"},
 {"hash":371552,"name":"tmainform.bitbtn1.caption","sourcebytes":[83,116,111,112],"value":"Stop"},
 {"hash":147499204,"name":"tmainform.bitbtn2.caption","sourcebytes":[82,101,115,116,97,114,116],"value":"Restart"},
+{"hash":57411363,"name":"tmainform.label1.hint","sourcebytes":[67,104,101,99,107,32,115,121,115,116,101,109,32,68,78,83],"value":"Check system DNS"},
 {"hash":174298266,"name":"tmainform.label1.caption","sourcebytes":[82,101,115,111,108,118,101,114,58],"value":"Resolver:"},
 {"hash":263687758,"name":"tmainform.combobox1.hint","sourcebytes":[78,97,118,105,103,97,116,105,111,110,58,32,85,112,44,32,68,111,119,110,44,32,80,97,103,101,85,80,44,32,80,97,103,101,68,111,119,110,46,46,46],"value":"Navigation: Up, Down, PageUP, PageDown..."},
 {"hash":195791845,"name":"tmainform.combobox1.text","sourcebytes":[99,108,111,117,100,102,108,97,114,101],"value":"cloudflare"},

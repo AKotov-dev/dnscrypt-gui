@@ -66,6 +66,10 @@ msgstr ""
 msgid "Resolver:"
 msgstr "Резольвер:"
 
+#: tmainform.label1.hint
+msgid "Check system DNS"
+msgstr "Проверить системный DNS"
+
 #: tmainform.label2.caption
 msgid "NS from /etc/resolv.conf:"
 msgstr "NS из /etc/resolv.conf:"

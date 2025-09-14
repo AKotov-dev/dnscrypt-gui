@@ -55,6 +55,10 @@ msgstr ""
 msgid "Resolver:"
 msgstr ""
 
+#: tmainform.label1.hint
+msgid "Check system DNS"
+msgstr ""
+
 #: tmainform.label2.caption
 msgid "NS from /etc/resolv.conf:"
 msgstr ""
