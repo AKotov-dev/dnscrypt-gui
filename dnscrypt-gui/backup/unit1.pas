@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator, LCLIntf;
+  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator;
 
 type
 
@@ -27,7 +27,6 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
     ListBox1: TListBox;
@@ -140,6 +139,7 @@ begin
 
     finally
       ComboBox1.Items.EndUpdate;
+      ComboBox2.Items.Assign(ComboBox1.Items);
     end;
 
   finally
@@ -195,9 +195,12 @@ begin
   try
     S := TStringList.Create;
 
-    S.Add('server_names = [' + '''' + ComboBox1.Text + '''' + ']');
+    S.Add('## Resolvers');
+    S.Add('server_names = [' + '''' + ComboBox1.Text + '''' + ', ' +
+      '''' + ComboBox2.Text + '''' + ']');
 
     //IPv4/IPv6
+    S.Add('');
     if not HasIPv6 then
       S.Add('listen_addresses = [' + '''' + Edit1.Text + ':' +
         SpinEdit1.Text + '''' + ']')
@@ -205,6 +208,7 @@ begin
       S.Add('listen_addresses = [' + '''' + Edit1.Text + ':' +
         SpinEdit1.Text + '''' + ', ' + '''' + '[::1]:' + SpinEdit1.Text + '''' + ']');
 
+    S.Add('');
     S.Add('max_clients = 250');
     S.Add('ipv4_servers = true');
 
@@ -212,16 +216,38 @@ begin
       S.Add('ipv6_servers = true')
     else
       S.Add('ipv6_servers = false');
-
+    S.Add('');
     S.Add('dnscrypt_servers = true');
     S.Add('doh_servers = true');
-    S.Add('require_dnssec = false');
+    S.Add('require_dnssec = true');
     S.Add('require_nolog = true');
     S.Add('require_nofilter = true');
-
+    S.Add('');
     S.Add('timeout = 2500');
     S.Add('cert_refresh_delay = 240');
-    S.Add('bootstrap_resolvers = [' + '''' + ComboBox2.Text + ':53' + '''' + ']');
+    S.Add('');
+
+    S.Add('## Bootstrap');
+    S.Add('bootstrap_resolvers = [');
+    S.Add('''' + '9.9.9.11:53' + '''' + ',');
+    S.Add('''' + '149.112.112.11:53' + '''' + ',');
+    S.Add('''' + '8.8.8.8:53' + '''' + ',');
+    S.Add('''' + '8.8.4.4:53' + '''' + ',');
+    S.Add('''' + '1.1.1.1:53' + '''' + ',');
+    S.Add('''' + '1.0.0.1:53' + '''' + ',');
+    S.Add('''' + '[2620:fe::11]:53' + '''' + ',');
+    S.Add('''' + '[2620:fe::fe]:53' + '''' + ',');
+    S.Add('''' + '[2001:4860:4860::8888]:53' + '''' + ',');
+    S.Add('''' + '[2001:4860:4860::8844]:53' + '''' + ',');
+    S.Add('''' + '[2606:4700:4700::1111]:53' + '''' + ',');
+    S.Add('''' + '[2606:4700:4700::1001]:53' + '''' + ',');
+    S.Add('''' + '77.88.8.8:53' + '''' + ',');
+    S.Add('''' + '77.88.8.1:53' + '''' + ',');
+    S.Add('''' + '[2a02:6b8::feed:0ff]:53' + '''' + ',');
+    S.Add('''' + '[2a02:6b8:0:1::feed:0ff]:53' + '''' + ',');
+    S.Add(']');
+
+    S.Add('');
     S.Add('ignore_system_dns = true');
     S.Add('log_files_max_size = 10');
     S.Add('log_files_max_age = 7');
@@ -232,6 +258,7 @@ begin
     S.Add('cache_min_ttl = 600');
     S.Add('cache_max_ttl = 86400');
     S.Add('cache_neg_ttl = 60');
+    S.Add('');
 
     //force_tcp
     if CheckBox2.Checked then
@@ -243,6 +270,7 @@ begin
     if CheckBox1.Checked then
       S.Add('proxy = ' + '''' + 'socks5://' + Edit2.Text + ':' + ComboBox3.Text + '''');
 
+    S.Add('');
     S.Add('[query_log]');
     S.Add('format = ' + '''' + 'tsv' + '''');
     S.Add('[nx_log]');
@@ -250,21 +278,28 @@ begin
     S.Add('[blacklist]');
     S.Add('[ip_blacklist]');
     S.Add('[schedules]');
+
+    S.Add('');
     S.Add('[sources]');
     S.Add('[sources.' + '''' + 'public-resolvers' + '''' + ']');
-    S.Add('urls = [' + '''' +
+    S.Add('urls = [');
+    S.Add('''' +
       'https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md'
-      + '''' + ', ' + '''' +
-      'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
-      '''' + ', ' + '''' +
-      'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
-      '''' + ']');
+      + '''' + ',');
+    S.Add('''' + 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
+      '''' + ',');
+    S.Add('''' + 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md'
+      + '''');
+    S.Add(']');
 
+    S.Add('');
     S.Add('cache_file = ' + '''' + 'public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
     S.Add('refresh_delay = 72');
     S.Add('prefix = ' + '''' + '''');
+
+    S.Add('');
     S.Add('[static]');
 
     S.SaveToFile('/etc/dnscrypt-proxy.toml');

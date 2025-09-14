@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 320
-  Height = 330
-  Top = 125
-  Width = 549
+  Left = 316
+  Height = 319
+  Top = 129
+  Width = 555
   ActiveControl = BitBtn2
   Caption = 'DnsCrypt-GUI'
-  ClientHeight = 330
-  ClientWidth = 549
+  ClientHeight = 319
+  ClientWidth = 555
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
   LCLVersion = '4.2.0.0'
   OnClose = FormClose
@@ -18,8 +18,8 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = StaticText1
     Left = 6
     Height = 101
-    Top = 204
-    Width = 349
+    Top = 193
+    Width = 355
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 20
@@ -35,9 +35,9 @@ object MainForm: TMainForm
     AnchorSideRight.Control = BitBtn2
     AnchorSideBottom.Control = ListBox1
     AnchorSideBottom.Side = asrBottom
-    Left = 375
+    Left = 381
     Height = 42
-    Top = 263
+    Top = 252
     Width = 75
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 4
@@ -48,9 +48,9 @@ object MainForm: TMainForm
   object BitBtn2: TBitBtn
     AnchorSideBottom.Control = BitBtn1
     AnchorSideBottom.Side = asrBottom
-    Left = 454
+    Left = 460
     Height = 42
-    Top = 263
+    Top = 252
     Width = 89
     Anchors = [akRight, akBottom]
     Caption = 'Restart'
@@ -59,20 +59,19 @@ object MainForm: TMainForm
     OnClick = BitBtn2Click
   end
   object Label1: TLabel
-    AnchorSideLeft.Control = ComboBox1
+    AnchorSideLeft.Control = Edit1
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = SpinEdit1
+    AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ComboBox1
     Cursor = crHandPoint
-    Left = 188
+    Left = 183
     Height = 17
     Hint = 'DNS Leak test'
-    Top = 69
-    Width = 54
-    Anchors = [akTop, akRight]
-    BorderSpacing.Right = 5
-    Caption = 'Resolver:'
+    Top = 16
+    Width = 60
+    BorderSpacing.Left = 15
+    Caption = 'Resolvers:'
     Font.Color = clBlue
     Font.Style = [fsUnderline]
     ParentColor = False
@@ -84,17 +83,18 @@ object MainForm: TMainForm
     OnMouseLeave = Label1MouseLeave
   end
   object ComboBox1: TComboBox
-    AnchorSideLeft.Control = ComboBox2
-    AnchorSideTop.Control = Label1
+    AnchorSideLeft.Control = Label1
+    AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 247
+    Left = 249
     Height = 37
-    Hint = 'Navigation: Up, Down, PageUP, PageDown...'
-    Top = 59
-    Width = 296
+    Hint = 'Up, Down, PageUP, PageDown...'
+    Top = 8
+    Width = 300
     Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 6
     BorderSpacing.Top = 48
     BorderSpacing.Right = 6
     ItemHeight = 0
@@ -653,7 +653,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = ListBox1
     Left = 6
     Height = 17
-    Top = 183
+    Top = 172
     Width = 150
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 4
@@ -662,6 +662,7 @@ object MainForm: TMainForm
   end
   object Label3: TLabel
     AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrCenter
     Left = 6
     Height = 17
@@ -675,7 +676,6 @@ object MainForm: TMainForm
   object Edit1: TEdit
     AnchorSideLeft.Control = Label3
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label3
     AnchorSideTop.Side = asrCenter
     Left = 51
     Height = 37
@@ -686,13 +686,14 @@ object MainForm: TMainForm
     Text = '127.0.0.1'
   end
   object Label4: TLabel
-    AnchorSideLeft.Control = Label3
+    AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Label3
     Left = 6
     Height = 17
-    Top = 69
+    Top = 66
     Width = 29
     Anchors = [akLeft]
+    BorderSpacing.Left = 6
     BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
@@ -702,11 +703,13 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = Edit1
     AnchorSideTop.Control = Label4
     AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Edit1
     AnchorSideRight.Side = asrBottom
     Left = 51
     Height = 37
-    Top = 59
-    Width = 93
+    Top = 56
+    Width = 117
+    Anchors = [akLeft, akRight]
     MinValue = 30
     TabOrder = 2
     Value = 53
@@ -715,65 +718,584 @@ object MainForm: TMainForm
     AnchorSideRight.Control = BitBtn2
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = BitBtn2
-    Left = 492
+    Left = 498
     Height = 13
-    Top = 249
+    Top = 238
     Width = 12
     Anchors = [akRight, akBottom]
     BorderSpacing.Bottom = 1
     Brush.Color = clYellow
     Shape = stCircle
   end
-  object Label5: TLabel
-    AnchorSideLeft.Control = Edit1
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit1
-    AnchorSideTop.Side = asrCenter
-    Left = 188
-    Height = 17
-    Top = 16
-    Width = 54
-    BorderSpacing.Left = 20
-    Caption = 'FallBack:'
-    ParentColor = False
-  end
   object ComboBox2: TComboBox
-    AnchorSideLeft.Control = Label5
-    AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Label5
+    AnchorSideLeft.Control = ComboBox1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 247
+    Left = 249
     Height = 37
-    Top = 6
-    Width = 296
-    Anchors = [akTop, akLeft, akRight]
-    BorderSpacing.Left = 5
+    Hint = 'Up, Down, PageUP, PageDown...'
+    Top = 56
+    Width = 300
+    Anchors = [akLeft, akRight]
     BorderSpacing.Right = 6
     ItemHeight = 0
+    ItemIndex = 31
     Items.Strings = (
-      '1.1.1.1'
-      '1.0.0.1'
-      '2606:4700:4700::1111'
-      '2606:4700:4700::1001'
-      '8.8.8.8'
-      '8.8.4.4'
-      '2001:4860:4860::8888'
-      '2001:4860:4860::8844'
-      '9.9.9.9'
-      '149.112.112.112'
-      '2620:fe::fe'
-      '2620:fe::9'
+      'a-and-a'
+      'a-and-a-ipv6'
+      'adfilter-adl'
+      'adfilter-adl-ipv6'
+      'adfilter-per'
+      'adfilter-per-ipv6'
+      'adfilter-syd'
+      'adfilter-syd-ipv6'
+      'adguard-dns'
+      'adguard-dns-doh'
+      'adguard-dns-doh-ipv6'
+      'adguard-dns-family'
+      'adguard-dns-family-doh'
+      'adguard-dns-family-doh-ipv6'
+      'adguard-dns-family-ipv6'
+      'adguard-dns-ipv6'
+      'adguard-dns-unfiltered'
+      'adguard-dns-unfiltered-doh'
+      'adguard-dns-unfiltered-doh-ipv6'
+      'adguard-dns-unfiltered-ipv6'
+      'ahadns-doh-la'
+      'alidns-doh'
+      'alidns-doh-ipv6'
+      'blahdns-sg-doh'
+      'bortzmeyer'
+      'bortzmeyer-ipv6'
+      'brahma-world'
+      'brahma-world-ipv6'
+      'circl-doh'
+      'circl-doh-ipv6'
+      'cisco'
+      'cisco-doh'
+      'cisco-familyshield'
+      'cisco-familyshield-ipv6'
+      'cisco-ipv6'
+      'cisco-ipv6-doh'
+      'cisco-sandbox'
+      'cleanbrowsing-adult'
+      'cleanbrowsing-adult-doh'
+      'cleanbrowsing-adult-ipv6'
+      'cleanbrowsing-family'
+      'cleanbrowsing-family-doh'
+      'cleanbrowsing-family-ipv6'
+      'cleanbrowsing-security'
+      'cleanbrowsing-security-doh'
+      'cleanbrowsing-security-ipv6'
+      'cloudflare'
+      'cloudflare-family'
+      'cloudflare-family-ipv6'
+      'cloudflare-ipv6'
+      'cloudflare-security'
+      'cloudflare-security-ipv6'
+      'comodo-02'
+      'comss.one'
+      'controld-block-malware'
+      'controld-block-malware-ad'
+      'controld-block-malware-ad-social'
+      'controld-family-friendly'
+      'controld-uncensored'
+      'controld-unfiltered'
+      'cs-austria'
+      'cs-austria6'
+      'cs-barcelona'
+      'cs-barcelona6'
+      'cs-belgium'
+      'cs-belgium6'
+      'cs-berlin'
+      'cs-berlin6'
+      'cs-brazil'
+      'cs-brazil6'
+      'cs-ch'
+      'cs-ch6'
+      'cs-czech'
+      'cs-czech6'
+      'cs-dc'
+      'cs-dc6'
+      'cs-de'
+      'cs-de6'
+      'cs-dus'
+      'cs-dus6'
+      'cs-finland'
+      'cs-finland6'
+      'cs-fl'
+      'cs-fl6'
+      'cs-fr'
+      'cs-fr6'
+      'cs-ga'
+      'cs-ga6'
+      'cs-hungary'
+      'cs-hungary6'
+      'cs-il'
+      'cs-il6'
+      'cs-india'
+      'cs-india6'
+      'cs-la'
+      'cs-la6'
+      'cs-london'
+      'cs-london6'
+      'cs-manchester'
+      'cs-manchester6'
+      'cs-md'
+      'cs-md6'
+      'cs-milan'
+      'cs-milan6'
+      'cs-montreal'
+      'cs-montreal6'
+      'cs-nl'
+      'cs-nl6'
+      'cs-norway'
+      'cs-norway6'
+      'cs-nv'
+      'cs-nv6'
+      'cs-nyc'
+      'cs-nyc6'
+      'cs-ore'
+      'cs-ore6'
+      'cs-poland'
+      'cs-poland6'
+      'cs-pt'
+      'cs-pt6'
+      'cs-ro'
+      'cs-ro6'
+      'cs-sea'
+      'cs-sea6'
+      'cs-serbia'
+      'cs-serbia6'
+      'cs-singapore'
+      'cs-singapore6'
+      'cs-sk'
+      'cs-sk6'
+      'cs-swe'
+      'cs-swe6'
+      'cs-sydney'
+      'cs-sydney6'
+      'cs-tokyo'
+      'cs-tokyo6'
+      'cs-tx'
+      'cs-tx6'
+      'cs-vancouver'
+      'cs-vancouver6'
+      'dct-fr'
+      'dct-nl'
+      'deffer-dns.au'
+      'digitalprivacy.diy-dnscrypt-ipv4'
+      'dns.digitale-gesellschaft.ch'
+      'dns.digitale-gesellschaft.ch-ipv6'
+      'dns.digitalsize.net'
+      'dns.digitalsize.net-ipv6'
+      'dns.sb'
+      'dns0'
+      'dns0-kids'
+      'dns0-unfiltered'
+      'dns4all-ipv4'
+      'dns4all-ipv6'
+      'dnscry.pt-adelaide-ipv4'
+      'dnscry.pt-adelaide-ipv6'
+      'dnscry.pt-allentown-ipv4'
+      'dnscry.pt-allentown-ipv6'
+      'dnscry.pt-amsterdam-ipv4'
+      'dnscry.pt-amsterdam-ipv6'
+      'dnscry.pt-amsterdam02-ipv4'
+      'dnscry.pt-amsterdam02-ipv6'
+      'dnscry.pt-ashburn-ipv4'
+      'dnscry.pt-ashburn-ipv6'
+      'dnscry.pt-athens-ipv4'
+      'dnscry.pt-athens-ipv6'
+      'dnscry.pt-atlanta-ipv4'
+      'dnscry.pt-atlanta-ipv6'
+      'dnscry.pt-auckland-ipv4'
+      'dnscry.pt-auckland-ipv6'
+      'dnscry.pt-barcelona-ipv4'
+      'dnscry.pt-barcelona-ipv6'
+      'dnscry.pt-bengaluru-ipv4'
+      'dnscry.pt-bengaluru-ipv6'
+      'dnscry.pt-berkeleysprings-ipv4'
+      'dnscry.pt-berkeleysprings-ipv6'
+      'dnscry.pt-bogota-ipv4'
+      'dnscry.pt-bogota-ipv6'
+      'dnscry.pt-bratislava-ipv4'
+      'dnscry.pt-bratislava-ipv6'
+      'dnscry.pt-brisbane-ipv4'
+      'dnscry.pt-brisbane-ipv6'
+      'dnscry.pt-brussels-ipv4'
+      'dnscry.pt-brussels-ipv6'
+      'dnscry.pt-bucharest-ipv4'
+      'dnscry.pt-bucharest-ipv6'
+      'dnscry.pt-budapest-ipv4'
+      'dnscry.pt-budapest-ipv6'
+      'dnscry.pt-calgary-ipv4'
+      'dnscry.pt-calgary-ipv6'
+      'dnscry.pt-capetown-ipv4'
+      'dnscry.pt-capetown-ipv6'
+      'dnscry.pt-capetown02-ipv4'
+      'dnscry.pt-capetown02-ipv6'
+      'dnscry.pt-chicago-ipv4'
+      'dnscry.pt-chicago-ipv6'
+      'dnscry.pt-chisinau-ipv4'
+      'dnscry.pt-chisinau-ipv6'
+      'dnscry.pt-copenhagen-ipv4'
+      'dnscry.pt-copenhagen-ipv6'
+      'dnscry.pt-coventry-ipv4'
+      'dnscry.pt-coventry-ipv6'
+      'dnscry.pt-dallas-ipv4'
+      'dnscry.pt-dallas-ipv6'
+      'dnscry.pt-denver-ipv4'
+      'dnscry.pt-denver-ipv6'
+      'dnscry.pt-detroit-ipv4'
+      'dnscry.pt-detroit-ipv6'
+      'dnscry.pt-dublin-ipv4'
+      'dnscry.pt-dublin-ipv6'
+      'dnscry.pt-durham-ipv4'
+      'dnscry.pt-durham-ipv6'
+      'dnscry.pt-dusseldorf-ipv4'
+      'dnscry.pt-dusseldorf-ipv6'
+      'dnscry.pt-dusseldorf02-ipv4'
+      'dnscry.pt-dusseldorf02-ipv6'
+      'dnscry.pt-ebenecity-ipv4'
+      'dnscry.pt-ebenecity-ipv6'
+      'dnscry.pt-ebenecity02-ipv4'
+      'dnscry.pt-ebenecity02-ipv6'
+      'dnscry.pt-eygelshoven-ipv4'
+      'dnscry.pt-eygelshoven-ipv6'
+      'dnscry.pt-flint-ipv4'
+      'dnscry.pt-flint-ipv6'
+      'dnscry.pt-frankfurt-ipv4'
+      'dnscry.pt-frankfurt-ipv6'
+      'dnscry.pt-frankfurt02-ipv4'
+      'dnscry.pt-frankfurt02-ipv6'
+      'dnscry.pt-fremont-ipv4'
+      'dnscry.pt-fremont-ipv6'
+      'dnscry.pt-fremont02-ipv4'
+      'dnscry.pt-fremont02-ipv6'
+      'dnscry.pt-fujairah-ipv4'
+      'dnscry.pt-fujairah-ipv6'
+      'dnscry.pt-gdansk-ipv4'
+      'dnscry.pt-gdansk-ipv6'
+      'dnscry.pt-geneva-ipv4'
+      'dnscry.pt-geneva-ipv6'
+      'dnscry.pt-grandrapids-ipv4'
+      'dnscry.pt-grandrapids-ipv6'
+      'dnscry.pt-guayaquil-ipv4'
+      'dnscry.pt-guayaquil-ipv6'
+      'dnscry.pt-hafnarfjordur-ipv4'
+      'dnscry.pt-hafnarfjordur-ipv6'
+      'dnscry.pt-halifax-ipv4'
+      'dnscry.pt-halifax-ipv6'
+      'dnscry.pt-hanoi-ipv4'
+      'dnscry.pt-hanoi-ipv6'
+      'dnscry.pt-helsinki-ipv4'
+      'dnscry.pt-helsinki-ipv6'
+      'dnscry.pt-hochiminhcity-ipv4'
+      'dnscry.pt-hochiminhcity-ipv6'
+      'dnscry.pt-hongkong-ipv4'
+      'dnscry.pt-hongkong-ipv6'
+      'dnscry.pt-hongkong03-ipv4'
+      'dnscry.pt-hongkong03-ipv6'
+      'dnscry.pt-houston-ipv4'
+      'dnscry.pt-houston-ipv6'
+      'dnscry.pt-hudiksvall-ipv4'
+      'dnscry.pt-hudiksvall-ipv6'
+      'dnscry.pt-ikeja-ipv4'
+      'dnscry.pt-ikeja-ipv6'
+      'dnscry.pt-indianapolis-ipv4'
+      'dnscry.pt-indianapolis-ipv6'
+      'dnscry.pt-islamabad-ipv4'
+      'dnscry.pt-islamabad-ipv6'
+      'dnscry.pt-istanbul-ipv4'
+      'dnscry.pt-istanbul-ipv6'
+      'dnscry.pt-jacksonville-ipv4'
+      'dnscry.pt-jacksonville-ipv6'
+      'dnscry.pt-jakarta-ipv4'
+      'dnscry.pt-jakarta-ipv6'
+      'dnscry.pt-johannesburg-ipv4'
+      'dnscry.pt-johannesburg-ipv6'
+      'dnscry.pt-johannesburg02-ipv4'
+      'dnscry.pt-johannesburg02-ipv6'
+      'dnscry.pt-johor-ipv4'
+      'dnscry.pt-johor-ipv6'
+      'dnscry.pt-kansascity-ipv4'
+      'dnscry.pt-kansascity-ipv6'
+      'dnscry.pt-kyiv-ipv4'
+      'dnscry.pt-kyiv-ipv6'
+      'dnscry.pt-kyiv02-ipv4'
+      'dnscry.pt-lagos-ipv4'
+      'dnscry.pt-lagos-ipv6'
+      'dnscry.pt-lasvegas-ipv4'
+      'dnscry.pt-lasvegas-ipv6'
+      'dnscry.pt-libertylake-ipv4'
+      'dnscry.pt-libertylake-ipv6'
+      'dnscry.pt-lima02-ipv4'
+      'dnscry.pt-lima02-ipv6'
+      'dnscry.pt-lisbon-ipv4'
+      'dnscry.pt-lisbon-ipv6'
+      'dnscry.pt-london-ipv4'
+      'dnscry.pt-london-ipv6'
+      'dnscry.pt-losangeles-ipv4'
+      'dnscry.pt-losangeles-ipv6'
+      'dnscry.pt-losangeles02-ipv4'
+      'dnscry.pt-losangeles02-ipv6'
+      'dnscry.pt-luxembourg-ipv4'
+      'dnscry.pt-luxembourg-ipv6'
+      'dnscry.pt-madrid-ipv4'
+      'dnscry.pt-madrid-ipv6'
+      'dnscry.pt-manchester-ipv4'
+      'dnscry.pt-manchester-ipv6'
+      'dnscry.pt-marseille-ipv4'
+      'dnscry.pt-marseille-ipv6'
+      'dnscry.pt-melbourne-ipv4'
+      'dnscry.pt-melbourne-ipv6'
+      'dnscry.pt-miami-ipv4'
+      'dnscry.pt-miami-ipv6'
+      'dnscry.pt-milan-ipv4'
+      'dnscry.pt-milan-ipv6'
+      'dnscry.pt-minneapolis-ipv4'
+      'dnscry.pt-minneapolis-ipv6'
+      'dnscry.pt-molln-ipv4'
+      'dnscry.pt-molln-ipv6'
+      'dnscry.pt-montreal-ipv4'
+      'dnscry.pt-montreal-ipv6'
+      'dnscry.pt-moscow-ipv4'
+      'dnscry.pt-moscow-ipv6'
+      'dnscry.pt-mumbai-ipv4'
+      'dnscry.pt-mumbai-ipv6'
+      'dnscry.pt-munich-ipv4'
+      'dnscry.pt-munich-ipv6'
+      'dnscry.pt-naaldwijk-ipv4'
+      'dnscry.pt-naaldwijk-ipv6'
+      'dnscry.pt-newcastle-ipv4'
+      'dnscry.pt-newcastle-ipv6'
+      'dnscry.pt-newyork-ipv4'
+      'dnscry.pt-newyork-ipv6'
+      'dnscry.pt-nuremberg-ipv4'
+      'dnscry.pt-nuremberg-ipv6'
+      'dnscry.pt-oradea-ipv4'
+      'dnscry.pt-oradea-ipv6'
+      'dnscry.pt-ottoville-ipv4'
+      'dnscry.pt-ottoville-ipv6'
+      'dnscry.pt-palermo-ipv4'
+      'dnscry.pt-palermo-ipv6'
+      'dnscry.pt-paris-ipv4'
+      'dnscry.pt-paris-ipv6'
+      'dnscry.pt-perth-ipv4'
+      'dnscry.pt-perth-ipv6'
+      'dnscry.pt-philadelphia-ipv4'
+      'dnscry.pt-philadelphia-ipv6'
+      'dnscry.pt-phoenix-ipv4'
+      'dnscry.pt-phoenix-ipv6'
+      'dnscry.pt-portedwards-ipv4'
+      'dnscry.pt-portedwards-ipv6'
+      'dnscry.pt-portland-ipv4'
+      'dnscry.pt-portland-ipv6'
+      'dnscry.pt-prague-ipv4'
+      'dnscry.pt-prague-ipv6'
+      'dnscry.pt-queretaro-ipv4'
+      'dnscry.pt-queretaro-ipv6'
+      'dnscry.pt-redditch-ipv4'
+      'dnscry.pt-redditch-ipv6'
+      'dnscry.pt-riga-ipv4'
+      'dnscry.pt-riga-ipv6'
+      'dnscry.pt-saltlakecity-ipv4'
+      'dnscry.pt-saltlakecity-ipv6'
+      'dnscry.pt-sandefjord-ipv4'
+      'dnscry.pt-sandefjord-ipv6'
+      'dnscry.pt-santaclara-ipv4'
+      'dnscry.pt-santaclara-ipv6'
+      'dnscry.pt-saopaulo-ipv4'
+      'dnscry.pt-saopaulo-ipv6'
+      'dnscry.pt-seattle-ipv4'
+      'dnscry.pt-seattle-ipv6'
+      'dnscry.pt-seoul-ipv4'
+      'dnscry.pt-seoul-ipv6'
+      'dnscry.pt-singapore-ipv4'
+      'dnscry.pt-singapore-ipv6'
+      'dnscry.pt-sofia-ipv4'
+      'dnscry.pt-sofia-ipv6'
+      'dnscry.pt-spokane-ipv4'
+      'dnscry.pt-spokane-ipv6'
+      'dnscry.pt-stockholm-ipv4'
+      'dnscry.pt-stockholm-ipv6'
+      'dnscry.pt-sydney02-ipv4'
+      'dnscry.pt-sydney02-ipv6'
+      'dnscry.pt-taipeh-ipv4'
+      'dnscry.pt-taipeh-ipv6'
+      'dnscry.pt-tallinn-ipv4'
+      'dnscry.pt-tallinn-ipv6'
+      'dnscry.pt-tampa-ipv4'
+      'dnscry.pt-tampa-ipv6'
+      'dnscry.pt-taos-ipv4'
+      'dnscry.pt-taos-ipv6'
+      'dnscry.pt-tbilisi-ipv4'
+      'dnscry.pt-tbilisi-ipv6'
+      'dnscry.pt-telaviv-ipv4'
+      'dnscry.pt-telaviv-ipv6'
+      'dnscry.pt-timisoara-ipv4'
+      'dnscry.pt-timisoara-ipv6'
+      'dnscry.pt-tirana-ipv4'
+      'dnscry.pt-tirana-ipv6'
+      'dnscry.pt-tokyo-ipv4'
+      'dnscry.pt-tokyo-ipv6'
+      'dnscry.pt-tokyo02-ipv4'
+      'dnscry.pt-tokyo02-ipv6'
+      'dnscry.pt-toronto-ipv4'
+      'dnscry.pt-toronto-ipv6'
+      'dnscry.pt-tuusula-ipv4'
+      'dnscry.pt-tuusula-ipv6'
+      'dnscry.pt-valdivia-ipv4'
+      'dnscry.pt-valdivia-ipv6'
+      'dnscry.pt-vancouver-ipv4'
+      'dnscry.pt-vancouver-ipv6'
+      'dnscry.pt-vienna-ipv4'
+      'dnscry.pt-vienna-ipv6'
+      'dnscry.pt-vilnius-ipv4'
+      'dnscry.pt-vilnius-ipv6'
+      'dnscry.pt-warsaw02-ipv4'
+      'dnscry.pt-warsaw02-ipv6'
+      'dnscry.pt-yerevan-ipv4'
+      'dnscry.pt-yerevan-ipv6'
+      'dnscrypt.ca-ipv4'
+      'dnscrypt.ca-ipv4-doh'
+      'dnscrypt.pl'
+      'dnscrypt.pl-guardian'
+      'dnscrypt.uk-ipv4'
+      'dnscrypt.uk-ipv6'
+      'dnsforfamily'
+      'dnsforfamily-doh'
+      'dnsforfamily-doh-no-safe-search'
+      'dnsforfamily-no-safe-search'
+      'dnsforfamily-v6'
+      'dnsforge.de'
+      'dnsforge.de-ipv6'
+      'dnsforge.de-nofilter'
+      'dnsforge.de-nofilter-ipv6'
+      'dnslow.me'
+      'dnspod'
+      'doh-cleanbrowsing-adult'
+      'doh-cleanbrowsing-family'
+      'doh-cleanbrowsing-security'
+      'doh-crypto-sx'
+      'doh-crypto-sx-ipv6'
+      'doh.appliedprivacy.net'
+      'doh.ffmuc.net'
+      'doh.ffmuc.net-2'
+      'doh.ffmuc.net-v6'
+      'doh.ffmuc.net-v6-2'
+      'doh.ibksturm'
+      'doh.tiar.app'
+      'doh.tiar.app-doh'
+      'doh.tiarap.org'
+      'doh.tiarap.org-ipv6'
+      'faelix-uk-ipv4'
+      'faelix-uk-ipv6'
+      'fdn'
+      'fdn-ipv6'
+      'ffmuc.net'
+      'ffmuc.net-v6'
+      'google'
+      'google-ipv6'
+      'he'
+      'ibksturm'
+      'iij'
+      'jp.tiar.app'
+      'jp.tiar.app-doh'
+      'jp.tiar.app-doh-ipv6'
+      'jp.tiar.app-ipv6'
+      'jp.tiarap.org'
+      'jp.tiarap.org-ipv6'
+      'ksol.io-ns2-dnscrypt-ipv4'
+      'ksol.io-ns2-dnscrypt-ipv6'
+      'libredns'
+      'libredns-noads'
+      'mullvad-adblock-doh'
+      'mullvad-all-doh'
+      'mullvad-base-doh'
+      'mullvad-doh'
+      'mullvad-extend-doh'
+      'mullvad-family-doh'
+      'nextdns'
+      'nextdns-ipv6'
+      'nextdns-ultralow'
+      'nic.cz'
+      'nic.cz-ipv6'
+      'njalla-doh'
+      'nwps.fi'
+      'plan9dns-fl'
+      'plan9dns-fl-doh'
+      'plan9dns-fl-doh-ipv6'
+      'plan9dns-fl-ipv6'
+      'plan9dns-mx'
+      'plan9dns-mx-doh'
+      'plan9dns-mx-doh-ipv6'
+      'plan9dns-mx-ipv6'
+      'plan9dns-nj'
+      'plan9dns-nj-doh'
+      'plan9dns-nj-doh-ipv6'
+      'plan9dns-nj.ipv6'
+      'qihoo360-doh'
+      'quad101'
+      'quad9-dnscrypt-ip4-filter-ecs-pri'
+      'quad9-dnscrypt-ip4-filter-pri'
+      'quad9-dnscrypt-ip4-nofilter-ecs-pri'
+      'quad9-dnscrypt-ip4-nofilter-pri'
+      'quad9-dnscrypt-ip6-filter-ecs-pri'
+      'quad9-dnscrypt-ip6-filter-pri'
+      'quad9-dnscrypt-ip6-nofilter-ecs-pri'
+      'quad9-dnscrypt-ip6-nofilter-pri'
+      'quad9-doh-ip4-port443-filter-ecs-pri'
+      'quad9-doh-ip4-port443-filter-pri'
+      'quad9-doh-ip4-port443-nofilter-ecs-pri'
+      'quad9-doh-ip4-port443-nofilter-pri'
+      'quad9-doh-ip6-port443-filter-ecs-pri'
+      'quad9-doh-ip6-port443-filter-pri'
+      'quad9-doh-ip6-port443-nofilter-ecs-pri'
+      'quad9-doh-ip6-port443-nofilter-pri'
+      'restena-doh-ipv4'
+      'restena-doh-ipv6'
+      'rethinkdns-doh'
+      'safesurfer'
+      'safesurfer-doh'
+      'saldns01-conoha-ipv4'
+      'saldns02-conoha-ipv4'
+      'saldns03-conoha-ipv4'
+      'scaleway-ams'
+      'scaleway-ams-ipv6'
+      'scaleway-fr'
+      'scaleway-fr-ipv6'
+      'serbica'
+      'sfw.scaleway-fr'
+      'switch'
+      'switch-ipv6'
+      'tuna-doh-ipv6'
+      'uncensoreddns-dk-ipv4'
+      'uncensoreddns-dk-ipv6'
+      'uncensoreddns-ipv4'
+      'uncensoreddns-ipv6'
+      'userspace-australia'
+      'userspace-australia-ipv6'
+      'v.dnscrypt.uk-ipv4'
+      'v.dnscrypt.uk-ipv6'
+      'wikimedia'
+      'yandex'
+      'yandex-ipv6'
+      'yandex-safe'
+      'yandex-safe-ipv6'
     )
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 1
-    Text = '9.9.9.9'
+    Text = 'cisco-doh'
   end
   object StaticText1: TStaticText
     Left = 0
     Height = 20
-    Top = 310
-    Width = 549
+    Top = 299
+    Width = 555
     Align = alBottom
     BorderStyle = sbsSunken
     Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2025'
@@ -784,12 +1306,13 @@ object MainForm: TMainForm
     TabOrder = 11
   end
   object CheckBox1: TCheckBox
-    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Control = Owner
     Left = 6
     Height = 32
-    Top = 131
+    Top = 126
     Width = 109
     Anchors = [akLeft]
+    BorderSpacing.Left = 6
     Caption = '-> Socks5 ->'
     TabOrder = 4
     OnChange = CheckBox1Change
@@ -801,7 +1324,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 125
     Height = 17
-    Top = 139
+    Top = 134
     Width = 40
     BorderSpacing.Left = 10
     BorderSpacing.Right = 4
@@ -817,8 +1340,8 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 170
     Height = 37
-    Top = 129
-    Width = 185
+    Top = 124
+    Width = 191
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     TabOrder = 5
@@ -829,9 +1352,9 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label6
     AnchorSideTop.Side = asrCenter
-    Left = 370
+    Left = 376
     Height = 17
-    Top = 139
+    Top = 134
     Width = 29
     BorderSpacing.Left = 15
     BorderSpacing.Top = 48
@@ -845,8 +1368,8 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 6
     Height = 10
-    Top = 106
-    Width = 537
+    Top = 102
+    Width = 543
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 6
@@ -858,12 +1381,13 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label2
     AnchorSideBottom.Side = asrCenter
-    Left = 404
+    Left = 410
     Height = 32
     Hint = 'Tor and the like'
-    Top = 175
+    Top = 164
     Width = 129
     Anchors = [akLeft, akBottom]
+    BorderSpacing.Right = 6
     Caption = 'force_tcp = true'
     ParentShowHint = False
     ShowHint = True
@@ -876,9 +1400,9 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 404
+    Left = 410
     Height = 37
-    Top = 129
+    Top = 124
     Width = 139
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5

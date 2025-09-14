@@ -26,6 +26,7 @@ msgid "Tor and the like"
 msgstr ""
 
 #: tmainform.combobox1.hint
+msgctxt "tmainform.combobox1.hint"
 msgid "Up, Down, PageUP, PageDown..."
 msgstr ""
 
@@ -33,8 +34,13 @@ msgstr ""
 msgid "cloudflare"
 msgstr ""
 
+#: tmainform.combobox2.hint
+msgctxt "tmainform.combobox2.hint"
+msgid "Up, Down, PageUP, PageDown..."
+msgstr ""
+
 #: tmainform.combobox2.text
-msgid "9.9.9.9"
+msgid "cisco-doh"
 msgstr ""
 
 #: tmainform.combobox3.text
@@ -52,7 +58,7 @@ msgid "127.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
-msgid "Resolver:"
+msgid "Resolvers:"
 msgstr ""
 
 #: tmainform.label1.hint
@@ -71,10 +77,6 @@ msgstr ""
 #: tmainform.label4.caption
 msgctxt "tmainform.label4.caption"
 msgid "Port:"
-msgstr ""
-
-#: tmainform.label5.caption
-msgid "FallBack:"
 msgstr ""
 
 #: tmainform.label6.caption
