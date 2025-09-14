@@ -15,6 +15,6 @@ Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Res
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/Screenshot1.png)
 
-Testing was carried out by the WireShark network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
+Testing was carried out by the `WireShark` network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
 
 Made and tested in Mageia Linux.
