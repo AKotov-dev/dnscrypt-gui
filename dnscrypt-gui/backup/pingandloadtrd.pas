@@ -27,8 +27,8 @@ uses
 
 constructor TPingAndLoad.Create;
 begin
-  inherited Create(False); // сразу запускаем поток
-  FreeOnTerminate := True; // уничтожаем поток автоматически
+  inherited Create(False); //сразу запускаем поток
+  FreeOnTerminate := True; //уничтожаем поток автоматически
 end;
 
 procedure TPingAndLoad.Execute;
@@ -52,7 +52,7 @@ begin
     if ExProcess.ExitStatus = 0 then
       FHasIPv6 := True;
 
-    // синхронизация с GUI
+    //синхронизация с GUI
     Synchronize(@LoadComboBox);
 
   finally
@@ -62,10 +62,11 @@ end;
 
 procedure TPingAndLoad.LoadComboBox;
 begin
-  // присвоим глобальной переменной HasIPv6 значение из потока
-  HasIPv6 := FHasIPv6;
+  //присвоим глобальной переменной HasIPv6 значение из потока
+  //HasIPv6 := FHasIPv6;
+  HasIPv6:=true;
 
-  // загрузка списка серверов
+  //загрузка списка серверов
   MainForm.LoadResolvers;
 end;
 
