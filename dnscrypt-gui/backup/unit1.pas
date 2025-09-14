@@ -406,7 +406,6 @@ begin
     CheckBox2.Checked := False;
 end;
 
-
 //Читаем файлы для REAL_USER, DISPLAY_VAL, XAUTH_VAL
 function ReadFileFirstLine(const FileName: string): string;
 var
@@ -429,11 +428,9 @@ end;
 procedure OpenURLFromUserSession(const AURL: string);
 var
   P: TProcess;
-  REAL_USER, DISPLAY_VAL, XAUTH_VAL, cmd: string;
+  REAL_USER, cmd: string;
 begin
   REAL_USER := ReadFileFirstLine('/tmp/dnscrypt-gui_REAL_USER');
-  DISPLAY_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_DISPLAY');
-  XAUTH_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_XAUTHORITY');
 
   if (REAL_USER = '') or (AURL = '') then Exit;
 
@@ -441,18 +438,13 @@ begin
 
   P := TProcess.Create(nil);
   try
-    P.Executable := 'runuser';
+    P.Executable := 'su';
     P.Parameters.Add('-l');
     P.Parameters.Add(REAL_USER);
     P.Parameters.Add('-c');
     P.Parameters.Add(cmd);
 
-    //Асинхронный запуск, не блокируем GUI
     P.Options := P.Options + [poNoConsole, poNewProcessGroup];
-
-    //Прокидываем переменные сессии пользователя
-    P.Environment.Add('DISPLAY=' + DISPLAY_VAL);
-    P.Environment.Add('XAUTHORITY=' + XAUTH_VAL);
 
     P.Execute;
   finally
@@ -463,7 +455,7 @@ end;
 //Проверка DNSLeak
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
-  //Перезапускаем
+  //Перезапускаем, если выбирали новый dns-сервер из списка
   BitBtn2.Click;
 
   //Проверка DNSLeak
