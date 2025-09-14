@@ -11,10 +11,10 @@ Used servers with DNSCrypt support without logging (except google): https://dnsc
 
 Cloudflare `Resolver` (default) is recommended as the fastest. `Fallback` is a DNS server for emergency name resolution.
 
-Testing was carried out by the WireShark network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
+Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Resolver:` link next to the list of DNS servers). If the system uses a global proxy (for example `xray-core` or another), then with the browser already open, the site will most likely show information about DNS wrapped in a proxy. To see the clean result - just close the browser and click the `Resolver:` link. In this case, it should pick up your local dns (127.0.0.1) from the `/etc/resolv.conf` file, if the network connection is configured correctly. In any case, you will receive valuable information for your security.
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/Screenshot1.png)
 
-Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Resolver:` link next to the list of DNS servers). If the system uses a global proxy (for example `xray-core` or another), then with the browser already open, the site will most likely show information about DNS wrapped in a proxy. To see the clean result - just close the browser and click the `Resolver:` link. In this case, it should pick up your local dns (127.0.0.1) from the `/etc/resolv.conf` file, if the network connection is configured correctly. In any case, you will receive valuable information for your security.
+Testing was carried out by the WireShark network analyzer and showed high encryption efficiency. Without encryption with the `dns` filter, visited sites are easily and clearly tracked. With encryption enabled, this type of traffic disappears and turns into a chaotic stream of characters. Such encryption does not affect the performance in any way, but it has a positive effect on security.
 
 Made and tested in Mageia Linux.
