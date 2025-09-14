@@ -7,7 +7,7 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 
 The `DNSCrypt-GUI` settings are optimal by default. It remains to start the local proxy server with the `Restart` button and set its address in the DNS settings of the network card (by default, 127.0.0.1). If the server is up, it is automatically put into auto-upload. Green indicator - the server is running, yellow - waiting/problem. The `Stop` button stops the server and disables its autoloading.
 
-Used servers with DNSCrypt support without logging (except google): https://dnscrypt.info/public-servers/
+Used servers with DNSCrypt support without logging: https://dnscrypt.info/public-servers/
 
 Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Resolvers:` link next to the list of DNS servers). If the system uses a global proxy (for example `xray-core` or another), then with the browser already open, the site will most likely show information about DNS wrapped in a proxy. To see the clean result - just close the browser and click the `Resolvers:` link. In this case, it should pick up your local dns (127.0.0.1) from the `/etc/resolv.conf` file, if the network connection is configured correctly. In any case, you will receive valuable information for your security.
 
