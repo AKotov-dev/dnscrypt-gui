@@ -645,7 +645,7 @@ object MainForm: TMainForm
     )
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 3
+    TabOrder = 1
     Text = 'cloudflare'
   end
   object Label2: TLabel
@@ -1288,7 +1288,7 @@ object MainForm: TMainForm
     )
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 1
+    TabOrder = 3
     Text = 'cisco-doh'
   end
   object StaticText1: TStaticText

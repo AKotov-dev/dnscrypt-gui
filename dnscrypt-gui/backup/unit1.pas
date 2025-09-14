@@ -305,8 +305,6 @@ begin
 
     S.Add('''' + 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
       '''');
-
-
     S.Add(']');
 
     S.Add('');
