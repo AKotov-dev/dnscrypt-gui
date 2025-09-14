@@ -15,6 +15,6 @@ Testing was carried out by the WireShark network analyzer and showed high encryp
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot8.png)
 
-Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Resolver` link next to the list of DNS servers). If the system uses a global proxy (for example `xray-core` or another), then with the browser already open, the site will most likely show information about DNS wrapped in a proxy. To see the clean result - just close the browser and click the `Resolver` link. In this case, it should pick up your local dns (127.0.0.1) from the `/etc/resolv.conf` file, if the network connection is configured correctly. In any case, you will receive valuable information for your security.
+Starting with `v1.0` it is possible to check the system for DNS leaks (blue `Resolver:` link next to the list of DNS servers). If the system uses a global proxy (for example `xray-core` or another), then with the browser already open, the site will most likely show information about DNS wrapped in a proxy. To see the clean result - just close the browser and click the `Resolver:` link. In this case, it should pick up your local dns (127.0.0.1) from the `/etc/resolv.conf` file, if the network connection is configured correctly. In any case, you will receive valuable information for your security.
 
 Made and tested in Mageia Linux.
