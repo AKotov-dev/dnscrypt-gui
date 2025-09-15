@@ -417,8 +417,7 @@ begin
   end;
 
   //force_tcp
-  RunCommand('bash', ['-c',
-    'grep "^force_tcp = true" /opt/dnscrypt-gui/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c', 'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
     CheckBox2.Checked := True
   else

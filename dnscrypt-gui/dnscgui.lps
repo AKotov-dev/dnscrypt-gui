@@ -38,7 +38,7 @@
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <CursorPos X="7" Y="21"/>
+        <CursorPos X="18"/>
         <UsageCount Value="50"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -51,8 +51,7 @@
         <UnitName Value="Unit1"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="397"/>
-        <CursorPos X="35" Y="421"/>
+        <CursorPos X="13"/>
         <UsageCount Value="50"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

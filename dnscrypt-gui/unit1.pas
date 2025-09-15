@@ -305,7 +305,7 @@ begin
     S.Add(']');
 
     S.Add('');
-    S.Add('cache_file = ' + '''' + 'public-resolvers.md' + '''');
+    S.Add('cache_file = ' + '''' + '/etc/public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
     S.Add('refresh_delay = 72');
@@ -417,8 +417,7 @@ begin
   end;
 
   //force_tcp
-  RunCommand('bash', ['-c',
-    'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c', 'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
     CheckBox2.Checked := True
   else
