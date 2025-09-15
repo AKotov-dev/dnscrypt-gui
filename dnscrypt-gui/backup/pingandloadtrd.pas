@@ -63,8 +63,7 @@ end;
 procedure TPingAndLoad.LoadComboBox;
 begin
   //присвоим глобальной переменной HasIPv6 значение из потока
-  //HasIPv6 := FHasIPv6;
-  HasIPv6:=true;
+  HasIPv6 := FHasIPv6;
 
   //загрузка списка серверов
   MainForm.LoadResolvers;

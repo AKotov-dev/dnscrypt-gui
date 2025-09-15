@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=1.0
+version=1.1
 
 [RELEASE]
 release=0.mrx9
@@ -31,7 +31,7 @@ urlcopy=https://github.com/AKotov-dev/dnscrypt-gui
 license=GPLv3
 
 [DEPS]
-deps=dnscrypt-proxy, systemd, gtk2
+deps=systemd, gtk2
 
 [META]
 meta=0
@@ -45,10 +45,23 @@ deb=0
 [FILES]
 0=/usr/bin/dnscrypt-gui
 1=/usr/share/icons/dnscrypt-gui.png
-2=/usr/share/applications/dnscrypt-gui.desktop
-3=/usr/share/polkit-1/actions/dnscrypt-gui.policy
-4=/usr/share/dnscrypt-gui/
-5=/usr/share/doc/dnscrypt-gui/
+2=/etc/systemd/system/dnscrypt-proxy.service
+3=/usr/share/applications/dnscrypt-gui.desktop
+4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
+5=/opt/dnscrypt-gui/
+6=/usr/share/doc/dnscrypt-gui/
+
+[AFTERINSTALL]
+0=systemctl daemon-reload >/dev/null 2>&1 || :
+
+[AFTERREMOVE]
+0=systemctl daemon-reload >/dev/null 2>&1 || :
+
+[BEFOREREMOVE]
+0=if [ $1 -eq 0 ] ; then
+1=systemctl disable dnscrypt-proxy.service >/dev/null 2>&1 || :
+2=systemctl stop dnscrypt-proxy.service >/dev/null 2>&1 || :
+3=fi
 
 [URL32]
 url32=https://github.com/AKotov-dev/dnscrypt-gui

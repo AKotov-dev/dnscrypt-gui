@@ -69,7 +69,7 @@ uses PingAndLoadTRD;
 
   { TMainForm }
 
-//Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /etc/public-resolvers.md
+//Выборка/загрузка списка НЕЛОГИРУЮЩИХ dns-серверов в зависимости от поддержки IPv6 из /opt/dnscrypt-proxy/dnscrypt-proxy.md
 procedure TMainForm.LoadResolvers;
 var
   Lines: TStringList;
@@ -79,12 +79,13 @@ var
 begin
   //Тест
   //HasIPv6 := True;
+   showmessage('load');
 
-  if not FileExists('/etc/public-resolvers.md') then Exit;
+  if not FileExists('/opt/dnscrypt-gui/public-resolvers.md') then Exit;
 
   Lines := TStringList.Create;
   try
-    Lines.LoadFromFile('/etc/public-resolvers.md');
+    Lines.LoadFromFile('/opt/dnscrypt-gui/public-resolvers.md');
     ComboBox1.Items.BeginUpdate;
     try
       ComboBox1.Items.Clear;
@@ -184,7 +185,7 @@ begin
   end;
 end;
 
-//Делаем конфиг, сервис запуска из /usr/lib/systemd/system/dnscrypt-proxy.service (если нет) и перезапускаем
+//Делаем конфиг и перезапускаем
 procedure TMainForm.BitBtn2Click(Sender: TObject);
 var
   S: TStringList;
@@ -308,7 +309,7 @@ begin
     S.Add(']');
 
     S.Add('');
-    S.Add('cache_file = ' + '''' + 'public-resolvers.md' + '''');
+    S.Add('cache_file = ' + '''' + '/opt/dnscrypt-gui/public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
     S.Add('refresh_delay = 72');
@@ -317,37 +318,8 @@ begin
     S.Add('');
     S.Add('[static]');
 
-    S.SaveToFile('/etc/dnscrypt-proxy.toml');
-
-    // Перекрываем глючный сервис запуска из /usr/lib/systemd/system/dnscrypt-proxy.service
-    if not FileExists('/etc/systemd/system/dnscrypt-proxy.service') then
-    begin
-      S.Clear;
-      S.Add('[Unit]');
-      S.Add('Description=DNSCrypt client proxy (no socket activation)');
-      S.Add('Documentation=man:dnscrypt-proxy(8)');
-      S.Add('After=network.target');
-      S.Add('Before=nss-lookup.target');
-      S.Add('Wants=nss-lookup.target');
-      S.Add('');
-      S.Add('[Service]');
-      S.Add('Type=simple');
-      S.Add('Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin');
-      S.Add('ExecStart=dnscrypt-proxy -config /etc/dnscrypt-proxy.toml');
-      S.Add('Restart=on-failure');
-      S.Add('NonBlocking=true');
-      S.Add('');
-      S.Add('[Install]');
-      S.Add('WantedBy=multi-user.target');
-
-      S.SaveToFile('/etc/systemd/system/dnscrypt-proxy.service');
-
-      RunCommand('bash', ['-c', 'systemctl daemon-reload; ' +
-        'systemctl stop dnscrypt-proxy.socket; ' +
-        'systemctl disable dnscrypt-proxy.socket; ' +
-        'systemctl mask dnscrypt-proxy.socket'],
-        output);
-    end;
+    //Сохраняем файл конфигурации
+    S.SaveToFile('/opt/dnscrypt-gui/dnscrypt-proxy.toml');
 
     //Если с новой конфигурацией запущен, сделать enable, иначе disable
     RunCommand('bash', ['-c', 'systemctl restart dnscrypt-proxy; ' +
@@ -419,21 +391,21 @@ begin
   TPingAndLoad.Create;
 
   //Via SOCKS5
-  RunCommand('/bin/bash', ['-c', 'grep "^proxy = ' + '''' +
-    'socks5:" /etc/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' +
+    'socks5:" /opt/dnscrypt-gui/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
   begin
     CheckBox1.Checked := True;
     Edit2.Enabled := True;
     ComboBox3.Enabled := True;
     //Server
-    if RunCommand('/bin/bash',
-      ['-c', 'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' +
+    if RunCommand('bash',
+      ['-c', 'grep "socks5" /opt/dnscrypt-gui/dnscrypt-proxy.toml | tr -d "/\' +
       '''' + '" | cut -f2 -d":"'], S) then
       Edit2.Text := Trim(S);
     //Port
-    if RunCommand('/bin/bash',
-      ['-c', 'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' +
+    if RunCommand('bash',
+      ['-c', 'grep "socks5" /opt/dnscrypt-gui/dnscrypt-proxy.toml | tr -d "/\' +
       '''' + '" | cut -f3 -d":"'], S) then
       ComboBox3.Text := Trim(S);
   end
@@ -446,8 +418,8 @@ begin
   end;
 
   //force_tcp
-  RunCommand('/bin/bash', ['-c',
-    'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c',
+    'grep "^force_tcp = true" /opt/dnscrypt-gui/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
     CheckBox2.Checked := True
   else
