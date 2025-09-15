@@ -77,11 +77,11 @@ var
   Line, AliasLine, LineLower: string;
   IncludeServer, IsIPv6: boolean;
 begin
-  if not FileExists('/opt/dnscrypt-gui/public-resolvers.md') then Exit;
+  if not FileExists('/etc/public-resolvers.md') then Exit;
 
   Lines := TStringList.Create;
   try
-    Lines.LoadFromFile('/opt/dnscrypt-gui/public-resolvers.md');
+    Lines.LoadFromFile('/etc/public-resolvers.md');
     ComboBox1.Items.BeginUpdate;
     try
       ComboBox1.Items.Clear;
@@ -305,7 +305,7 @@ begin
     S.Add(']');
 
     S.Add('');
-    S.Add('cache_file = ' + '''' + '/opt/dnscrypt-gui/public-resolvers.md' + '''');
+    S.Add('cache_file = ' + '''' + 'public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
     S.Add('refresh_delay = 72');
@@ -315,7 +315,7 @@ begin
     S.Add('[static]');
 
     //Сохраняем файл конфигурации
-    S.SaveToFile('/opt/dnscrypt-gui/dnscrypt-proxy.toml');
+    S.SaveToFile('/etc/dnscrypt-proxy.toml');
 
     //Если с новой конфигурацией запущен, сделать enable, иначе disable
     RunCommand('bash', ['-c', 'systemctl restart dnscrypt-proxy; ' +
@@ -362,6 +362,8 @@ procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   //Очистка временных файлов для безопасности
   DeleteFile('/tmp/dnscrypt-gui_REAL_USER');
+  DeleteFile('/tmp/dnscrypt-gui_DISPLAY');
+  DeleteFile('/tmp/dnscrypt-gui_WAYLAND');
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -371,6 +373,7 @@ begin
   //Конфиг
   if not DirectoryExists(GetEnvironmentVariable('HOME') + '/.config') then
     MkDir(GetEnvironmentVariable('HOME') + '/.config');
+
   XMLPropStorage1.FileName := GetEnvironmentVariable('HOME') +
     '/.config/dnscrypt-gui.conf';
 
@@ -388,7 +391,7 @@ begin
 
   //Via SOCKS5
   RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' +
-    'socks5:" /opt/dnscrypt-gui/dnscrypt-proxy.toml'], S);
+    'socks5:" /etc/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
   begin
     CheckBox1.Checked := True;
@@ -396,13 +399,13 @@ begin
     ComboBox3.Enabled := True;
     //Server
     if RunCommand('bash', ['-c',
-      'grep "socks5" /opt/dnscrypt-gui/dnscrypt-proxy.toml | tr -d "/\' +
-      '''' + '" | cut -f2 -d":"'], S) then
+      'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' + '''' +
+      '" | cut -f2 -d":"'], S) then
       Edit2.Text := Trim(S);
     //Port
     if RunCommand('bash', ['-c',
-      'grep "socks5" /opt/dnscrypt-gui/dnscrypt-proxy.toml | tr -d "/\' +
-      '''' + '" | cut -f3 -d":"'], S) then
+      'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' + '''' +
+      '" | cut -f3 -d":"'], S) then
       ComboBox3.Text := Trim(S);
   end
   else
@@ -415,14 +418,14 @@ begin
 
   //force_tcp
   RunCommand('bash', ['-c',
-    'grep "^force_tcp = true" /opt/dnscrypt-gui/dnscrypt-proxy.toml'], S);
+    'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
     CheckBox2.Checked := True
   else
     CheckBox2.Checked := False;
 end;
 
-//Читаем файлы для REAL_USER, DISPLAY_VAL, XAUTH_VAL
+//Читаем файлы для REAL_USER, DISPLAY_VAL, WAYLAND_VAL
 function ReadFileFirstLine(const FileName: string): string;
 var
   SL: TStringList;
@@ -444,13 +447,19 @@ end;
 procedure OpenURLFromUserSession(const AURL: string);
 var
   P: TProcess;
-  REAL_USER, cmd: string;
+  REAL_USER, DISPLAY_VAL, WAYLAND_VAL, cmd: string;
 begin
   REAL_USER := ReadFileFirstLine('/tmp/dnscrypt-gui_REAL_USER');
+  DISPLAY_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_DISPLAY');
+  WAYLAND_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_WAYLAND');
 
   if (REAL_USER = '') or (AURL = '') then Exit;
 
-  cmd := Format('xdg-open %s', [QuotedStr(AURL)]);
+  cmd := 'DISPLAY=' + DISPLAY_VAL;
+  if WAYLAND_VAL <> '' then
+    cmd := cmd + ' WAYLAND_DISPLAY=' + WAYLAND_VAL;
+
+  cmd := cmd + ' ' + Format('xdg-open %s', [QuotedStr(AURL)]);
 
   P := TProcess.Create(nil);
   try
@@ -480,12 +489,12 @@ end;
 
 procedure TMainForm.Label1MouseEnter(Sender: TObject);
 begin
-  Label1.Font.Color := clRed;  // подсветка при наведении
+  Label1.Font.Color := clRed;  //подсветка при наведении
 end;
 
 procedure TMainForm.Label1MouseLeave(Sender: TObject);
 begin
-  Label1.Font.Color := clBlue; // возвращаем исходный цвет
+  Label1.Font.Color := clBlue; //возвращаем исходный цвет
 end;
 
 //Stop/Disable dnscrypt-proxy
