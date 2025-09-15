@@ -80,8 +80,8 @@ toolversion=4.2
 
 [INFO]
 0=v1.1
-1=+ The dnscrypt-proxy package is no longer required
-2=+ Fully autonomous RPM and DEB packages (self-contained)
+1=+ The `dnscrypt-proxy` package is no longer required
+2=+ Fully autonomous `RPM` and `DEB` packages (self-contained)
 3=+ Own systemd service - `/etc/systemd/system/dnscrypt-proxy.service`
 4=+ The latest `dnscrypt-proxy` (v2.1.14) build from the developer's github is already inside
 5=

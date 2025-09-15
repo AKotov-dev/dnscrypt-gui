@@ -14,11 +14,11 @@ uses
   {$R *.res}
 
 begin
- { if GetEnvironmentVariable('USER') <> 'root' then
+  if GetEnvironmentVariable('USER') <> 'root' then
   begin
     MessageDlg(SRootEnvRequired, mtWarning, [mbOK], 0);
     Halt;
-  end;}
+  end;
 
   RequireDerivedFormResource := True;
   Application.Title := 'DNSCrypt-GUI v1.0';
