@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Buttons,
-  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator;
+  Spin, ExtCtrls, XMLPropStorage, Process, DefaultTranslator, LCLTranslator, LCLIntf;
 
 type
 
@@ -38,7 +38,6 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label1Click(Sender: TObject);
@@ -55,6 +54,7 @@ type
 
 var
   MainForm: TMainForm;
+  WorkDir: string;
   HasIPv6: boolean; //IPv6 в системе
 
 resourcestring
@@ -77,11 +77,11 @@ var
   Line, AliasLine, LineLower: string;
   IncludeServer, IsIPv6: boolean;
 begin
-  if not FileExists('/etc/public-resolvers.md') then Exit;
+  if not FileExists(WorkDir + '/public-resolvers.md') then Exit;
 
   Lines := TStringList.Create;
   try
-    Lines.LoadFromFile('/etc/public-resolvers.md');
+    Lines.LoadFromFile(WorkDir + '/public-resolvers.md');
     ComboBox1.Items.BeginUpdate;
     try
       ComboBox1.Items.Clear;
@@ -165,7 +165,8 @@ begin
       ListBox1.Items.Assign(S);
 
     ExProcess.Parameters.Delete(1);
-    ExProcess.Parameters.Add('systemctl --type=service --state=running | grep dnscrypt');
+    ExProcess.Parameters.Add(
+      'systemctl --user --type=service --state=running | grep dnscrypt');
 
     Exprocess.Execute;
     S.LoadFromStream(ExProcess.Output);
@@ -305,7 +306,7 @@ begin
     S.Add(']');
 
     S.Add('');
-    S.Add('cache_file = ' + '''' + '/etc/public-resolvers.md' + '''');
+    S.Add('cache_file = ' + '''' + WorkDir + '/public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
     S.Add('refresh_delay = 72');
@@ -315,12 +316,13 @@ begin
     S.Add('[static]');
 
     //Сохраняем файл конфигурации
-    S.SaveToFile('/etc/dnscrypt-proxy.toml');
+    S.SaveToFile(WorkDir + '/dnscrypt-proxy.toml');
 
     //Если с новой конфигурацией запущен, сделать enable, иначе disable
-    RunCommand('bash', ['-c', 'systemctl restart dnscrypt-proxy; ' +
-      'if [[ -n $(systemctl --type=service --state=running | grep dnscrypt) ]]; ' +
-      'then systemctl enable dnscrypt-proxy; else systemctl disable dnscrypt-proxy; fi'],
+    RunCommand('bash', ['-c', 'systemctl --user restart dnscrypt-proxy; ' +
+      'if [[ -n $(systemctl --user --type=service --state=running | grep dnscrypt) ]]; '
+      +
+      'then systemctl --user enable dnscrypt-proxy; else systemctl --user disable dnscrypt-proxy; fi'],
       output);
 
   finally
@@ -358,24 +360,17 @@ begin
   end;
 end;
 
-procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-  //Очистка временных файлов для безопасности
-  DeleteFile('/tmp/dnscrypt-gui_REAL_USER');
-  DeleteFile('/tmp/dnscrypt-gui_DISPLAY');
-  DeleteFile('/tmp/dnscrypt-gui_WAYLAND');
-end;
-
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   MainForm.Caption := Application.Title;
 
-  //Конфиг
-  if not DirectoryExists(GetEnvironmentVariable('HOME') + '/.config') then
-    MkDir(GetEnvironmentVariable('HOME') + '/.config');
+  //Рабочая директория
+  WorkDir := GetEnvironmentVariable('HOME') + '/.config/dnscrypt-gui';
 
-  XMLPropStorage1.FileName := GetEnvironmentVariable('HOME') +
-    '/.config/dnscrypt-gui.conf';
+  //Конфиг
+  if not DirectoryExists(WorkDir) then MkDir(WorkDir);
+
+  XMLPropStorage1.FileName := WorkDir + '/dnscrypt-gui.conf';
 
   XMLPropStorage1.Active := True;
   XMLPropStorage1.Restore;
@@ -390,22 +385,20 @@ begin
   TPingAndLoad.Create;
 
   //Via SOCKS5
-  RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' +
-    'socks5:" /etc/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' + 'socks5:" ' +
+    WorkDir + '/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
   begin
     CheckBox1.Checked := True;
     Edit2.Enabled := True;
     ComboBox3.Enabled := True;
     //Server
-    if RunCommand('bash', ['-c',
-      'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' + '''' +
-      '" | cut -f2 -d":"'], S) then
+    if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
+      '/dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f2 -d":"'], S) then
       Edit2.Text := Trim(S);
     //Port
-    if RunCommand('bash', ['-c',
-      'grep "socks5" /etc/dnscrypt-proxy.toml | tr -d "/\' + '''' +
-      '" | cut -f3 -d":"'], S) then
+    if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
+      'dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
       ComboBox3.Text := Trim(S);
   end
   else
@@ -417,7 +410,8 @@ begin
   end;
 
   //force_tcp
-  RunCommand('bash', ['-c', 'grep "^force_tcp = true" /etc/dnscrypt-proxy.toml'], S);
+  RunCommand('bash', ['-c', 'grep "^force_tcp = true" ' + WorkDir +
+    '/dnscrypt-proxy.toml'], S);
   if Trim(S) <> '' then
     CheckBox2.Checked := True
   else
@@ -442,40 +436,6 @@ begin
   end;
 end;
 
-//Открываем URL под юзером из root-сессии
-procedure OpenURLFromUserSession(const AURL: string);
-var
-  P: TProcess;
-  REAL_USER, DISPLAY_VAL, WAYLAND_VAL, cmd: string;
-begin
-  REAL_USER := ReadFileFirstLine('/tmp/dnscrypt-gui_REAL_USER');
-  DISPLAY_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_DISPLAY');
-  WAYLAND_VAL := ReadFileFirstLine('/tmp/dnscrypt-gui_WAYLAND');
-
-  if (REAL_USER = '') or (AURL = '') then Exit;
-
-  cmd := 'DISPLAY=' + DISPLAY_VAL;
-  if WAYLAND_VAL <> '' then
-    cmd := cmd + ' WAYLAND_DISPLAY=' + WAYLAND_VAL;
-
-  cmd := cmd + ' ' + Format('xdg-open %s', [QuotedStr(AURL)]);
-
-  P := TProcess.Create(nil);
-  try
-    P.Executable := 'su';
-    P.Parameters.Add('-l');
-    P.Parameters.Add(REAL_USER);
-    P.Parameters.Add('-c');
-    P.Parameters.Add(cmd);
-
-    P.Options := P.Options + [poNoConsole, poNewProcessGroup];
-
-    P.Execute;
-  finally
-    P.Free;
-  end;
-end;
-
 //Проверка DNSLeak
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
@@ -483,7 +443,7 @@ begin
   BitBtn2.Click;
 
   //Проверка DNSLeak
-  OpenURLFromUserSession('https://browserleaks.com/dns');
+  OpenURL('https://browserleaks.com/dns');
 end;
 
 procedure TMainForm.Label1MouseEnter(Sender: TObject);
@@ -504,7 +464,7 @@ begin
   Screen.Cursor := crHourGlass;
   Application.ProcessMessages;
   RunCommand('bash', ['-c',
-    'systemctl stop dnscrypt-proxy; systemctl disable dnscrypt-proxy'], s);
+    'systemctl --user stop dnscrypt-proxy; systemctl --user disable dnscrypt-proxy'], s);
   Screen.Cursor := crDefault;
 end;
 

@@ -65,6 +65,9 @@ begin
   //присвоим глобальной переменной HasIPv6 значение из потока
   HasIPv6 := FHasIPv6;
 
+  //Тест
+  //HasIPv6 := True;
+
   //загрузка списка серверов
   MainForm.LoadResolvers;
 end;

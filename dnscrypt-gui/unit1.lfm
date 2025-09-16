@@ -9,7 +9,6 @@ object MainForm: TMainForm
   ClientWidth = 555
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
   LCLVersion = '4.2.0.0'
-  OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
   object ListBox1: TListBox

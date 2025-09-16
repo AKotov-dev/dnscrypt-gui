@@ -45,7 +45,7 @@ deb=1
 [FILES]
 0=/usr/bin/dnscrypt-gui
 1=/usr/share/icons/dnscrypt-gui.png
-2=/etc/systemd/system/dnscrypt-proxy.service
+2=/etc/systemd/user/dnscrypt-proxy.service
 3=/usr/share/applications/dnscrypt-gui.desktop
 4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
 5=/opt/dnscrypt-gui/
@@ -54,10 +54,12 @@ deb=1
 [AFTERINSTALL]
 0=#!/bin/bash
 1=systemctl daemon-reload >/dev/null 2>&1 || :
+2=setcap 'cap_net_bind_service=+ep' /opt/dnscrypt-gui/dnscrypt-proxy 2>/dev/null || :
 
 [AFTERREMOVE]
 0=#!/bin/bash
 1=systemctl daemon-reload >/dev/null 2>&1 || :
+2=setcap -r /opt/dnscrypt-gui/dnscrypt-proxy 2>/dev/null || :
 
 [BEFOREREMOVE]
 0=#!/bin/bash

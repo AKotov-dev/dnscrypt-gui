@@ -14,15 +14,15 @@ uses
   {$R *.res}
 
 begin
-  if GetEnvironmentVariable('USER') <> 'root' then
+{  if GetEnvironmentVariable('USER') <> 'root' then
   begin
     MessageDlg(SRootEnvRequired, mtWarning, [mbOK], 0);
     Halt;
   end;
-
+}
   RequireDerivedFormResource := True;
-  Application.Title := 'DNSCrypt-GUI v1.0';
-  Application.Scaled := True;
+  Application.Title:='DNSCrypt-GUI v1.1';
+  Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

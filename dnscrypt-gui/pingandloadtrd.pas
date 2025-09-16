@@ -41,7 +41,7 @@ begin
   try
     ExProcess.Executable := 'ping';
     ExProcess.Parameters.Add('-6');
-    ExProcess.Parameters.Add('-c3');
+    ExProcess.Parameters.Add('-c2');
     ExProcess.Parameters.Add('-W2');
     ExProcess.Parameters.Add('2001:4860:4860::8888');
     //    ExProcess.Parameters.Add('8.8.8.8');
