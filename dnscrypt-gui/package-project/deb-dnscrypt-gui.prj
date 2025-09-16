@@ -1,0 +1,125 @@
+[NAME]
+name=dnscrypt-gui
+
+[VERSION]
+version=1.1
+
+[RELEASE]
+release=0.mrx9
+
+[GROUP]
+group=Networking/Other
+
+[DESCRIPTION]
+0=GUI for DNSCrypt proxy
+1=...
+2=More information: /usr/share/doc/package_name/repack.txt
+
+[MAINTAINER]
+maintainer=Alex Kotov
+
+[VENDOR]
+vendor=alex_q_2000 (C) 2025
+
+[SUMMARY]
+summary=GUI for DNSCrypt proxy
+
+[URLCOPY]
+urlcopy=https://github.com/AKotov-dev/dnscrypt-gui
+
+[LICENSE]
+license=GPLv3
+
+[DEPS]
+deps=systemd libcap2-bin libgtk2.0-0
+
+[META]
+meta=0
+
+[NOARCH]
+noarch=0
+
+[DEB]
+deb=1
+
+[FILES]
+0=/usr/bin/dnscrypt-gui
+1=/usr/share/icons/dnscrypt-gui.png
+2=/etc/systemd/user/dnscrypt-proxy.service
+3=/usr/share/applications/dnscrypt-gui.desktop
+4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
+5=/opt/dnscrypt-gui/
+6=/usr/share/doc/dnscrypt-gui/
+
+[AFTERINSTALL]
+0=#!/bin/bash
+1=systemctl daemon-reload >/dev/null 2>&1 || :
+2=setcap 'cap_net_bind_service=+ep' /opt/dnscrypt-gui/dnscrypt-proxy 2>/dev/null || :
+
+[AFTERREMOVE]
+0=#!/bin/bash
+1=systemctl daemon-reload >/dev/null 2>&1 || :
+2=setcap -r /opt/dnscrypt-gui/dnscrypt-proxy 2>/dev/null || :
+
+[BEFOREREMOVE]
+0=#!/bin/bash
+1=if [ $1 -eq 0 ] ; then
+2=systemctl disable dnscrypt-proxy.service >/dev/null 2>&1 || :
+3=systemctl stop dnscrypt-proxy.service >/dev/null 2>&1 || :
+4=fi
+
+[URL32]
+url32=https://github.com/AKotov-dev/dnscrypt-gui
+
+[PROGRAMNAME]
+programname=DNSCrypt-GUI
+
+[DEVTOOL]
+devtool=Lazarus
+
+[TOOLVERSION]
+toolversion=4.2
+
+[INFO]
+0=v1.1
+1=+ The `dnscrypt-proxy` package is no longer required
+2=+ Fully autonomous `RPM` and `DEB` packages (self-contained)
+3=+ Own systemd service - `/etc/systemd/system/dnscrypt-proxy.service`
+4=+ The latest `dnscrypt-proxy` (v2.1.14) build from the developer's github is already inside
+5=
+6=**Note:** For a clean install and use, you need to remove `dnscrypt-proxy` if it was installed from the repository.
+7=
+8=v1.0
+9=+ DNS Leak test
+10=+ Selection of two main resolvers
+11=+ Constant list of bootstrap_resolvers
+12=+ RPM packages for Mageia-9
+13=
+14=v0.9
+15=+ IPv6 support
+16=+ Build in Lazarus-4.2
+17=+ Loading/Updating the list of DNS servers (72 hour interval)
+18=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
+19=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
+20=+ Switching to `/etc/public-resolvers.md` **v3**
+21=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
+22=+ RPM packages for Mageia-9
+23=
+24=v0.8
+25=+ Redirection via Socks5 (TCP/UDP)
+26=+ Extended list of DNSCrypt/DoH servers
+27=
+28=v0.7-0
+29=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+30=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
+31=
+32=v0.6-0
+33=+ the list of DNSCrypt servers has been expanded and verified
+34=+
+35=
+36=v0.5-0
+37=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+38=
+39=v0.4-2
+40=+dns servers with parental control
+41=+Restart Button
