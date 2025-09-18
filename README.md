@@ -7,9 +7,9 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 
 + /opt/dnscrypt-gui - *dnscrypt-gui directory + sources*
 + /etc/systemd/user/dnscrypt-proxy.service - *startup service*
-+ ~/.conf/dnscrypt-gui/dnscrypt-gui.conf - *dnscrypt-gui configuration*
-+ ~/.conf/dnscrypt-gui/dnscrypt-proxy.toml - *dnscrypt-proxy configuration*
-+ ~/.conf/dnscrypt-gui/public-resolvers.md - *up-to-date resolver list and signature*
++ ~/.config/dnscrypt-gui/dnscrypt-gui.conf - *dnscrypt-gui configuration*
++ ~/.config/dnscrypt-gui/dnscrypt-proxy.toml - *dnscrypt-proxy configuration*
++ ~/.config/dnscrypt-gui/public-resolvers.md - *up-to-date resolver list and signature*
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot2.png)
 
