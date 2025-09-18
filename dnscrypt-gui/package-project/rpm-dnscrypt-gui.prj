@@ -47,9 +47,8 @@ deb=0
 1=/usr/share/icons/dnscrypt-gui.png
 2=/etc/systemd/user/dnscrypt-proxy.service
 3=/usr/share/applications/dnscrypt-gui.desktop
-4=/usr/share/polkit-1/actions/dnscrypt-gui.policy
-5=/opt/dnscrypt-gui/
-6=/usr/share/doc/dnscrypt-gui/
+4=/opt/dnscrypt-gui/
+5=/usr/share/doc/dnscrypt-gui/
 
 [AFTERINSTALL]
 0=#!/bin/bash
