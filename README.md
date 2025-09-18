@@ -5,11 +5,11 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 **RPM dependencies**: systemd, libcap-utils, gtk2  
 **DEB dependencies:** systemd, libcap2-bin, libgtk2.0-0
 
-+ /opt/dnscrypt-gui - dnscrypt-gui directory + sources
-+ /etc/systemd/user/dnscrypt-proxy.service - startup service
-+ ~/.conf/dnscrypt-gui/dnscrypt-gui.conf - dnscrypt-gui configuration
-+ ~/.conf/dnscrypt-gui/dnscrypt-proxy.toml - dnscrypt-proxy configuration
-+ ~/.conf/dnscrypt-gui/{public-resolvers.md.minisig, public-resolvers.md} - up-to-date resolver list and signature
++ /opt/dnscrypt-gui - *dnscrypt-gui directory + sources*
++ /etc/systemd/user/dnscrypt-proxy.service - *startup service*
++ ~/.conf/dnscrypt-gui/dnscrypt-gui.conf - *dnscrypt-gui configuration*
++ ~/.conf/dnscrypt-gui/dnscrypt-proxy.toml - *dnscrypt-proxy configuration*
++ ~/.conf/dnscrypt-gui/public-resolvers.md - *up-to-date resolver list and signature*
 
 ![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot2.png)
 
