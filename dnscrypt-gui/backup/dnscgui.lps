@@ -38,7 +38,6 @@
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <CursorPos Y="17"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
@@ -51,8 +50,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="437"/>
-        <CursorPos Y="446"/>
+        <CursorPos X="13"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -61,9 +59,9 @@
         <Filename Value="pingandloadtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingAndLoadTRD"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="43"/>
-        <CursorPos X="34" Y="44"/>
+        <CursorPos X="22"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit2>

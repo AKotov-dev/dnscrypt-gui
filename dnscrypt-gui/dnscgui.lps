@@ -38,6 +38,7 @@
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos Y="17"/>
         <UsageCount Value="52"/>
         <Loaded Value="True"/>
@@ -59,9 +60,8 @@
         <Filename Value="pingandloadtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingAndLoadTRD"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="22"/>
+        <CursorPos X="24"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit2>
