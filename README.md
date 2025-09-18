@@ -19,8 +19,6 @@ On different Linux systems, `dnscrypt-proxy` packages are built with different s
 
 Now the dnscrypt-proxy package is no longer needed in the system (if installed, remove it immediately, it will only ruin everything), nor are root privileges required to run the service. Just a lightweight GUI, the latest version of dnscryp-proxy from the developer's GitHub, and, of course, security.
 
-**Note: If dnscrypt-proxy is currently installed from the repository, remove it to avoid conflicts! On Ubuntu-like systems, port 53 may be in use. Either change the dnscrypt-proxy port or finally throw out systemd-resolved.**
-
 Description
 ----
 `dnscrypt-proxy` encrypts the communication channel between you and the DNS server. Encryption of DNS traffic will protect you from man-in-the-middle (MITM) attacks, in which an attacker is wedged into the communication channel. Now the provider will not be able to freely read and log the history of your work on the Internet.
