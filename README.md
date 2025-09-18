@@ -1,6 +1,6 @@
 DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 --
-**Announcement:** Starting with dnscrypr-proxy-v1.1 - switching to self-contained RPM/DEB packages.
+**Announcement:** Starting with `dnscrypt-proxy-v1.1` - switching to self-contained RPM/DEB packages.
 
 RPM dependencies: systemd libcap-utils gtk2  
 DEB dependencies: systemd libcap2-bin libgtk2.0-0
@@ -15,7 +15,7 @@ DEB dependencies: systemd libcap2-bin libgtk2.0-0
 
 **Motivation for the switch self-contained RPM/DEB packages**
 ----
-On different Linux systems, dnscrypt-proxy packages are built with different startup services: Fedora has one, LUbuntu-22.04 has two (including a socket, which needs to be disabled before stopping dnscryp-proxy and generally monitored), and LUbuntu-25.04 has three services (I haven't specified the purpose of the third, as using this useful tool with two services is quite problematic). Accordingly, the decision was made to throw out everything unnecessary and build everything necessary, including the GUI.
+On different Linux systems, `dnscrypt-proxy` packages are built with different startup services: Fedora has one, LUbuntu-22.04 has two (including a socket, which needs to be disabled before stopping dnscryp-proxy and generally monitored), and LUbuntu-25.04 has three services (I haven't specified the purpose of the third, as using this useful tool with two services is quite problematic). Accordingly, the decision was made to throw out everything unnecessary and build everything necessary, including the GUI.
 
 Now the dnscrypt-proxy package is no longer needed in the system (if installed, remove it immediately, it will only ruin everything), nor are root privileges required to run the service. Just a lightweight GUI, the latest version of dnscryp-proxy from the developer's GitHub, and, of course, security.
 
