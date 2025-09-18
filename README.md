@@ -17,7 +17,7 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 ----
 On different Linux systems, `dnscrypt-proxy` packages are built with different startup services: Fedora has one, LUbuntu-22.04 has two (including a socket, which needs to be disabled before stopping dnscryp-proxy and generally monitored), and LUbuntu-25.04 has three services (I haven't specified the purpose of the third, as using this useful tool with two services is quite problematic). Accordingly, the decision was made to throw out everything unnecessary and build everything necessary, including the GUI.
 
-Now the `dnscrypt-proxy` package is **no longer needed** in the system (if installed, remove it immediately, it will only ruin everything), **nor are root privileges required** to run the service. Just a lightweight GUI, the latest version of `dnscryp-proxy` from the developer's GitHub, and security.
+Now the `dnscrypt-proxy` package is **no longer needed** in the system (if installed, remove it immediately, it will only ruin everything), **nor are root privileges required** to run the service. Just a lightweight GUI, the latest version of `dnscrypt-proxy` from the [developer's GitHub](https://github.com/DNSCrypt/dnscrypt-proxy/releases), and security.
 
 Description
 ----
