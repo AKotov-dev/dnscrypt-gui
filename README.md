@@ -2,8 +2,8 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 --
 **Announcement:** Starting with `dnscrypt-proxy-v1.1` - switching to self-contained RPM/DEB packages. If `dnscrypt-proxy` is currently installed `from the repository`, remove it to avoid conflicts! On Ubuntu-like systems, port 53 may be in use. Either change the dnscrypt-proxy port or finally throw out systemd-resolved.
 
-RPM dependencies: systemd libcap-utils gtk2  
-DEB dependencies: systemd libcap2-bin libgtk2.0-0
+**RPM dependencies**: systemd, libcap-utils, gtk2  
+**DEB dependencies:** systemd, libcap2-bin, libgtk2.0-0
 
 + /opt/dnscrypt-gui - dnscrypt-gui directory + sources
 + /etc/systemd/user/dnscrypt-proxy.service - startup service
