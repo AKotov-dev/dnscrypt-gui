@@ -398,7 +398,7 @@ begin
       Edit2.Text := Trim(S);
     //Port
     if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
-      'dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
+      '/dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
       ComboBox3.Text := Trim(S);
   end
   else

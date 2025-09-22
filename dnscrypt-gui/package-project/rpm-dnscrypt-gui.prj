@@ -2,7 +2,7 @@
 name=dnscrypt-gui
 
 [VERSION]
-version=1.1
+version=1.2
 
 [RELEASE]
 release=0.mrx9
@@ -11,7 +11,7 @@ release=0.mrx9
 group=Networking/Other
 
 [DESCRIPTION]
-0=GUI for DNSCrypt proxy
+0=DNSCrypt proxy and GUI
 1=...
 2=More information: /usr/share/doc/package_name/repack.txt
 
@@ -80,45 +80,50 @@ devtool=Lazarus
 toolversion=4.2
 
 [INFO]
-0=v1.1
-1=+ The `dnscrypt-proxy` package is no longer required
-2=+ Fully autonomous `RPM` and `DEB` packages (self-contained)
-3=+ Own systemd service - `/etc/systemd/user/dnscrypt-proxy.service`
-4=+ The latest `dnscrypt-proxy` (v2.1.14) build from the developer's github is already inside
-5=
-6=**Note:** For a clean install and use, you need to remove `dnscrypt-proxy` if it was installed from the repository.
-7=
-8=v1.0
-9=+ DNS Leak test
-10=+ Selection of two main resolvers
-11=+ Constant list of bootstrap_resolvers
-12=+ RPM packages for Mageia-9
-13=
-14=v0.9
-15=+ IPv6 support
-16=+ Build in Lazarus-4.2
-17=+ Loading/Updating the list of DNS servers (72 hour interval)
-18=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
-19=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
-20=+ Switching to `/etc/public-resolvers.md` **v3**
-21=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
-22=+ RPM packages for Mageia-9
-23=
-24=v0.8
-25=+ Redirection via Socks5 (TCP/UDP)
-26=+ Extended list of DNSCrypt/DoH servers
-27=
-28=v0.7-0
-29=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
-30=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
-31=
-32=v0.6-0
-33=+ the list of DNSCrypt servers has been expanded and verified
-34=+
-35=
-36=v0.5-0
-37=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
-38=
-39=v0.4-2
-40=+dns servers with parental control
-41=+Restart Button
+0=v1.2
+1=+ Fixed reading of the Socks5 port
+2=+ Separate threads for reading settings and status
+3=+ Self-contained `RPM` and `DEB` packages
+4=
+5=v1.1
+6=+ The `dnscrypt-proxy` package is no longer required
+7=+ Fully autonomous `RPM` and `DEB` packages (self-contained)
+8=+ Own systemd service - `/etc/systemd/user/dnscrypt-proxy.service`
+9=+ The latest `dnscrypt-proxy` (v2.1.14) build from the developer's github is already inside
+10=
+11=**Note:** For a clean install and use, you need to remove `dnscrypt-proxy` if it was installed from the repository.
+12=
+13=v1.0
+14=+ DNS Leak test
+15=+ Selection of two main resolvers
+16=+ Constant list of bootstrap_resolvers
+17=+ RPM packages for Mageia-9
+18=
+19=v0.9
+20=+ IPv6 support
+21=+ Build in Lazarus-4.2
+22=+ Loading/Updating the list of DNS servers (72 hour interval)
+23=+ Filtering the list of servers, preferably: `non-logging` and `non-filtering`
+24=+ Navigating through the list of DNS servers using the buttons: Up, Down, PageUP, PageDown, Home, End
+25=+ Switching to `/etc/public-resolvers.md` **v3**
+26=+ Disabling/masking `dnscrypt-proxy.socket` and overlap `/etc/systemd/system/dnscrypt-proxy.service`
+27=+ RPM packages for Mageia-9
+28=
+29=v0.8
+30=+ Redirection via Socks5 (TCP/UDP)
+31=+ Extended list of DNSCrypt/DoH servers
+32=
+33=v0.7-0
+34=+ GUI adaptation to dnscrypt-proxy  >= 2.0.38; [fallback_resolver was deprecated](https://github.com/DNSCrypt/dnscrypt-proxy/discussions/1979)
+35=+ Сhanging the prefix of rpm packages to *.mrx9 (for Mageia-9 only)
+36=
+37=v0.6-0
+38=+ the list of DNSCrypt servers has been expanded and verified
+39=+
+40=
+41=v0.5-0
+42=+mask dnscrypt-proxy.socket & auto edit dnscrypt-proxy.service
+43=
+44=v0.4-2
+45=+dns servers with parental control
+46=+Restart Button

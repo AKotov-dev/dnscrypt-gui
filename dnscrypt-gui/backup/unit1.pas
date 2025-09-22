@@ -436,28 +436,6 @@ begin
   end;
 end;
 
-//Открываем URL
-procedure OpenURLFromUserSession(const AURL: string);
-var
-  P: TProcess;
-  cmd: string;
-begin
-  cmd := Format('xdg-open %s', [QuotedStr(AURL)]);
-
-  P := TProcess.Create(nil);
-  try
-    P.Executable := 'bash';
-    P.Parameters.Add('-c');
-    P.Parameters.Add(cmd);
-
-    P.Options := P.Options + [poNoConsole, poNewProcessGroup];
-
-    P.Execute;
-  finally
-    P.Free;
-  end;
-end;
-
 //Проверка DNSLeak
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
@@ -465,7 +443,6 @@ begin
   BitBtn2.Click;
 
   //Проверка DNSLeak
- // OpenURLFromUserSession('https://browserleaks.com/dns');
   OpenURL('https://browserleaks.com/dns');
 end;
 
