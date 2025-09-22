@@ -44,6 +44,7 @@ type
     procedure Label1MouseEnter(Sender: TObject);
     procedure Label1MouseLeave(Sender: TObject);
     procedure LoadResolvers;
+    procedure RunCommandAsync(const CmdLine: string);
 
   private
 
@@ -69,7 +70,7 @@ uses PingAndLoadTRD, StatusTRD, Socks5SettingsTRD;
   { TMainForm }
 
 //Асинхронное выполнение команд не связанных с графикой
-procedure RunCommandAsync(const CmdLine: string);
+procedure TMainForm.RunCommandAsync(const CmdLine: string);
 var
   AProcess: TProcess;
 begin
@@ -86,6 +87,15 @@ begin
   finally
     // Процесс может завершиться позже, освобождать память можно через таймер или событие
     AProcess.Free;
+
+    // Активируем пропсторедж, если нужно
+    XMLPropStorage1.Active := True;
+
+    // Сохраняем настройки
+    XMLPropStorage1.Save;
+
+    // Можно сразу деактивировать, если не хотим авто-сохранение
+    XMLPropStorage1.Active := False;
   end;
 end;
 
@@ -305,15 +315,6 @@ begin
 
   finally
     S.Free;
-
-    // Активируем пропсторедж, если нужно
-    XMLPropStorage1.Active := True;
-
-    // Сохраняем свойства
-    XMLPropStorage1.Save;
-
-    // Можно сразу деактивировать, если не хотим авто-сохранение
-    XMLPropStorage1.Active := False;
   end;
 end;
 

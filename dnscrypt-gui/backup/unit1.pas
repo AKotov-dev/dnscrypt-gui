@@ -44,6 +44,7 @@ type
     procedure Label1MouseEnter(Sender: TObject);
     procedure Label1MouseLeave(Sender: TObject);
     procedure LoadResolvers;
+    procedure RunCommandAsync(const CmdLine: string);
 
   private
 
@@ -69,7 +70,7 @@ uses PingAndLoadTRD, StatusTRD, Socks5SettingsTRD;
   { TMainForm }
 
 //Асинхронное выполнение команд не связанных с графикой
-procedure RunCommandAsync(const CmdLine: string);
+procedure TMainForm.RunCommandAsync(const CmdLine: string);
 var
   AProcess: TProcess;
 begin
@@ -169,8 +170,6 @@ procedure TMainForm.BitBtn2Click(Sender: TObject);
 var
   S: TStringList;
 begin
-  Screen.Cursor := crHourGlass;
-  Application.ProcessMessages;
   try
     S := TStringList.Create;
 
@@ -316,8 +315,6 @@ begin
 
     // Можно сразу деактивировать, если не хотим авто-сохранение
     XMLPropStorage1.Active := False;
-
-    Screen.Cursor := crDefault;
   end;
 end;
 
