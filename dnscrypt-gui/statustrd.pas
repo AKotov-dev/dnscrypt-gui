@@ -70,7 +70,7 @@ begin
       S.LoadFromStream(ExProcess.Output);
       Synchronize(@ShowRunningStatus);
 
-      Sleep(2000); // чуть реже опрашиваем
+      Sleep(1000); // чуть реже опрашиваем
     end;
   finally
     ExProcess.Free;

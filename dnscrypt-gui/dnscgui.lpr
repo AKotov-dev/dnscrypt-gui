@@ -9,7 +9,7 @@ uses
   Forms,
   Unit1,
   Dialogs,
-  SysUtils, statustrd { you can add units after this };
+  SysUtils, statustrd, Socks5SettingsTRD { you can add units after this };
 
   {$R *.res}
 

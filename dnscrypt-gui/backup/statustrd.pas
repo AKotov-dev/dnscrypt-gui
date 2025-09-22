@@ -24,7 +24,7 @@ implementation
 
 uses unit1;
 
-{ TStatusTRD }
+  { TStatusTRD }
 
 constructor TStatusTRD.Create;
 begin
@@ -94,4 +94,3 @@ begin
 end;
 
 end.
-

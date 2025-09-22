@@ -48,12 +48,12 @@ type
   private
 
   public
+    WorkDir: string;
 
   end;
 
 var
   MainForm: TMainForm;
-  WorkDir: string;
   HasIPv6: boolean; //IPv6 в системе
 
 resourcestring
@@ -62,7 +62,7 @@ resourcestring
 
 implementation
 
-uses PingAndLoadTRD, StatusTRD;
+uses PingAndLoadTRD, StatusTRD, Socks5SettingsTRD;
 
   {$R *.lfm}
 
@@ -339,8 +339,6 @@ begin
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
-var
-  S: ansistring;
 begin
   //Проверка NS из /etc/resolv.conf и статуса dnscrypt-proxy.servive
   TStatusTRD.Create;
@@ -348,57 +346,8 @@ begin
   //Проверка ipv6 и загрузка/обновление списка dns-серверов (без логирования в зависимости от HasIPV6)
   TPingAndLoad.Create;
 
-
-  //Via SOCKS5
-  RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' + 'socks5:" ' +
-    WorkDir + '/dnscrypt-proxy.toml'], S);
-  if Trim(S) <> '' then
-  begin
-    CheckBox1.Checked := True;
-    Edit2.Enabled := True;
-    ComboBox3.Enabled := True;
-    //Server
-    if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
-      '/dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f2 -d":"'], S) then
-      Edit2.Text := Trim(S);
-    //Port
-    if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
-      '/dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
-      ComboBox3.Text := Trim(S);
-  end
-  else
-  begin
-    CheckBox1.Checked := False;
-    CheckBox2.Enabled := False;
-    Edit2.Enabled := False;
-    ComboBox3.Enabled := False;
-  end;
-
-  //force_tcp
-  RunCommand('bash', ['-c', 'grep "^force_tcp = true" ' + WorkDir +
-    '/dnscrypt-proxy.toml'], S);
-  if Trim(S) <> '' then
-    CheckBox2.Checked := True
-  else
-    CheckBox2.Checked := False;
-end;
-
-//Читаем файлы для REAL_USER, DISPLAY_VAL, WAYLAND_VAL
-function ReadFileFirstLine(const FileName: string): string;
-var
-  SL: TStringList;
-begin
-  Result := '';
-  if FileExists(FileName) then
-  begin
-    SL := TStringList.Create;
-    try
-      SL.LoadFromFile(FileName);
-      if SL.Count > 0 then Result := Trim(SL[0]);
-    finally
-      SL.Free;
-    end;
-  end;
+  //Поток прокси-настроек Via SOCKS5
+  TSocks5SettingsTRD.Create;
 end;
 
 //Проверка DNSLeak
