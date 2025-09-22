@@ -22,7 +22,7 @@ maintainer=Alex Kotov
 vendor=alex_q_2000 (C) 2025
 
 [SUMMARY]
-summary=GUI for DNSCrypt proxy
+summary=DNSCrypt proxy and GUI (self-contained package)
 
 [URLCOPY]
 urlcopy=https://github.com/AKotov-dev/dnscrypt-gui
