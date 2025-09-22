@@ -11,7 +11,7 @@ release=0.mrx9
 group=Networking/Other
 
 [DESCRIPTION]
-0=DNSCrypt proxy and GUI
+0=DNSCrypt proxy and GUI (self-contained package)
 1=...
 2=More information: /usr/share/doc/package_name/repack.txt
 
