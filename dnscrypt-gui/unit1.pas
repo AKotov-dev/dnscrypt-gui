@@ -43,7 +43,6 @@ type
     procedure Label1Click(Sender: TObject);
     procedure Label1MouseEnter(Sender: TObject);
     procedure Label1MouseLeave(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
     procedure LoadResolvers;
 
   private
@@ -63,7 +62,7 @@ resourcestring
 
 implementation
 
-uses PingAndLoadTRD;
+uses PingAndLoadTRD, StatusTRD;
 
   {$R *.lfm}
 
@@ -141,44 +140,6 @@ begin
 
   finally
     Lines.Free;
-  end;
-end;
-
-//Состояние /etc/resolv.conf и dnscrypt-proxy
-procedure TMainForm.Timer1Timer(Sender: TObject);
-var
-  S: TStringList;
-  ExProcess: TProcess;
-begin
-  S := TStringList.Create;
-  ExProcess := TProcess.Create(nil);
-  try
-    ExProcess.Executable := 'bash';
-    ExProcess.Parameters.Add('-c');
-    ExProcess.Parameters.Add('cat /etc/resolv.conf | grep nameserver');
-    ExProcess.Options := ExProcess.Options + [poUsePipes];
-    ExProcess.Execute;
-
-    S.LoadFromStream(ExProcess.Output);
-
-    if S.Count <> 0 then
-      ListBox1.Items.Assign(S);
-
-    ExProcess.Parameters.Delete(1);
-    ExProcess.Parameters.Add(
-      'systemctl --user --type=service --state=running | grep dnscrypt');
-
-    Exprocess.Execute;
-    S.LoadFromStream(ExProcess.Output);
-
-    if S.Count <> 0 then
-      Shape1.Brush.Color := clLime
-    else
-      Shape1.Brush.Color := clYellow;
-
-  finally
-    S.Free;
-    ExProcess.Free;
   end;
 end;
 
@@ -381,8 +342,12 @@ procedure TMainForm.FormShow(Sender: TObject);
 var
   S: ansistring;
 begin
+  //Проверка NS из /etc/resolv.conf и статуса dnscrypt-proxy.servive
+  TStatusTRD.Create;
+
   //Проверка ipv6 и загрузка/обновление списка dns-серверов (без логирования в зависимости от HasIPV6)
   TPingAndLoad.Create;
+
 
   //Via SOCKS5
   RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' + 'socks5:" ' +

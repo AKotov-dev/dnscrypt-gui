@@ -63,7 +63,7 @@ resourcestring
 
 implementation
 
-uses PingAndLoadTRD;
+uses PingAndLoadTRD, StatusTRD;
 
   {$R *.lfm}
 
@@ -381,8 +381,12 @@ procedure TMainForm.FormShow(Sender: TObject);
 var
   S: ansistring;
 begin
+  //Проверка NS из /etc/resolv.conf и статуса dnscrypt-proxy.servive
+  TStatusTRD.Create;
+
   //Проверка ipv6 и загрузка/обновление списка dns-серверов (без логирования в зависимости от HasIPV6)
   TPingAndLoad.Create;
+
 
   //Via SOCKS5
   RunCommand('bash', ['-c', 'grep "^proxy = ' + '''' + 'socks5:" ' +
@@ -398,7 +402,7 @@ begin
       Edit2.Text := Trim(S);
     //Port
     if RunCommand('bash', ['-c', 'grep "socks5" ' + WorkDir +
-      'dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
+      '/dnscrypt-proxy.toml | tr -d "/\' + '''' + '" | cut -f3 -d":"'], S) then
       ComboBox3.Text := Trim(S);
   end
   else

@@ -9,7 +9,7 @@ uses
   Forms,
   Unit1,
   Dialogs,
-  SysUtils { you can add units after this };
+  SysUtils, statustrd { you can add units after this };
 
   {$R *.res}
 

@@ -74,7 +74,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -92,6 +92,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingAndLoadTRD"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="statustrd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="StatusTRD"/>
+      </Unit3>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

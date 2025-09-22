@@ -1416,6 +1416,7 @@ object MainForm: TMainForm
     Text = '9050'
   end
   object Timer1: TTimer
+    Enabled = False
     OnTimer = Timer1Timer
     Left = 168
     Top = 216
