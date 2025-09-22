@@ -169,6 +169,8 @@ procedure TMainForm.BitBtn2Click(Sender: TObject);
 var
   S: TStringList;
 begin
+  Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     S := TStringList.Create;
 
@@ -314,6 +316,8 @@ begin
 
     // Можно сразу деактивировать, если не хотим авто-сохранение
     XMLPropStorage1.Active := False;
+
+    Screen.Cursor := crDefault;
   end;
 end;
 
