@@ -106,7 +106,7 @@ toolversion=4.2
 3=+ Fixed %post & %postun scripts for `setcap`
 4=+ Self-contained `RPM` and `DEB` packages
 5=
-6=**Note:** Packages installation scripts have been corrected. If, after updating, pressing 'Restart' doesn't launch, run the following command: `sudo setcap 'cap_net_bind_service=+ep' /opt/dnscrypt-gui/dnscrypt-proxy`
+6=**Note:** Packages installation scripts have been corrected. If, after updating, pressing 'Restart' doesn't launch, run the following command as root: `setcap 'cap_net_bind_service=+ep' /opt/dnscrypt-gui/dnscrypt-proxy`
 7=
 8=v1.1
 9=+ The `dnscrypt-proxy` package is no longer required
