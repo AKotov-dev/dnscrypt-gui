@@ -87,6 +87,15 @@ begin
   finally
     // Процесс может завершиться позже, освобождать память можно через таймер или событие
     AProcess.Free;
+
+    // Активируем пропсторедж, если нужно
+    XMLPropStorage1.Active := True;
+
+    // Сохраняем настройки
+    XMLPropStorage1.Save;
+
+    // Можно сразу деактивировать, если не хотим авто-сохранение
+    XMLPropStorage1.Active := False;
   end;
 end;
 
@@ -298,23 +307,17 @@ begin
     //Сохраняем файл конфигурации
     S.SaveToFile(WorkDir + '/dnscrypt-proxy.toml');
 
-    //Если с новой конфигурацией запущен, сделать enable, иначе disable
-    RunCommandAsync('systemctl --user restart dnscrypt-proxy; ' +
-      'if [[ -n $(systemctl --user --type=service --state=running | grep dnscrypt) ]]; '
-      +
-      'then systemctl --user enable dnscrypt-proxy; else systemctl --user disable dnscrypt-proxy; fi');
+    //Проверка getcap + Если с новой конфигурацией запущен, сделать enable, иначе disable
+    RunCommandAsync(
+      'getcap /opt/dnscrypt-gui/dnscrypt-proxy | grep -q cap_net_bind_service || ' +
+      'pkexec setcap cap_net_bind_service=+ep /opt/dnscrypt-gui/dnscrypt-proxy || true; ' +
+      'systemctl --user restart dnscrypt-proxy.service || true; ' +
+      'if systemctl --user is-active --quiet dnscrypt-proxy.service; then ' +
+      '  systemctl --user enable dnscrypt-proxy.service; ' + 'else ' +
+      '  systemctl --user disable dnscrypt-proxy.service; ' + 'fi');
 
   finally
     S.Free;
-
-    // Активируем пропсторедж, если нужно
-    XMLPropStorage1.Active := True;
-
-    // Сохраняем свойства
-    XMLPropStorage1.Save;
-
-    // Можно сразу деактивировать, если не хотим авто-сохранение
-    XMLPropStorage1.Active := False;
   end;
 end;
 
