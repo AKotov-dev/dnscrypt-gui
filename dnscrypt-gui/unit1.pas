@@ -23,6 +23,7 @@ type
     ComboBox3: TComboBox;
     Edit1: TEdit;
     Edit2: TEdit;
+    Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;

@@ -23,6 +23,7 @@ type
     ComboBox3: TComboBox;
     Edit1: TEdit;
     Edit2: TEdit;
+    Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -307,10 +308,11 @@ begin
     //Сохраняем файл конфигурации
     S.SaveToFile(WorkDir + '/dnscrypt-proxy.toml');
 
-    //Проверка getcap + Если с новой конфигурацией запущен, сделать enable, иначе disable
+    //Проверка разрешения (getcap) + Если с новой конфигурацией запущен, сделать enable, иначе disable
     RunCommandAsync(
       'getcap /opt/dnscrypt-gui/dnscrypt-proxy | grep -q cap_net_bind_service || ' +
-      'pkexec setcap cap_net_bind_service=+ep /opt/dnscrypt-gui/dnscrypt-proxy || true; ' +
+      'pkexec setcap cap_net_bind_service=+ep /opt/dnscrypt-gui/dnscrypt-proxy || true; '
+      +
       'systemctl --user restart dnscrypt-proxy.service || true; ' +
       'if systemctl --user is-active --quiet dnscrypt-proxy.service; then ' +
       '  systemctl --user enable dnscrypt-proxy.service; ' + 'else ' +
@@ -372,8 +374,8 @@ end;
 //Проверка DNSLeak
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
-  //Перезапускаем, если выбирали новый dns-сервер из списка
-  BitBtn2.Click;
+  // Перезапускаем, если выбирали новый dns-сервер из списка
+  // BitBtn2.Click;
 
   //Проверка DNSLeak
   OpenURL('https://browserleaks.com/dns');
