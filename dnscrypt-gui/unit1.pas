@@ -343,14 +343,26 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  bmp: TBitmap;
 begin
   MainForm.Caption := Application.Title;
 
+  //Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    bmp.Assign(Image1.Picture.Graphic);
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
+
   //Рабочая директория
-  WorkDir := GetEnvironmentVariable('HOME') + '/.config/dnscrypt-gui';
+  WorkDir := GetUserDir + '.config/dnscrypt-gui';
 
   //Конфиг
-  if not DirectoryExists(WorkDir) then MkDir(WorkDir);
+  if not DirectoryExists(WorkDir) then ForceDirectories(WorkDir);
 
   XMLPropStorage1.FileName := WorkDir + '/dnscrypt-gui.conf';
 

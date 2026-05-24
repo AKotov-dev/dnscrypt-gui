@@ -343,14 +343,26 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  bmp: TBitmap;
 begin
   MainForm.Caption := Application.Title;
+
+  //Устраняем баг иконки приложения
+  bmp := TBitmap.Create;
+  try
+    bmp.PixelFormat := pf32bit;
+    bmp.Assign(Image1.Picture.Graphic);
+    Application.Icon.Assign(bmp);
+  finally
+    bmp.Free;
+  end;
 
   //Рабочая директория
   WorkDir := GetEnvironmentVariable('HOME') + '/.config/dnscrypt-gui';
 
   //Конфиг
-  if not DirectoryExists(WorkDir) then MkDir(WorkDir);
+  if not DirectoryExists(WorkDir) then ForceDirectories(WorkDir);
 
   XMLPropStorage1.FileName := WorkDir + '/dnscrypt-gui.conf';
 
@@ -374,8 +386,8 @@ end;
 //Проверка DNSLeak
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
-  // Перезапускаем, если выбирали новый dns-сервер из списка
-  // BitBtn2.Click;
+  //Перезапускаем, если выбирали новый dns-сервер из списка
+  BitBtn2.Click;
 
   //Проверка DNSLeak
   OpenURL('https://browserleaks.com/dns');
