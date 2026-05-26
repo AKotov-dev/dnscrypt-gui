@@ -719,10 +719,10 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = RestartBtn
     Left = 498
     Height = 13
-    Top = 239
+    Top = 238
     Width = 12
     Anchors = [akRight, akBottom]
-    BorderSpacing.Bottom = 1
+    BorderSpacing.Bottom = 2
     Brush.Color = clYellow
     Shape = stCircle
   end

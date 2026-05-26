@@ -47,9 +47,9 @@ type
     procedure RunCommandAsync(const CmdLine: string);
 
   private
-    WorkDir: string;
 
   public
+    WorkDir: string;
 
   end;
 
