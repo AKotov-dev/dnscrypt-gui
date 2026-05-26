@@ -14,7 +14,6 @@ type
 
   TMainForm = class(TForm)
     Bevel1: TBevel;
-    Label5: TLabel;
     StopBtn: TBitBtn;
     RestartBtn: TBitBtn;
     CheckBox1: TCheckBox;
@@ -48,9 +47,9 @@ type
     procedure RunCommandAsync(const CmdLine: string);
 
   private
+    WorkDir: string;
 
   public
-    WorkDir: string;
 
   end;
 

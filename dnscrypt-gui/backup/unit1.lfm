@@ -1513,13 +1513,6 @@ object MainForm: TMainForm
     }
     Visible = False
   end
-  object Label5: TLabel
-    Left = 431
-    Height = 17
-    Top = 219
-    Width = 40
-    Caption = 'Label5'
-  end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
     Active = False
