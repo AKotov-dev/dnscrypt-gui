@@ -1,14 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: tmainform.bitbtn1.caption
-msgid "Stop"
-msgstr ""
-
-#: tmainform.bitbtn2.caption
-msgid "Restart"
-msgstr ""
-
 #: tmainform.caption
 msgid "DnsCrypt-GUI"
 msgstr ""
@@ -89,8 +81,18 @@ msgctxt "tmainform.label7.caption"
 msgid "Port:"
 msgstr ""
 
+#: tmainform.restartbtn.caption
+msgctxt "tmainform.restartbtn.caption"
+msgid "Restart"
+msgstr ""
+
 #: tmainform.statictext1.caption
 msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
+msgstr ""
+
+#: tmainform.stopbtn.caption
+msgctxt "tmainform.stopbtn.caption"
+msgid "Stop"
 msgstr ""
 
 #: unit1.srootenvrequired

@@ -1,11 +1,11 @@
 object MainForm: TMainForm
-  Left = 322
-  Height = 319
-  Top = 126
+  Left = 323
+  Height = 320
+  Top = 127
   Width = 555
-  ActiveControl = BitBtn2
+  ActiveControl = ListBox1
   Caption = 'DnsCrypt-GUI'
-  ClientHeight = 319
+  ClientHeight = 320
   ClientWidth = 555
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
   LCLVersion = '4.6.0.0'
@@ -13,12 +13,12 @@ object MainForm: TMainForm
   OnShow = FormShow
   object ListBox1: TListBox
     AnchorSideLeft.Control = Owner
-    AnchorSideRight.Control = BitBtn1
+    AnchorSideRight.Control = StopBtn
     AnchorSideBottom.Control = StaticText1
     Left = 6
     Height = 101
-    Top = 193
-    Width = 355
+    Top = 194
+    Width = 339
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 20
@@ -30,32 +30,35 @@ object MainForm: TMainForm
     ScrollWidth = 263
     TabOrder = 8
   end
-  object BitBtn1: TBitBtn
-    AnchorSideRight.Control = BitBtn2
+  object StopBtn: TBitBtn
+    AnchorSideRight.Control = RestartBtn
     AnchorSideBottom.Control = ListBox1
     AnchorSideBottom.Side = asrBottom
-    Left = 381
+    Left = 365
     Height = 42
-    Top = 252
-    Width = 75
+    Top = 253
+    Width = 90
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 4
     Caption = 'Stop'
     TabOrder = 9
-    OnClick = BitBtn1Click
+    OnClick = StopBtnClick
   end
-  object BitBtn2: TBitBtn
-    AnchorSideBottom.Control = BitBtn1
+  object RestartBtn: TBitBtn
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = StopBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 460
+    Left = 459
     Height = 42
-    Top = 252
-    Width = 89
+    Top = 253
+    Width = 90
     Anchors = [akRight, akBottom]
+    BorderSpacing.Right = 6
     Caption = 'Restart'
     ParentShowHint = False
     TabOrder = 10
-    OnClick = BitBtn2Click
+    OnClick = RestartBtnClick
   end
   object Label1: TLabel
     AnchorSideLeft.Control = Edit1
@@ -652,12 +655,11 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = ListBox1
     Left = 6
     Height = 17
-    Top = 172
+    Top = 173
     Width = 150
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 4
     Caption = 'NS from /etc/resolv.conf:'
-    ParentColor = False
   end
   object Label3: TLabel
     AnchorSideLeft.Control = Owner
@@ -670,7 +672,6 @@ object MainForm: TMainForm
     BorderSpacing.Left = 6
     BorderSpacing.Right = 4
     Caption = 'Server:'
-    ParentColor = False
   end
   object Edit1: TEdit
     AnchorSideLeft.Control = Label3
@@ -696,7 +697,6 @@ object MainForm: TMainForm
     BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
-    ParentColor = False
   end
   object SpinEdit1: TSpinEdit
     AnchorSideLeft.Control = Edit1
@@ -714,12 +714,12 @@ object MainForm: TMainForm
     Value = 53
   end
   object Shape1: TShape
-    AnchorSideRight.Control = BitBtn2
+    AnchorSideRight.Control = RestartBtn
     AnchorSideRight.Side = asrCenter
-    AnchorSideBottom.Control = BitBtn2
+    AnchorSideBottom.Control = RestartBtn
     Left = 498
     Height = 13
-    Top = 238
+    Top = 239
     Width = 12
     Anchors = [akRight, akBottom]
     BorderSpacing.Bottom = 1
@@ -1293,7 +1293,7 @@ object MainForm: TMainForm
   object StaticText1: TStaticText
     Left = 0
     Height = 20
-    Top = 299
+    Top = 300
     Width = 555
     Align = alBottom
     BorderStyle = sbsSunken
@@ -1328,7 +1328,6 @@ object MainForm: TMainForm
     BorderSpacing.Left = 10
     BorderSpacing.Right = 4
     Caption = 'Server:'
-    ParentColor = False
   end
   object Edit2: TEdit
     AnchorSideLeft.Control = Label6
@@ -1340,7 +1339,7 @@ object MainForm: TMainForm
     Left = 170
     Height = 37
     Top = 124
-    Width = 191
+    Width = 175
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     TabOrder = 5
@@ -1351,7 +1350,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label6
     AnchorSideTop.Side = asrCenter
-    Left = 376
+    Left = 360
     Height = 17
     Top = 134
     Width = 29
@@ -1359,7 +1358,6 @@ object MainForm: TMainForm
     BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
-    ParentColor = False
   end
   object Bevel1: TBevel
     AnchorSideLeft.Control = Owner
@@ -1380,10 +1378,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label2
     AnchorSideBottom.Side = asrCenter
-    Left = 410
+    Left = 394
     Height = 32
     Hint = 'Tor and the like'
-    Top = 164
+    Top = 165
     Width = 129
     Anchors = [akLeft, akBottom]
     BorderSpacing.Right = 6
@@ -1399,10 +1397,10 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 410
+    Left = 394
     Height = 37
     Top = 124
-    Width = 139
+    Width = 155
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Right = 6
@@ -1514,11 +1512,6 @@ object MainForm: TMainForm
       2E706E674F85816C0000000049454E44AE426082
     }
     Visible = False
-  end
-  object Timer1: TTimer
-    Enabled = False
-    Left = 168
-    Top = 216
   end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>

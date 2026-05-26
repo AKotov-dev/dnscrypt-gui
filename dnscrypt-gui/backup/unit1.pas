@@ -14,8 +14,9 @@ type
 
   TMainForm = class(TForm)
     Bevel1: TBevel;
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
+    Label5: TLabel;
+    StopBtn: TBitBtn;
+    RestartBtn: TBitBtn;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     ComboBox1: TComboBox;
@@ -34,10 +35,9 @@ type
     Shape1: TShape;
     SpinEdit1: TSpinEdit;
     StaticText1: TStaticText;
-    Timer1: TTimer;
     XMLPropStorage1: TXMLPropStorage;
-    procedure BitBtn1Click(Sender: TObject);
-    procedure BitBtn2Click(Sender: TObject);
+    procedure StopBtnClick(Sender: TObject);
+    procedure RestartBtnClick(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -57,10 +57,6 @@ type
 var
   MainForm: TMainForm;
   HasIPv6: boolean; //IPv6 в системе
-
-resourcestring
-  SRootEnvRequired = 'Root environment required!';
-
 
 implementation
 
@@ -176,7 +172,7 @@ begin
 end;
 
 //Делаем конфиг и перезапускаем
-procedure TMainForm.BitBtn2Click(Sender: TObject);
+procedure TMainForm.RestartBtnClick(Sender: TObject);
 var
   S: TStringList;
 begin
@@ -359,7 +355,7 @@ begin
   end;
 
   //Рабочая директория
-  WorkDir := GetEnvironmentVariable('HOME') + '/.config/dnscrypt-gui';
+  WorkDir := GetUserDir + '.config/dnscrypt-gui';
 
   //Конфиг
   if not DirectoryExists(WorkDir) then ForceDirectories(WorkDir);
@@ -387,7 +383,7 @@ end;
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
   //Перезапускаем, если выбирали новый dns-сервер из списка
-  BitBtn2.Click;
+  RestartBtn.Click;
 
   //Проверка DNSLeak
   OpenURL('https://browserleaks.com/dns');
@@ -404,7 +400,7 @@ begin
 end;
 
 //Stop/Disable dnscrypt-proxy
-procedure TMainForm.BitBtn1Click(Sender: TObject);
+procedure TMainForm.StopBtnClick(Sender: TObject);
 begin
   RunCommandAsync('systemctl --user stop dnscrypt-proxy; systemctl --user disable dnscrypt-proxy');
 end;

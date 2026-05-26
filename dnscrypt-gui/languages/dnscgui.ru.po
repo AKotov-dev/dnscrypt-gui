@@ -10,15 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
-
-#: tmainform.bitbtn1.caption
-msgid "Stop"
-msgstr "Стоп"
-
-#: tmainform.bitbtn2.caption
-msgid "Restart"
-msgstr "Рестарт"
+"X-Generator: Poedit 3.8\n"
 
 #: tmainform.caption
 msgid "DnsCrypt-GUI"
@@ -100,10 +92,21 @@ msgctxt "tmainform.label7.caption"
 msgid "Port:"
 msgstr "Порт:"
 
+#: tmainform.restartbtn.caption
+msgctxt "tmainform.restartbtn.caption"
+msgid "Restart"
+msgstr "Рестарт"
+
 #: tmainform.statictext1.caption
 msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
 msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2025"
 
+#: tmainform.stopbtn.caption
+msgctxt "tmainform.stopbtn.caption"
+msgid "Stop"
+msgstr "Стоп"
+
 #: unit1.srootenvrequired
 msgid "Root environment required!"
 msgstr "Требуется окружение root!"
+
