@@ -8,7 +8,7 @@ object MainForm: TMainForm
   ClientHeight = 320
   ClientWidth = 555
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
-  LCLVersion = '4.6.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   OnShow = FormShow
   object ListBox1: TListBox
@@ -719,10 +719,10 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = RestartBtn
     Left = 498
     Height = 13
-    Top = 237
+    Top = 238
     Width = 12
     Anchors = [akRight, akBottom]
-    BorderSpacing.Bottom = 3
+    BorderSpacing.Bottom = 2
     Brush.Color = clYellow
     Shape = stCircle
   end

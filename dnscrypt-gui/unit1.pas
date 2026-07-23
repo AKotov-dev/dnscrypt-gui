@@ -249,10 +249,11 @@ begin
 
     S.Add('');
     S.Add('cache = true');
-    S.Add('cache_size = 256');
-    S.Add('cache_min_ttl = 600');
+    S.Add('cache_size = 4096');
+    S.Add('cache_min_ttl = 2400');
     S.Add('cache_max_ttl = 86400');
     S.Add('cache_neg_ttl = 60');
+    S.Add('cache_neg_max_ttl = 600');
     S.Add('');
 
     //force_tcp
@@ -282,11 +283,12 @@ begin
       'https://raw.githubusercontent.com/DNSCrypt/dnscrypt-resolvers/master/v3/public-resolvers.md'
       + '''' + ',');
 
-    if HasIPv6 then
-      S.Add('''' + 'https://ipv6.download.dnscrypt.info/resolvers-list/v3/public-resolvers.md'
-        + '''' + ',');
+    S.Add('''' + 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md'
+      + '''' + ',');
 
-    S.Add('''' + 'https://download.dnscrypt.info/resolvers-list/v3/public-resolvers.md' +
+    S.Add('''' +
+      'https://cdn.jsdelivr.net/gh/DNSCrypt/dnscrypt-resolvers@master/v3/public-resolvers.md'
+      +
       '''');
     S.Add(']');
 
@@ -294,7 +296,7 @@ begin
     S.Add('cache_file = ' + '''' + WorkDir + '/public-resolvers.md' + '''');
     S.Add('minisign_key = ' + '''' +
       'RWQf6LRCGA9i53mlYecO4IzT51TGPpvWucNSCh1CBM0QTaLn73Y7GFO3' + '''');
-    S.Add('refresh_delay = 72');
+    S.Add('refresh_delay = 73');
     S.Add('prefix = ' + '''' + '''');
 
     S.Add('');
