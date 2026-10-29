@@ -12,7 +12,7 @@
 {"hash":5728634,"name":"tmainform.label4.caption","sourcebytes":[80,111,114,116,58],"value":"Port:"},
 {"hash":175507630,"name":"tmainform.combobox2.hint","sourcebytes":[85,112,44,32,68,111,119,110,44,32,80,97,103,101,85,80,44,32,80,97,103,101,68,111,119,110,46,46,46],"value":"Up, Down, PageUP, PageDown..."},
 {"hash":161632600,"name":"tmainform.combobox2.text","sourcebytes":[99,105,115,99,111,45,100,111,104],"value":"cisco-doh"},
-{"hash":954741,"name":"tmainform.statictext1.caption","sourcebytes":[76,105,99,101,110,99,101,58,32,71,80,76,118,51,32,32,32,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,53],"value":"Licence: GPLv3   Author: alex_q_2000 (C) 2025"},
+{"hash":954742,"name":"tmainform.statictext1.caption","sourcebytes":[76,105,99,101,110,99,101,58,32,71,80,76,118,51,32,32,32,65,117,116,104,111,114,58,32,97,108,101,120,95,113,95,50,48,48,48,32,40,67,41,32,50,48,50,54],"value":"Licence: GPLv3   Author: alex_q_2000 (C) 2026"},
 {"hash":188098910,"name":"tmainform.checkbox1.caption","sourcebytes":[45,62,32,83,111,99,107,115,53,32,45,62],"value":"-> Socks5 ->"},
 {"hash":164219914,"name":"tmainform.label6.caption","sourcebytes":[83,101,114,118,101,114,58],"value":"Server:"},
 {"hash":169027393,"name":"tmainform.edit2.text","sourcebytes":[49,50,55,46,48,46,48,46,49],"value":"127.0.0.1"},

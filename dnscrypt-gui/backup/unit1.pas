@@ -249,10 +249,11 @@ begin
 
     S.Add('');
     S.Add('cache = true');
-    S.Add('cache_size = 256');
-    S.Add('cache_min_ttl = 600');
+    S.Add('cache_size = 4096');
+    S.Add('cache_min_ttl = 2400');
     S.Add('cache_max_ttl = 86400');
     S.Add('cache_neg_ttl = 60');
+    S.Add('cache_neg_max_ttl = 600');
     S.Add('');
 
     //force_tcp

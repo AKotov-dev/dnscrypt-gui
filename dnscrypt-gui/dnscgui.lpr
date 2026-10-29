@@ -15,7 +15,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Title:='DNSCrypt-GUI v1.4.1';
+  Application.Title:='DNSCrypt-GUI v1.4.2';
   Application.Scaled:=True;
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);

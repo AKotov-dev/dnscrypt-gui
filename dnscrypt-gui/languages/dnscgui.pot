@@ -87,7 +87,7 @@ msgid "Restart"
 msgstr ""
 
 #: tmainform.statictext1.caption
-msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2026"
 msgstr ""
 
 #: tmainform.stopbtn.caption

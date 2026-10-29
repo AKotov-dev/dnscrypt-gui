@@ -98,8 +98,8 @@ msgid "Restart"
 msgstr "Рестарт"
 
 #: tmainform.statictext1.caption
-msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2025"
-msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2025"
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2026"
+msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026"
 
 #: tmainform.stopbtn.caption
 msgctxt "tmainform.stopbtn.caption"
@@ -109,4 +109,3 @@ msgstr "Стоп"
 #: unit1.srootenvrequired
 msgid "Root environment required!"
 msgstr "Требуется окружение root!"
-

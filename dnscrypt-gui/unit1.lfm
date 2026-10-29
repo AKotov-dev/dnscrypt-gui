@@ -1297,7 +1297,7 @@ object MainForm: TMainForm
     Width = 555
     Align = alBottom
     BorderStyle = sbsSunken
-    Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2025'
+    Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2026'
     Font.Color = clGray
     Font.Height = -11
     Font.Name = 'Sans'
