@@ -50,11 +50,11 @@ msgid "127.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
-msgid "Resolvers:"
+msgid "Test1"
 msgstr ""
 
 #: tmainform.label1.hint
-msgid "DNS Leak test"
+msgid "DNS Leak test 1"
 msgstr ""
 
 #: tmainform.label2.caption
@@ -69,6 +69,14 @@ msgstr ""
 #: tmainform.label4.caption
 msgctxt "tmainform.label4.caption"
 msgid "Port:"
+msgstr ""
+
+#: tmainform.label5.caption
+msgid "Test2"
+msgstr ""
+
+#: tmainform.label5.hint
+msgid "DNS Leak test 2"
 msgstr ""
 
 #: tmainform.label6.caption

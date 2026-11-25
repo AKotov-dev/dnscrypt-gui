@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DNSCrypt-GUI\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: tmainform.caption
+msgid "DnsCrypt-GUI"
+msgstr ""
+
+#: tmainform.checkbox1.caption
+msgid "-> Socks5 ->"
+msgstr ""
+
+#: tmainform.checkbox2.caption
+msgid "force_tcp = true"
+msgstr ""
+
+#: tmainform.checkbox2.hint
+msgid "Tor and the like"
+msgstr "Tor и подобные"
+
+#: tmainform.combobox1.hint
+msgctxt "tmainform.combobox1.hint"
+msgid "Up, Down, PageUP, PageDown..."
+msgstr ""
+
+#: tmainform.combobox1.text
+msgid "cloudflare"
+msgstr ""
+
+#: tmainform.combobox2.hint
+msgctxt "tmainform.combobox2.hint"
+msgid "Up, Down, PageUP, PageDown..."
+msgstr ""
+
+#: tmainform.combobox2.text
+msgid "cisco-doh"
+msgstr ""
+
+#: tmainform.combobox3.text
+msgid "9050"
+msgstr ""
+
+#: tmainform.edit1.text
+msgctxt "tmainform.edit1.text"
+msgid "127.0.0.1"
+msgstr ""
+
+#: tmainform.edit2.text
+msgctxt "tmainform.edit2.text"
+msgid "127.0.0.1"
+msgstr ""
+
+#: tmainform.label1.caption
+msgid "Test1"
+msgstr "Тест1"
+
+#: tmainform.label1.hint
+msgid "DNS Leak test 1"
+msgstr "Тест DNS Leak 1"
+
+#: tmainform.label2.caption
+msgid "NS from /etc/resolv.conf:"
+msgstr "NS из /etc/resolv.conf:"
+
+#: tmainform.label3.caption
+msgctxt "tmainform.label3.caption"
+msgid "Server:"
+msgstr "Cервер:"
+
+#: tmainform.label4.caption
+msgctxt "tmainform.label4.caption"
+msgid "Port:"
+msgstr "Порт:"
+
+#: tmainform.label5.caption
+msgid "Test2"
+msgstr "Тест2"
+
+#: tmainform.label5.hint
+msgid "DNS Leak test 2"
+msgstr "Тест DNS Leak 2"
+
+#: tmainform.label6.caption
+msgctxt "tmainform.label6.caption"
+msgid "Server:"
+msgstr "Cервер:"
+
+#: tmainform.label7.caption
+msgctxt "tmainform.label7.caption"
+msgid "Port:"
+msgstr "Порт:"
+
+#: tmainform.restartbtn.caption
+msgctxt "tmainform.restartbtn.caption"
+msgid "Restart"
+msgstr "Рестарт"
+
+#: tmainform.statictext1.caption
+msgid "Licence: GPLv3   Author: alex_q_2000 (C) 2026"
+msgstr "Лицензия: GPLv3   Автор: alex_q_2000 (C) 2026"
+
+#: tmainform.stopbtn.caption
+msgctxt "tmainform.stopbtn.caption"
+msgid "Stop"
+msgstr "Стоп"
+
+#: unit1.srootenvrequired
+msgid "Root environment required!"
+msgstr "Требуется окружение root!"
+

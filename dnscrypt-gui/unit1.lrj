@@ -2,8 +2,8 @@
 {"hash":79980089,"name":"tmainform.caption","sourcebytes":[68,110,115,67,114,121,112,116,45,71,85,73],"value":"DnsCrypt-GUI"},
 {"hash":371552,"name":"tmainform.stopbtn.caption","sourcebytes":[83,116,111,112],"value":"Stop"},
 {"hash":147499204,"name":"tmainform.restartbtn.caption","sourcebytes":[82,101,115,116,97,114,116],"value":"Restart"},
-{"hash":249757268,"name":"tmainform.label1.hint","sourcebytes":[68,78,83,32,76,101,97,107,32,116,101,115,116],"value":"DNS Leak test"},
-{"hash":104416714,"name":"tmainform.label1.caption","sourcebytes":[82,101,115,111,108,118,101,114,115,58],"value":"Resolvers:"},
+{"hash":50223313,"name":"tmainform.label1.hint","sourcebytes":[68,78,83,32,76,101,97,107,32,116,101,115,116,32,49],"value":"DNS Leak test 1"},
+{"hash":5950065,"name":"tmainform.label1.caption","sourcebytes":[84,101,115,116,49],"value":"Test1"},
 {"hash":175507630,"name":"tmainform.combobox1.hint","sourcebytes":[85,112,44,32,68,111,119,110,44,32,80,97,103,101,85,80,44,32,80,97,103,101,68,111,119,110,46,46,46],"value":"Up, Down, PageUP, PageDown..."},
 {"hash":195791845,"name":"tmainform.combobox1.text","sourcebytes":[99,108,111,117,100,102,108,97,114,101],"value":"cloudflare"},
 {"hash":55038922,"name":"tmainform.label2.caption","sourcebytes":[78,83,32,102,114,111,109,32,47,101,116,99,47,114,101,115,111,108,118,46,99,111,110,102,58],"value":"NS from /etc/resolv.conf:"},
@@ -19,5 +19,7 @@
 {"hash":5728634,"name":"tmainform.label7.caption","sourcebytes":[80,111,114,116,58],"value":"Port:"},
 {"hash":150536181,"name":"tmainform.checkbox2.hint","sourcebytes":[84,111,114,32,97,110,100,32,116,104,101,32,108,105,107,101],"value":"Tor and the like"},
 {"hash":172475669,"name":"tmainform.checkbox2.caption","sourcebytes":[102,111,114,99,101,95,116,99,112,32,61,32,116,114,117,101],"value":"force_tcp = true"},
-{"hash":246656,"name":"tmainform.combobox3.text","sourcebytes":[57,48,53,48],"value":"9050"}
+{"hash":246656,"name":"tmainform.combobox3.text","sourcebytes":[57,48,53,48],"value":"9050"},
+{"hash":50223314,"name":"tmainform.label5.hint","sourcebytes":[68,78,83,32,76,101,97,107,32,116,101,115,116,32,50],"value":"DNS Leak test 2"},
+{"hash":5950066,"name":"tmainform.label5.caption","sourcebytes":[84,101,115,116,50],"value":"Test2"}
 ]}

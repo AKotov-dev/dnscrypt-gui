@@ -14,6 +14,7 @@ type
 
   TMainForm = class(TForm)
     Bevel1: TBevel;
+    Label5: TLabel;
     StopBtn: TBitBtn;
     RestartBtn: TBitBtn;
     CheckBox1: TCheckBox;
@@ -35,6 +36,9 @@ type
     SpinEdit1: TSpinEdit;
     StaticText1: TStaticText;
     XMLPropStorage1: TXMLPropStorage;
+    procedure Label5Click(Sender: TObject);
+    procedure Label5MouseEnter(Sender: TObject);
+    procedure Label5MouseLeave(Sender: TObject);
     procedure StopBtnClick(Sender: TObject);
     procedure RestartBtnClick(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
@@ -380,13 +384,9 @@ begin
   TSocks5SettingsTRD.Create;
 end;
 
-//Проверка DNSLeak
+//Проверка DNSLeak-1
 procedure TMainForm.Label1Click(Sender: TObject);
 begin
-  //Перезапускаем, если выбирали новый dns-сервер из списка
-  RestartBtn.Click;
-
-  //Проверка DNSLeak
   OpenURL('https://browserleaks.com/dns');
 end;
 
@@ -404,6 +404,22 @@ end;
 procedure TMainForm.StopBtnClick(Sender: TObject);
 begin
   RunCommandAsync('systemctl --user stop dnscrypt-proxy; systemctl --user disable dnscrypt-proxy');
+end;
+
+procedure TMainForm.Label5MouseEnter(Sender: TObject);
+begin
+  Label5.Font.Color := clRed;  //подсветка при наведении
+end;
+
+//Проверка DNSLeak-2
+procedure TMainForm.Label5Click(Sender: TObject);
+begin
+  OpenURL('https://dnscheck.tools/');
+end;
+
+procedure TMainForm.Label5MouseLeave(Sender: TObject);
+begin
+  Label5.Font.Color := clBlue; //возвращаем исходный цвет
 end;
 
 end.

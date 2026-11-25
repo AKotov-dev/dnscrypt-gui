@@ -61,12 +61,12 @@ msgid "127.0.0.1"
 msgstr ""
 
 #: tmainform.label1.caption
-msgid "Resolvers:"
-msgstr "Резольверы:"
+msgid "Test1"
+msgstr "Тест1"
 
 #: tmainform.label1.hint
-msgid "DNS Leak test"
-msgstr "Тест DNS Leak"
+msgid "DNS Leak test 1"
+msgstr "Тест DNS Leak 1"
 
 #: tmainform.label2.caption
 msgid "NS from /etc/resolv.conf:"
@@ -81,6 +81,14 @@ msgstr "Cервер:"
 msgctxt "tmainform.label4.caption"
 msgid "Port:"
 msgstr "Порт:"
+
+#: tmainform.label5.caption
+msgid "Test2"
+msgstr "Тест2"
+
+#: tmainform.label5.hint
+msgid "DNS Leak test 2"
+msgstr "Тест DNS Leak 2"
 
 #: tmainform.label6.caption
 msgctxt "tmainform.label6.caption"

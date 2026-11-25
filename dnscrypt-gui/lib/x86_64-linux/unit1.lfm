@@ -1,12 +1,12 @@
 object MainForm: TMainForm
-  Left = 323
-  Height = 320
-  Top = 127
-  Width = 555
+  Left = 321
+  Height = 317
+  Top = 129
+  Width = 553
   ActiveControl = ListBox1
   Caption = 'DnsCrypt-GUI'
-  ClientHeight = 320
-  ClientWidth = 555
+  ClientHeight = 317
+  ClientWidth = 553
   SessionProperties = 'ComboBox1.Text;ComboBox2.Text;Edit1.Text;Left;SpinEdit1.Value;Top;ComboBox3.Text'
   LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
@@ -17,8 +17,8 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = StaticText1
     Left = 6
     Height = 101
-    Top = 194
-    Width = 339
+    Top = 191
+    Width = 337
     Anchors = [akLeft, akRight, akBottom]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 20
@@ -34,9 +34,9 @@ object MainForm: TMainForm
     AnchorSideRight.Control = RestartBtn
     AnchorSideBottom.Control = ListBox1
     AnchorSideBottom.Side = asrBottom
-    Left = 365
+    Left = 363
     Height = 42
-    Top = 253
+    Top = 250
     Width = 90
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 4
@@ -49,9 +49,9 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = StopBtn
     AnchorSideBottom.Side = asrBottom
-    Left = 459
+    Left = 457
     Height = 42
-    Top = 253
+    Top = 250
     Width = 90
     Anchors = [akRight, akBottom]
     BorderSpacing.Right = 6
@@ -69,12 +69,14 @@ object MainForm: TMainForm
     Cursor = crHandPoint
     Left = 183
     Height = 17
-    Hint = 'DNS Leak test'
+    Hint = 'DNS Leak test 1'
     Top = 16
-    Width = 60
+    Width = 40
     BorderSpacing.Left = 15
-    Caption = 'Resolvers:'
+    Caption = 'Test1'
     Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Monospace'
     Font.Style = [fsUnderline]
     ParentColor = False
     ParentFont = False
@@ -90,11 +92,11 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 249
+    Left = 229
     Height = 37
     Hint = 'Up, Down, PageUP, PageDown...'
     Top = 8
-    Width = 300
+    Width = 318
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 6
     BorderSpacing.Top = 48
@@ -655,7 +657,7 @@ object MainForm: TMainForm
     AnchorSideBottom.Control = ListBox1
     Left = 6
     Height = 17
-    Top = 173
+    Top = 170
     Width = 150
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 4
@@ -690,7 +692,7 @@ object MainForm: TMainForm
     AnchorSideTop.Control = Label3
     Left = 6
     Height = 17
-    Top = 66
+    Top = 65
     Width = 29
     Anchors = [akLeft]
     BorderSpacing.Left = 6
@@ -706,9 +708,9 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 51
     Height = 37
-    Top = 56
+    Top = 55
     Width = 117
-    Anchors = [akLeft, akRight]
+    Anchors = [akTop, akLeft, akRight]
     MinValue = 30
     TabOrder = 2
     Value = 53
@@ -717,9 +719,9 @@ object MainForm: TMainForm
     AnchorSideRight.Control = RestartBtn
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = RestartBtn
-    Left = 498
+    Left = 496
     Height = 13
-    Top = 238
+    Top = 235
     Width = 12
     Anchors = [akRight, akBottom]
     BorderSpacing.Bottom = 2
@@ -728,15 +730,16 @@ object MainForm: TMainForm
   end
   object ComboBox2: TComboBox
     AnchorSideLeft.Control = ComboBox1
+    AnchorSideTop.Control = Label4
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 249
+    Left = 229
     Height = 37
     Hint = 'Up, Down, PageUP, PageDown...'
-    Top = 56
-    Width = 300
-    Anchors = [akLeft, akRight]
+    Top = 55
+    Width = 318
+    Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 6
     ItemHeight = 0
     ItemIndex = 31
@@ -1293,8 +1296,8 @@ object MainForm: TMainForm
   object StaticText1: TStaticText
     Left = 0
     Height = 20
-    Top = 300
-    Width = 555
+    Top = 297
+    Width = 553
     Align = alBottom
     BorderStyle = sbsSunken
     Caption = 'Licence: GPLv3   Author: alex_q_2000 (C) 2026'
@@ -1308,7 +1311,7 @@ object MainForm: TMainForm
     AnchorSideLeft.Control = Owner
     Left = 6
     Height = 32
-    Top = 126
+    Top = 125
     Width = 109
     Anchors = [akLeft]
     BorderSpacing.Left = 6
@@ -1323,7 +1326,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 125
     Height = 17
-    Top = 134
+    Top = 133
     Width = 40
     BorderSpacing.Left = 10
     BorderSpacing.Right = 4
@@ -1338,8 +1341,8 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 170
     Height = 37
-    Top = 124
-    Width = 175
+    Top = 123
+    Width = 173
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     TabOrder = 5
@@ -1350,9 +1353,9 @@ object MainForm: TMainForm
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Label6
     AnchorSideTop.Side = asrCenter
-    Left = 360
+    Left = 358
     Height = 17
-    Top = 134
+    Top = 133
     Width = 29
     BorderSpacing.Left = 15
     BorderSpacing.Top = 48
@@ -1365,8 +1368,8 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     Left = 6
     Height = 10
-    Top = 102
-    Width = 543
+    Top = 101
+    Width = 541
     Anchors = [akLeft, akRight]
     BorderSpacing.Left = 6
     BorderSpacing.Right = 6
@@ -1378,10 +1381,10 @@ object MainForm: TMainForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label2
     AnchorSideBottom.Side = asrCenter
-    Left = 394
+    Left = 392
     Height = 32
     Hint = 'Tor and the like'
-    Top = 165
+    Top = 162
     Width = 129
     Anchors = [akLeft, akBottom]
     BorderSpacing.Right = 6
@@ -1397,9 +1400,9 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 394
+    Left = 392
     Height = 37
-    Top = 124
+    Top = 123
     Width = 155
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
@@ -1414,9 +1417,9 @@ object MainForm: TMainForm
     Text = '9050'
   end
   object Image1: TImage
-    Left = 328
+    Left = 317
     Height = 72
-    Top = 172
+    Top = 173
     Width = 72
     AutoSize = True
     Picture.Data = {
@@ -1513,10 +1516,34 @@ object MainForm: TMainForm
     }
     Visible = False
   end
+  object Label5: TLabel
+    AnchorSideLeft.Control = SpinEdit1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label4
+    AnchorSideTop.Side = asrCenter
+    Cursor = crHandPoint
+    Left = 183
+    Height = 17
+    Hint = 'DNS Leak test 2'
+    Top = 65
+    Width = 40
+    BorderSpacing.Left = 15
+    Caption = 'Test2'
+    Font.Color = clBlue
+    Font.Height = -13
+    Font.Name = 'Monospace'
+    Font.Style = [fsUnderline]
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = Label5Click
+    OnMouseEnter = Label5MouseEnter
+    OnMouseLeave = Label5MouseLeave
+  end
   object XMLPropStorage1: TXMLPropStorage
     StoredValues = <>
     Active = False
-    Left = 256
+    Left = 160
     Top = 216
   end
 end

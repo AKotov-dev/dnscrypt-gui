@@ -11,7 +11,7 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 + ~/.config/dnscrypt-gui/dnscrypt-proxy.toml - *dnscrypt-proxy configuration*
 + ~/.config/dnscrypt-gui/public-resolvers.md - *up-to-date resolver list and signature*
 
-![](https://github.com/AKotov-dev/dnscrypt-gui/blob/main/ScreenShot2.png)
+![](./Screenshot1.png)
 
 **Motivation for the switch self-contained RPM/DEB packages**
 ----
