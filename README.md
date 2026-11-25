@@ -23,7 +23,7 @@ Description
 ----
 `dnscrypt-proxy` encrypts the communication channel between you and the DNS server. Encryption of DNS traffic will protect you from man-in-the-middle (MITM) attacks, in which an attacker is wedged into the communication channel. Now the provider will not be able to freely read and log the history of your work on the Internet.
 
-The `DNSCrypt-GUI` settings are optimal by default. It remains to start the local proxy server with the `Restart` button and set its address in the DNS settings of the network card (by default, 127.0.0.1). If the server is up, it is automatically put into auto-upload. `Green` indicator - the server is running, `Yellow` - waiting/problem. The `Stop` button stops the server and disables its autoloading.
+The `DNSCrypt-GUI` settings are optimal by default. All you need to do is specify the address (127.0.0.1 by default) in your network adapter's DNS settings and start the local proxy server using the `Restart` button. If the server is up, it is automatically put into auto-upload. `Green` indicator - the server is running, `Yellow` - waiting/problem. The `Stop` button stops the server and disables its autoloading.
 
 By clicking on the `Test1 / Test2` links, you can immediately check which DNS servers are used in the system. `DNS Leak Test 2` is more aggressive than `Test1` and can leak your IP unless `WebRTC` is disabled in your browser. Using a WebRTC blocker extension is recommended for better security.
 
