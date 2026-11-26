@@ -689,14 +689,12 @@ object MainForm: TMainForm
   end
   object Label4: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Label3
     Left = 6
     Height = 17
     Top = 65
     Width = 29
     Anchors = [akLeft]
     BorderSpacing.Left = 6
-    BorderSpacing.Top = 48
     BorderSpacing.Right = 4
     Caption = 'Port:'
   end

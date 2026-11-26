@@ -70,7 +70,7 @@ object MainForm: TMainForm
     Left = 183
     Height = 17
     Hint = 'DNS Leak test 1'
-    Top = 16
+    Top = 18
     Width = 40
     BorderSpacing.Left = 15
     Caption = 'Test1'
@@ -669,7 +669,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 6
     Height = 17
-    Top = 16
+    Top = 18
     Width = 40
     BorderSpacing.Left = 6
     BorderSpacing.Right = 4
@@ -681,7 +681,7 @@ object MainForm: TMainForm
     AnchorSideTop.Side = asrCenter
     Left = 51
     Height = 37
-    Top = 6
+    Top = 8
     Width = 117
     BorderSpacing.Left = 5
     TabOrder = 0
