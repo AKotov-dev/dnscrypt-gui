@@ -38,10 +38,9 @@
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="18"/>
         <UsageCount Value="69"/>
-        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="unit1.pas"/>
@@ -50,6 +49,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit1"/>
+        <IsVisibleTab Value="True"/>
         <CursorPos X="13"/>
         <UsageCount Value="69"/>
         <Loaded Value="True"/>
@@ -59,29 +59,25 @@
         <Filename Value="pingandloadtrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="PingAndLoadTRD"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="23"/>
         <UsageCount Value="50"/>
-        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="statustrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="StatusTRD"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="17"/>
         <UsageCount Value="37"/>
-        <Loaded Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="socks5settingstrd.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="Socks5SettingsTRD"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="26"/>
         <UsageCount Value="35"/>
-        <Loaded Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="unit2.pas"/>
@@ -90,14 +86,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit2"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="13"/>
         <UsageCount Value="27"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
     </Units>
-    <JumpHistory Count="12" HistoryIndex="11">
+    <JumpHistory Count="10" HistoryIndex="9">
       <Position1>
         <Filename Value="unit1.pas"/>
         <Caret Line="29" Column="43" TopLine="26"/>
@@ -138,14 +132,6 @@
         <Filename Value="unit1.pas"/>
         <Caret Line="76" Column="58" TopLine="61"/>
       </Position10>
-      <Position11>
-        <Filename Value="unit2.pas"/>
-        <Caret Line="76" Column="2" TopLine="74"/>
-      </Position11>
-      <Position12>
-        <Filename Value="unit2.pas"/>
-        <Caret Line="168" Column="9" TopLine="144"/>
-      </Position12>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

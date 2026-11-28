@@ -62,7 +62,7 @@ type
 
 resourcestring
   SSearchComplete = 'Search complete. No further matches found.';
-  SSaveRules = 'Save changes to the file?';
+  SSaveRules = 'Save and Restart dnscrypt-proxy?';
   SDefaultRules = 'Your rules will be replaced! Continue?';
 
 var
