@@ -13,7 +13,7 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 
 ![](./Screenshot3.png)  
   
-![](./Screenshot4.png)  
+![](./Screenshot5.png)  
   
 **Motivation for the switch self-contained RPM/DEB packages**
 ----
