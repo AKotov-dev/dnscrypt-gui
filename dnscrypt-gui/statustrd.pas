@@ -64,7 +64,10 @@ begin
       ExProcess.Parameters.Clear;
       ExProcess.Parameters.Add('-c');
       ExProcess.Parameters.Add(
-        'systemctl --user --type=service --state=running | grep dnscrypt');
+        //'systemctl --user --type=service --state=running | grep dnscrypt');
+        //'[[ $(fping google.com) && $(systemctl --user is-active dnscrypt-proxy) == "active" ]] && echo "yes" || echo "no"');
+        '[[ $(systemctl --user is-active dnscrypt-proxy.service) == "active" ]] && echo "yes" || echo "no"');
+
       ExProcess.Execute;
 
       S.LoadFromStream(ExProcess.Output);
@@ -85,7 +88,7 @@ end;
 
 procedure TStatusTRD.ShowRunningStatus;
 begin
-  if S.Count <> 0 then
+  if Trim(S[0]) = 'yes' then
     MainForm.Shape1.Brush.Color := clLime
   else
     MainForm.Shape1.Brush.Color := clYellow;

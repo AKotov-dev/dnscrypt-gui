@@ -21,5 +21,6 @@
 {"hash":172475669,"name":"tmainform.checkbox2.caption","sourcebytes":[102,111,114,99,101,95,116,99,112,32,61,32,116,114,117,101],"value":"force_tcp = true"},
 {"hash":246656,"name":"tmainform.combobox3.text","sourcebytes":[57,48,53,48],"value":"9050"},
 {"hash":50223314,"name":"tmainform.label5.hint","sourcebytes":[68,78,83,32,76,101,97,107,32,116,101,115,116,32,50],"value":"DNS Leak test 2"},
-{"hash":5950066,"name":"tmainform.label5.caption","sourcebytes":[84,101,115,116,50],"value":"Test2"}
+{"hash":5950066,"name":"tmainform.label5.caption","sourcebytes":[84,101,115,116,50],"value":"Test2"},
+{"hash":111175843,"name":"tmainform.bitbtn1.caption","sourcebytes":[98,121,112,97,115,115],"value":"bypass"}
 ]}

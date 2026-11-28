@@ -7,7 +7,7 @@
         <CompatibilityMode Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="DNSCrypt-GUI v1.5"/>
+      <Title Value="DNSCrypt-GUI v1.6"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
@@ -74,7 +74,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="5">
+    <Units Count="6">
       <Unit0>
         <Filename Value="dnscgui.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -102,6 +102,14 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="Socks5SettingsTRD"/>
       </Unit4>
+      <Unit5>
+        <Filename Value="unit2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BypassForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit2"/>
+      </Unit5>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

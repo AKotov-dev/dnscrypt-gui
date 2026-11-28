@@ -1,6 +1,39 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: tbypassform.bitbtn1.caption
+msgid "Default"
+msgstr ""
+
+#: tbypassform.bitbtn1.hint
+msgid "Loading default rules"
+msgstr ""
+
+#: tbypassform.bitbtn2.caption
+msgid "Find"
+msgstr ""
+
+#: tbypassform.bitbtn2.hint
+msgid "Ctrl+F"
+msgstr ""
+
+#: tbypassform.caption
+msgid "DNS Forwarding Rules Editor"
+msgstr ""
+
+#: tbypassform.savebtn.caption
+msgctxt "tbypassform.savebtn.caption"
+msgid "Save"
+msgstr ""
+
+#: tbypassform.savebtn.hint
+msgid "Save and restart the service"
+msgstr ""
+
+#: tmainform.bitbtn1.caption
+msgid "bypass"
+msgstr ""
+
 #: tmainform.caption
 msgid "DnsCrypt-GUI"
 msgstr ""
@@ -103,7 +136,15 @@ msgctxt "tmainform.stopbtn.caption"
 msgid "Stop"
 msgstr ""
 
-#: unit1.srootenvrequired
-msgid "Root environment required!"
+#: unit1.sdefaultrules
+msgid "Your rules will be replaced! Continue?"
+msgstr ""
+
+#: unit1.ssaverules
+msgid "Save and Restart dnscrypt-proxy?"
+msgstr ""
+
+#: unit1.ssearchcomplete
+msgid "Search complete. No further matches found."
 msgstr ""
 

@@ -14,6 +14,7 @@ type
 
   TMainForm = class(TForm)
     Bevel1: TBevel;
+    BitBtn1: TBitBtn;
     Label5: TLabel;
     StopBtn: TBitBtn;
     RestartBtn: TBitBtn;
@@ -36,6 +37,7 @@ type
     SpinEdit1: TSpinEdit;
     StaticText1: TStaticText;
     XMLPropStorage1: TXMLPropStorage;
+    procedure BitBtn1Click(Sender: TObject);
     procedure Label5Click(Sender: TObject);
     procedure Label5MouseEnter(Sender: TObject);
     procedure Label5MouseLeave(Sender: TObject);
@@ -49,6 +51,7 @@ type
     procedure Label1MouseLeave(Sender: TObject);
     procedure LoadResolvers;
     procedure RunCommandAsync(const CmdLine: string);
+    procedure CreateForwardingRules;
 
   private
 
@@ -57,13 +60,18 @@ type
 
   end;
 
+resourcestring
+  SSearchComplete = 'Search complete. No further matches found.';
+  SSaveRules = 'Save and Restart dnscrypt-proxy?';
+  SDefaultRules = 'Your rules will be replaced! Continue?';
+
 var
   MainForm: TMainForm;
   HasIPv6: boolean; //IPv6 в системе
 
 implementation
 
-uses PingAndLoadTRD, StatusTRD, Socks5SettingsTRD;
+uses Unit2, PingAndLoadTRD, StatusTRD, Socks5SettingsTRD;
 
   {$R *.lfm}
 
@@ -96,6 +104,117 @@ begin
 
     // Можно сразу деактивировать, если не хотим авто-сохранение
     XMLPropStorage1.Active := False;
+  end;
+end;
+
+//Создание ~/.config/dnscrypt-gui/forwarding-rules.txt
+procedure TMainForm.CreateForwardingRules;
+var
+  S: TStringList;
+begin
+  try
+    S := TStringList.Create;
+
+    S.Add('# Specify which DNS servers to use for domains');
+    S.Add('# Example entry: domain_(without https://) dns-server1, dns-server2, ...');
+
+    S.Add('');
+    S.Add('# === РАЗДЕЛ ДЛЯ РФ (Резолвер Яндекс.DNS) ===');
+
+    S.Add('');
+    S.Add('# Государственные сервисы и налоги');
+    S.Add('gosuslugi.ru 77.88.8.8, 77.88.8.1');
+    S.Add('gu-st.ru 77.88.8.8, 77.88.8.1');
+    S.Add('esia.gosuslugi.ru 77.88.8.8, 77.88.8.1');
+    S.Add('nalog.gov.ru 77.88.8.8, 77.88.8.1');
+    S.Add('nalog.ru 77.88.8.8, 77.88.8.1');
+    S.Add('mos.ru 77.88.8.8, 77.88.8.1');
+    S.Add('pfr.gov.ru 77.88.8.8, 77.88.8.1');
+    S.Add('sfr.gov.ru 77.88.8.8, 77.88.8.1');
+    S.Add('gov.ru 77.88.8.8, 77.88.8.1');
+
+    S.Add('');
+    S.Add('# Банки (часто режут зарубежный DNS и CDN)');
+    S.Add('sberbank.ru 77.88.8.8, 77.88.8.1');
+    S.Add('sber.ru 77.88.8.8, 77.88.8.1');
+    S.Add('tbank.ru 77.88.8.8, 77.88.8.1');
+    S.Add('tinkoff.ru 77.88.8.8, 77.88.8.1');
+    S.Add('vtb.ru 77.88.8.8, 77.88.8.1');
+    S.Add('alfabank.ru 77.88.8.8, 77.88.8.1');
+    S.Add('gazprombank.ru 77.88.8.8, 77.88.8.1');
+    S.Add('raiffeisen.ru 77.88.8.8, 77.88.8.1');
+
+    S.Add('');
+    S.Add('# Почта, маркетплейсы и инфраструктура РФ');
+    S.Add('pochta.ru 77.88.8.8, 77.88.8.1');
+    S.Add('rzd.ru 77.88.8.8, 77.88.8.1');
+    S.Add('wildberries.ru 77.88.8.8, 77.88.8.1');
+    S.Add('ozon.ru 77.88.8.8, 77.88.8.1');
+
+    S.Add('');
+    S.Add('# Службы: мособлеирц.рф, mosenergosbyt.ru и т.д.');
+    S.Add('xn--90aijkdmaud0d.xn--p1ai 77.88.8.8, 77.88.8.1');
+    S.Add('mosenergosbyt.ru 77.88.8.8, 77.88.8.1');
+    S.Add('mosoblgaz.ru 77.88.8.8, 77.88.8.1');
+
+    S.Add('');
+    S.Add('# Другое');
+    S.Add('ya.ru 77.88.8.8, 77.88.8.1');
+    S.Add('dzen.ru 77.88.8.8, 77.88.8.1');
+    S.Add('avito.ru 77.88.8.8, 77.88.8.1');
+    S.Add('strelkacard.ru 77.88.8.8, 77.88.8.1');
+    S.Add('cdek.ru 77.88.8.8, 77.88.8.1');
+
+    S.Add('');
+    S.Add('');
+    S.Add('# === ДОМЕННЫЕ ЗОНЫ и DNS (DOMAIN ZONES and DNS) ===');
+    S.Add('');
+    S.Add('# Россия (.ru, .su, .рф) — Яндекс DNS');
+    S.Add('# ru 77.88.8.8, 77.88.8.1');
+    S.Add('# su 77.88.8.8, 77.88.8.1');
+    S.Add('# xn--p1ai 77.88.8.8, 77.88.8.1');
+    S.Add('');
+
+    S.Add('# Беларусь (.by, .бел) — Яндекс DNS (оптимальный пинг и пиринг)');
+    S.Add('# by 77.88.8.8, 77.88.8.1');
+    S.Add('# xn--90ais 77.88.8.8, 77.88.8.1');
+    S.Add('');
+
+    S.Add('# Казахстан (.kz, .қаз) — KazNIC / Яндекс DNS');
+    S.Add('# kz 77.88.8.8, 77.88.8.1');
+    S.Add('# xn--80ao21a 77.88.8.8, 77.88.8.1');
+    S.Add('');
+
+    S.Add('# Узбекистан (.uz) — Яндекс DNS');
+    S.Add('# uz 77.88.8.8, 77.88.8.1');
+    S.Add('');
+
+    S.Add('# Туркменистан (.tm) — локальный DNS / Cloudflare');
+    S.Add('# tm 1.1.1.1, 9.9.9.9');
+    S.Add('');
+
+    S.Add('# Китай (China) (.cn) — Alibaba DNS + 114DNS (китайские резолверы во избежание DPI-подмены)');
+    S.Add('# cn 223.5.5.5, 114.114.114.114');
+    S.Add('');
+
+    S.Add('# Иран (Iran) (.ir, .ایران) — Shecan DNS (решает проблемы с внутренними ресурсами Ирана)');
+    S.Add('# ir 178.22.122.100, 185.51.200.2');
+    S.Add('# xn--mgba3a4f16a 178.22.122.100, 185.51.200.2');
+    S.Add('');
+
+    S.Add('# Саудовская Аравия (Saudi Arabia) (.sa, .السعودية) — Cloudflare / Quad9 (узлы в Эр-Рияде/Джидде)');
+    S.Add('# sa 1.1.1.1, 9.9.9.9');
+    S.Add('# xn--mgberp4a5d4ar 1.1.1.1, 9.9.9.9');
+    S.Add('');
+
+    S.Add('# Турция (Türkiye) (.tr) — Cloudflare / Quad9 (Anycast-узлы в Стамбуле)');
+    S.Add('# tr 1.1.1.1, 9.9.9.9');
+
+    S.SaveToFile(WorkDir + '/forwarding-rules.txt');
+    S.Add('');
+
+  finally
+    S.Free;
   end;
 end;
 
@@ -250,6 +369,12 @@ begin
       S.Add('block_ipv6 = false')
     else
       S.Add('block_ipv6 = true');
+
+    //Если нет - Создаём Дефолтный ~/.config/dnscrypt-gui/forwarding-rules.txt
+    if not FileExists(WorkDir + '/forwarding-rules.txt') then CreateForwardingRules;
+
+    S.Add('');
+    S.Add('forwarding_rules = ''' + WorkDir + '/forwarding-rules.txt''');
 
     S.Add('');
     S.Add('cache = true');
@@ -415,6 +540,15 @@ end;
 procedure TMainForm.Label5Click(Sender: TObject);
 begin
   OpenURL('https://dnscheck.tools/');
+end;
+
+procedure TMainForm.BitBtn1Click(Sender: TObject);
+begin
+  //Если правил нет - создать
+  if not FileExists(MainForm.WorkDir + '/forwarding-rules.txt') then
+    CreateForwardingRules;
+
+  BypassForm.Show;
 end;
 
 procedure TMainForm.Label5MouseLeave(Sender: TObject);

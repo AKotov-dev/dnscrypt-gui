@@ -12,6 +12,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
 
+#: tbypassform.bitbtn1.caption
+msgid "Default"
+msgstr "Дефолт"
+
+#: tbypassform.bitbtn1.hint
+msgid "Loading default rules"
+msgstr "Загрузка дефолтных правил"
+
+#: tbypassform.bitbtn2.caption
+msgid "Find"
+msgstr "Найти"
+
+#: tbypassform.bitbtn2.hint
+msgid "Ctrl+F"
+msgstr ""
+
+#: tbypassform.caption
+msgid "DNS Forwarding Rules Editor"
+msgstr "Редактор правил пересылки DNS"
+
+#: tbypassform.savebtn.caption
+msgctxt "tbypassform.savebtn.caption"
+msgid "Save"
+msgstr "Сохранить"
+
+#: tbypassform.savebtn.hint
+msgid "Save and restart the service"
+msgstr "Сохранить и Перезапустить сервис"
+
+#: tmainform.bitbtn1.caption
+msgid "bypass"
+msgstr "байпас"
+
 #: tmainform.caption
 msgid "DnsCrypt-GUI"
 msgstr ""
@@ -114,6 +147,14 @@ msgctxt "tmainform.stopbtn.caption"
 msgid "Stop"
 msgstr "Стоп"
 
-#: unit1.srootenvrequired
-msgid "Root environment required!"
-msgstr "Требуется окружение root!"
+#: unit1.sdefaultrules
+msgid "Your rules will be replaced! Continue?"
+msgstr "Ваши правила будут замещены! Продолжить?"
+
+#: unit1.ssaverules
+msgid "Save and Restart dnscrypt-proxy?"
+msgstr "Сохранить и Перезапустить dnscrypt-proxy?"
+
+#: unit1.ssearchcomplete
+msgid "Search complete. No further matches found."
+msgstr "Поиск завершен. Совпадений больше не найдено."
