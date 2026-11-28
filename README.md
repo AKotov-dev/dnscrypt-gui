@@ -11,8 +11,10 @@ DNSCrypt-GUI - GUI for managing the dnscrypt-proxy server
 + ~/.config/dnscrypt-gui/dnscrypt-proxy.toml - *dnscrypt-proxy configuration*
 + ~/.config/dnscrypt-gui/public-resolvers.md - *up-to-date resolver list and signature*
 
-![](./Screenshot2.png)
-
+![](./Screenshot3.png)  
+  
+![](./Screenshot3.png)  
+  
 **Motivation for the switch self-contained RPM/DEB packages**
 ----
 On different Linux systems, `dnscrypt-proxy` packages are built with different startup services: Fedora has one, LUbuntu-22.04 has two (including a socket, which needs to be disabled before stopping `dnscrypt-proxy` and generally monitored), and LUbuntu-25.04 has three services (I haven't specified the purpose of the third, as using this useful tool with two services is quite problematic). Accordingly, the decision was made to throw out everything unnecessary and build everything necessary, including the GUI.
